@@ -8,12 +8,13 @@ final static String ICON = "/sprites/icon.png";
 final static String TITLE = "Raket";
 final static String CURSOR_IMG = "/sprites/cursor.png";
 final static String background = "/sprites/background.gif";
-final static String LOGO_IMG = "/sprites/logo.png";
-final static String BUTTONS_IMG = "/sprites/buttons.png";
+final static String LOGO_IMG = "/sprites/logo.svg";
+final static String BUTTONS_IMG = "/sprites/buttons.svg";
 PImage backgroundimage;
 PImage cursor;
-PImage logo;
-PImage buttons;
+//PImage logo;
+PShape logo;
+PShape buttons;
 int cols;
 int rows;
 
@@ -28,9 +29,9 @@ void setup() {
   getSurface().setIcon(loadImage(ICON));
   surface.setTitle(TITLE);
   surface.setResizable(true);
-  logo = loadImage(LOGO_IMG);
-  buttons = loadImage(BUTTONS_IMG);
-  background();
+  //logo = loadImage(LOGO_IMG);
+  logo = loadShape(LOGO_IMG);
+  buttons = loadShape(BUTTONS_IMG);
 // Load custom cursor
   cursor = loadImage(CURSOR_IMG);
   cursor(cursor, -32, -32);
