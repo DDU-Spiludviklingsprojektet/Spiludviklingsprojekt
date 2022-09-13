@@ -8,7 +8,7 @@ final static String ICON = "/sprites/icon.png";
 final static String TITLE = "Raket";
 final static String CURSOR_IMG = "/sprites/cursor.png";
 final static String background = "/sprites/background.gif";
-final static String LOGO_IMG = "/sprites/logo.svg";
+final static String LOGO_IMG = "/sprites/buttons.svg";
 final static String BUTTONS_IMG = "/sprites/buttons.svg";
 PImage backgroundimage;
 PImage cursor;
@@ -24,17 +24,23 @@ void settings() {
 }
 
 void setup() {
-  frameRate(60);
-//Set custom desktop icon
+  frameRate(30);
+  //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON));
   surface.setTitle(TITLE);
   surface.setResizable(true);
-  //logo = loadImage(LOGO_IMG);
   logo = loadShape(LOGO_IMG);
   buttons = loadShape(BUTTONS_IMG);
-// Load custom cursor
+  // Load custom cursor
   cursor = loadImage(CURSOR_IMG);
   cursor(cursor, -32, -32);
+
+  logox = width/2;
+  logoy = height/4;
+  logosize = width/3;
+  buttonsx = width/2;
+  buttonsy = height*0.7;
+  buttonssize = width/3;
 
   boot();
 }
@@ -53,9 +59,10 @@ void background() {
   backgroundimage = loadImage(background);
   cols = width/backgroundimage.width;
   rows = height/backgroundimage.height;
-  if( width%backgroundimage.width> 0){cols++;}
-  if ( height%backgroundimage.height >0){rows++;}
-  println(cols);
-  println(rows);
- 
+  if ( width%backgroundimage.width> 0) {
+    cols++;
+  }
+  if ( height%backgroundimage.height >0) {
+    rows++;
+  }
 }
