@@ -8,6 +8,8 @@ class Raket {
   float drymass;
   float fueldensity;
   float tanksize;
+  float ISP;
+  
 
   Raket(float tempdrymass) {
     drymass = tempdrymass;
