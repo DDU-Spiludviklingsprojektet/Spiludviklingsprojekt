@@ -4,6 +4,7 @@ class Raket {
   PVector Acceleration = new PVector();
   PVector Velocity = new PVector();
   PVector Location = new PVector();
+  PVector Center = new PVector(0,0);
 
   // Drymass in KG
   float drymass;
@@ -29,9 +30,11 @@ class Raket {
   float thrust;
   float G0;
   float pi = 3.14;
+  float G = pow(6.674,-11);
+  float planetmass;
 
   //TODO: Fix den her kode, det er næsten sikkert forkert, men jeg ville bare lave et eller andet der ligner det kunne virke. Og selv hvis det virker er det sikkert stadigt dårlig kode.
-  void turn(float x) {
+  void turn(float x){
     if (Heading.x>=0) {
       Heading.y = 180/pi*((atan(Heading.y/Heading.x)*pi/180)+x);
     } else {
@@ -58,8 +61,13 @@ class Raket {
     Heading.normalize();
   }
 
-  void update() {
+  void gravity(){
+   pow(Location.dist(Center),2);
+  }
+
+  void draw() {
     engine();
+    gravity();
     Acceleration.add(Velocity);
     Velocity.add(Location);
   }
