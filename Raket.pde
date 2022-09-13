@@ -24,10 +24,10 @@ class Raket {
     power = temppower;
   }
 
-  float currentmass;
   float DeltaV;
   float throttle;
   float thrust;
+  float G0;
   float pi = 3.14;
 
   //TODO: Fix den her kode, det er næsten sikkert forkert, men jeg ville bare lave et eller andet der ligner det kunne virke. Og selv hvis det virker er det sikkert stadigt dårlig kode.
@@ -39,19 +39,28 @@ class Raket {
     }
   }
 
-  void setThrotle(int x) {
+  void setThrottle(int x) {
     throttle = x;
   }
-  void update() {
-    thrust = (power*throttle)/currentmass*1000;
+
+  float currentmass() {
+    return (drymass+tanksize*fueldensity);
+  }
+
+  float deltaV() {
+    return ISP*G0*log(drymass/currentmass());
+  }
+
+  void engine() {
+    thrust = (power*throttle)/currentmass()*1000;
     Heading.setMag(thrust);
     Acceleration.add(Heading);
     Heading.normalize();
   }
 
-  float deltaV() {
-    float x;
-    x = drymass/currentmass;
-    return x;
+  void update() {
+    engine();
+    Acceleration.add(Velocity);
+    Velocity.add(Location);
   }
 }
