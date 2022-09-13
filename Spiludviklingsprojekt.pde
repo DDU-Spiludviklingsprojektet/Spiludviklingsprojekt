@@ -4,9 +4,19 @@ import de.bezier.data.sql.*;
 import de.bezier.data.sql.mapper.*;
 
 //Variable setup, pretty self explainatory names
-final static String ICON = "/sprites/Logo.png";
+final static String ICON = "/sprites/icon.png";
 final static String TITLE = "Raket";
 final static String CURSOR_IMG = "/sprites/cursor.png";
+final static String background = "/sprites/background.gif";
+final static String LOGO_IMG = "/sprites/logo.svg";
+final static String BUTTONS_IMG = "/sprites/buttons.svg";
+PImage backgroundimage;
+PImage cursor;
+//PImage logo;
+PShape logo;
+PShape buttons;
+int cols;
+int rows;
 
 
 void settings() {
@@ -19,9 +29,12 @@ void setup() {
   getSurface().setIcon(loadImage(ICON));
   surface.setTitle(TITLE);
   surface.setResizable(true);
+  //logo = loadImage(LOGO_IMG);
+  logo = loadShape(LOGO_IMG);
+  buttons = loadShape(BUTTONS_IMG);
 // Load custom cursor
-  PImage cursor = loadImage(CURSOR_IMG);
-  cursor(cursor);
+  cursor = loadImage(CURSOR_IMG);
+  cursor(cursor, -32, -32);
 
   boot();
 }
@@ -33,4 +46,16 @@ void draw() {
       exit();
     }
   }
+  home();
+}
+
+void background() {
+  backgroundimage = loadImage(background);
+  cols = width/backgroundimage.width;
+  rows = height/backgroundimage.height;
+  if( width%backgroundimage.width> 0){cols++;}
+  if ( height%backgroundimage.height >0){rows++;}
+  println(cols);
+  println(rows);
+ 
 }
