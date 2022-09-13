@@ -18,19 +18,19 @@ float buttonssize;
 
 void home() {
   background();
-  for (int y=0; y<rows; y++){
-    for (int x=0; x<cols; x++){
-      image(backgroundimage,(x*backgroundimage.width),(y*backgroundimage.height));
+  for (int y=0; y<rows; y++) {
+    for (int x=0; x<cols; x++) {
+      image(backgroundimage, (x*backgroundimage.width), (y*backgroundimage.height));
     }
   }
   shapeMode(CENTER);
   //logo.resize(width/3,width/3);
   //image(logo,((width/2)-(logo.height/2)),((height/4)-(logo.height/2)));
-shape(logo, width/2, height/4, width/3, width/3);
-  shape(buttons,(width/2),(height*0.7),width/3,width/3);
- 
- 
- 
+  shape(logo, width/2, height/4, width/3, width/3);
+  shape(buttons, (width/2), (height*0.7), width/3, width/3);
+
+
+
   update(mouseX, mouseY);
   if (rectOver) {
     fill(rectHighlight);
@@ -39,7 +39,7 @@ shape(logo, width/2, height/4, width/3, width/3);
   }
   stroke(255);
   //rect(rectX, rectY, rectSize, rectSize);
-  
+
   if (circleOver) {
     fill(circleHighlight);
   } else {
@@ -70,9 +70,9 @@ void mousePressed() {
   }
 }
 
-boolean overRect(int x, int y, int width, int height)  {
-  if (mouseX >= x && mouseX <= x+width && 
-      mouseY >= y && mouseY <= y+height) {
+boolean overRect(int x, int y, int width, int height) {
+  if (mouseX >= x && mouseX <= x+width &&
+    mouseY >= y && mouseY <= y+height) {
     return true;
   } else {
     return false;

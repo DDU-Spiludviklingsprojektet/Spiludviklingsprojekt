@@ -2,9 +2,6 @@
 void boot() {
   //noCursor();
   background(200);
-  
-  
-  
   rectColor = color(0);
   rectHighlight = color(51);
   circleColor = color(255);
@@ -16,5 +13,4 @@ void boot() {
   rectX = width/2-rectSize-10;
   rectY = height/2-rectSize/2;
   ellipseMode(CENTER);
-  
 }
