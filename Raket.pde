@@ -33,13 +33,9 @@ class Raket {
   float G = pow(6.674,-11);
   float planetmass;
 
-  //TODO: Fix den her kode, det er næsten sikkert forkert, men jeg ville bare lave et eller andet der ligner det kunne virke. Og selv hvis det virker er det sikkert stadigt dårlig kode.
   void turn(float x){
-    if (Heading.x>=0) {
-      Heading.y = 180/pi*((atan(Heading.y/Heading.x)*pi/180)+x);
-    } else {
-      Heading.y = 180/pi*((atan(Heading.y/Heading.x)*pi/180)+x);
-    }
+    float xrad = x*pi/180;
+    Heading = PVector.fromAngle(Heading.heading()+xrad);
   }
 
   void setThrottle(int x) {
