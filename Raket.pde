@@ -6,19 +6,12 @@ class Raket {
   PVector Location = new PVector();
   PVector Center = new PVector(0, 0);
 
-  // Drymass in KG
   float drymass;
-  //Fuel density in kg per cubic meter
   float fueldensity;
-  //Tank size in cubic meters
   float tanksize;
-  //ISP in seconds
   float ISP;
-  //Enginepower in KN
   float power;
-  //Drag coefficient
   float CD;
-  //Rocket area
   float Area;
 
   Raket(float tempdrymass, float tempfueldensity, float temptanksize, float tempISP, float temppower, float tempCD, float tempArea) {
@@ -82,11 +75,7 @@ class Raket {
     PVector Drag = Velocity.setMag(-1*x);
     Acceleration.add(Drag);
   }
-
-  void draw() {
-    engine();
-    gravity();
-    drag();
+  void forces() {
     Acceleration.add(Velocity);
     Velocity.add(Location);
   }

@@ -4,12 +4,19 @@ Planet earth;
 Planet moon;
 
 //set values for rocket
+// Drymass in KG
 float drymass = 20000;
-float fueldensity = 1;
+//Fuel density in kg per cubic meter
+float fueldensity = 1000;
+//Tank size in cubic meters
 float tanksize = 100000;
+//ISP in seconds
 float ISP = 300;
+//Enginepower in KN
 float power = 20;
+//Drag coefficient
 float CD = 0.5;
+//Rocket area
 float Area = 10;
 
 //set values for starting planet
@@ -35,11 +42,16 @@ void game() {
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass);
   input();
+  rocket.engine();
+  rocket.gravity();
+  rocket.drag();
+  rocket.forces();
 }
 
 void input() {
   switch(keyCode) {
-  case 16: //Shift
+    //if Shift, increase throttle 5%
+  case 16:
     if (rocket.getThrottle() >=96) {
       rocket.setThrottle(100);
       break;
@@ -47,7 +59,8 @@ void input() {
       rocket.setThrottle(rocket.getThrottle()+5);
       break;
     }
-  case 17: //CTRL
+    //if CTRL or Control decrease throttle 5%
+  case 17: 
     if (rocket.getThrottle() <= 4) {
       rocket.setThrottle(0);
       break;
@@ -55,20 +68,25 @@ void input() {
       rocket.setThrottle(rocket.getThrottle()-5);
       break;
     }
-  case 27: //Escape
+    //if ESC is pressed, go to main menu
+  case 27: 
     game = false;
     menu = true;
     break;
-  case 37: //Left arrow
+    //if Left arrow is pressed, turn 5 degrees left
+  case 37: 
     rocket.turn(5);
     break;
-  case 39: //Right arrow
+    //if Right arrow is pressed, turn 5 degrees right
+  case 39: 
     rocket.turn(-5);
     break;
-  case 88: //X
+    //if X is pressed, turn off the engine
+  case 88: 
     rocket.setThrottle(0);
     break;
-  case 90: //Z
+    //if Z is pressed, set the engine to max power.
+  case 90: 
     rocket.setThrottle(100);
     break;
   }
