@@ -5,7 +5,6 @@ class Raket {
   PVector Velocity = new PVector();
   PVector Location = new PVector();
   PVector Center = new PVector(0, 0);
-  //PVector Gravity = new PVector();
 
   // Drymass in KG
   float drymass;
