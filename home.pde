@@ -66,10 +66,10 @@ void update(int x, int y) {
 }
 
 void mousePressed() {
-  if (circleOver) {
+  if (menu == true && circleOver) {
     currentColor = circleColor;
   }
-  if (rectOver) {
+  if (menu == true && rectOver) {
     currentColor = rectColor;
     println("Upgrade");
     clear();
