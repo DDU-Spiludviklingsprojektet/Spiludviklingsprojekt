@@ -49,7 +49,6 @@ if (circleOver) {
   fill(circleHighlight);
 } else {
   fill(circleColor);
-}
 stroke(0);
 ellipse(circleX, circleY, circleSize, circleSize);
 ellipse(circle2X, circle2Y, width/20, width/20);
