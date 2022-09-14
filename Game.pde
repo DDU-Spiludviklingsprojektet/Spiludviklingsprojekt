@@ -32,5 +32,21 @@ void game() {
   rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area);
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass);
-  rocket.setThrottle(2);
-}
+
+  if (keyPressed) {
+    if (key =='z'||key=='Z') {
+      rocket.setThrottle(100);
+    } else if (key == 'x'||key=='X') {
+      rocket.setThrottle(0);
+    } else if (keyCode == 16)
+      if (rocket.getThrottle >=96) {
+        rocket.setThrottle(100);
+      } else {
+        rocket.setThrottle(rocket.getThrottle+5);
+      }
+  } else if (keyCode == 17)
+    if (rocket.getThrottle <= 4) {
+      rocket.setThrottle(0);
+    } else {
+      rocket.setThrottle(rocket.getThrottle-5);
+    }

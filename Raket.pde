@@ -31,7 +31,7 @@ class Raket {
     Area = tempArea;
   }
 
-  float throttle;
+  int throttle;
   float pi = 3.14;
   float G = pow(6.674, -11);
   float G0 = 9.82;
@@ -56,7 +56,9 @@ class Raket {
   void turn(float x) {
     Heading.rotate(x*pi/180);
   }
-
+  int getThrottle() {
+    return throttle;
+  }
   void setThrottle(int x) {
     throttle = x;
   }
