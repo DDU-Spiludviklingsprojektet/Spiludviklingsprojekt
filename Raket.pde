@@ -26,7 +26,6 @@ class Raket {
     throttle = tempthrottle;
   }
 
-
   float currentmass() {
     return (drymass+tanksize*fueldensity);
   }
