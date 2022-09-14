@@ -14,6 +14,7 @@ class Raket {
   float CD;
   float Area;
   int throttle;
+  float fuelpercent = 100;
 
   Raket(float tempdrymass, float tempfueldensity, float temptanksize, float tempISP, float temppower, float tempCD, float tempArea, int tempthrottle) {
     drymass = tempdrymass;
@@ -53,19 +54,29 @@ class Raket {
   }
 
   void gravity() {
-    float x = G * earth.getmass()/pow(Location.dist(Center), 2);
-    PVector Gravity = Center.sub(Location);
-    Gravity.setMag(x);
-    Acceleration.add(Gravity);
-  }
+    if (G * earth.getmass()/pow(Location.dist(earth.getPosition()), 2) > G * moon.getmass()/pow(Location.dist(moon.getPosition()), 2)) {
+      float x = G * earth.getmass()/pow(Location.dist(earth.getPosition()), 2);
+      PVector Gravity = earth.getPosition().sub(Location);
+      Gravity.setMag(x);
+      Acceleration.add(Gravity);
+    } else {
+      float x = G * moon.getmass()/pow(Location.dist(moon.getPosition()), 2);
+      PVector Gravity = moon.getPosition().sub(Location);
+      Gravity.setMag(x);
+      Acceleration.add(Gravity);
+    }
 
-  void drag() {
-    float x = CD*(earth.getairdensity()*pow(Velocity.mag(), 2))/2*Area;
-    PVector Drag = Velocity.setMag(-1*x);
-    Acceleration.add(Drag);
+    void drag() {
+      float x = CD*(earth.getairdensity()*pow(Velocity.mag(), 2))/2*Area;
+      PVector Drag = Velocity.setMag(-1*x);
+      Acceleration.add(Drag);
+    }
+
+    void fuel() {
+    }
+
+    void forces() {
+      Acceleration.add(Velocity);
+      Velocity.add(Location);
+    }
   }
-  void forces() {
-    Acceleration.add(Velocity);
-    Velocity.add(Location);
-  }
-}

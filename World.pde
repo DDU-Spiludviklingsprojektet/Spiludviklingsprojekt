@@ -15,6 +15,10 @@ class Planet {
     airdensity = tempairdensity;
     mass = tempmass;
   }
+  PVector getPostition(){
+   return Position; 
+  }
+  
   float getairdensity() {
     return airdensity;
   }

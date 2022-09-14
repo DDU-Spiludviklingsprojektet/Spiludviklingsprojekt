@@ -57,7 +57,7 @@ float G = pow(6.674, -11);
 float G0 = 9.82;
 
 void game() {
-  rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area,Throttle);
+  rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass);
   input();
@@ -68,44 +68,46 @@ void game() {
 }
 
 void input() {
-  switch(keyCode) {
-    //if Shift, increase throttle 5%
-  case 16:
-    if (rocket.getThrottle() >=96) {
-      rocket.setThrottle(100);
+  if (keyPressed == true) {
+    switch(keyCode) {
+      //if Shift, increase throttle 5%
+    case 16:
+      if (rocket.getThrottle() >=96) {
+        rocket.setThrottle(100);
+        break;
+      } else {
+        rocket.setThrottle(rocket.getThrottle()+5);
+        break;
+      }
+      //if CTRL or Control decrease throttle 5%
+    case 17:
+      if (rocket.getThrottle() <= 4) {
+        rocket.setThrottle(0);
+        break;
+      } else {
+        rocket.setThrottle(rocket.getThrottle()-5);
+        break;
+      }
+      //if ESC is pressed, go to main menu
+    case 27:
+      game = false;
+      menu = true;
       break;
-    } else {
-      rocket.setThrottle(rocket.getThrottle()+5);
+      //if Left arrow is pressed, turn 5 degrees left
+    case 37:
+      rocket.turn(5);
       break;
-    }
-    //if CTRL or Control decrease throttle 5%
-  case 17:
-    if (rocket.getThrottle() <= 4) {
+      //if Right arrow is pressed, turn 5 degrees right
+    case 39:
+      rocket.turn(-5);
+      break;
+      //if X is pressed, turn off the engine
+    case 88:
       rocket.setThrottle(0);
       break;
-    } else {
-      rocket.setThrottle(rocket.getThrottle()-5);
+      //if Z is pressed, set the engine to max power.
+    case 90:
+      rocket.setThrottle(100);
       break;
     }
-    //if ESC is pressed, go to main menu
-  case 27:
-    game = false;
-    menu = true;
-    break;
-    //if Left arrow is pressed, turn 5 degrees left
-  case 37:
-    rocket.turn(5);
-    break;
-    //if Right arrow is pressed, turn 5 degrees right
-  case 39:
-    rocket.turn(-5);
-    break;
-    //if X is pressed, turn off the engine
-  case 88:
-    rocket.setThrottle(0);
-    break;
-    //if Z is pressed, set the engine to max power.
-  case 90:
-    rocket.setThrottle(100);
-    break;
   }
