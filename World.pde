@@ -17,3 +17,4 @@ class Planet {
     edgeofatmosphere = tempedgeofatmosphere;
     airdensity = tempairdensity;
   }
+}

@@ -16,8 +16,8 @@ PShape logo;
 PShape buttons;
 int cols;
 int rows; 
-boolean upgrade = false;
-boolean menu = true;
+boolean upgrade = true;
+boolean menu = false;
 void settings() {
   size(1280, 720, FX2D);
 }
