@@ -12,13 +12,12 @@ final static String LOGO_IMG = "/sprites/buttons.svg";
 final static String BUTTONS_IMG = "/sprites/buttons.svg";
 PImage backgroundimage;
 PImage cursor;
-//PImage logo;
 PShape logo;
 PShape buttons;
 int cols;
-int rows;
-
-
+int rows; 
+boolean upgrade = false;
+boolean menu = true;
 void settings() {
   size(1280, 720, FX2D);
 }
@@ -52,7 +51,15 @@ void draw() {
       exit();
     }
   }
+  
+  if(menu==true) {
   home();
+  }
+  if(upgrade==true) {
+   upgrade(); 
+  }
+  
+  
 }
 
 void background() {

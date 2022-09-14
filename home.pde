@@ -1,12 +1,15 @@
-int rectX, rectY;      // Position of square button
-int circleX, circleY;  // Position of circle button
-int rectSize = 90;     // Diameter of rect
-int circleSize = 93;   // Diameter of circle
+float rectX, rectY;      // Position of square button
+float circleX, circleY, circle2X, circle2Y;  // Position of circle button
+int rectwidth;  // Diameter of rect
+int rectheight;
 color rectColor, circleColor, baseColor;
 color rectHighlight, circleHighlight;
+float circleSize;  // Diameter of circle
 color currentColor;
 boolean rectOver = false;
 boolean circleOver = false;
+
+
 
 float logox;
 float logoy;
@@ -15,7 +18,6 @@ float buttonsx;
 float buttonsy;
 float buttonssize;
 
-
 void home() {
   background();
   for (int y=0; y<rows; y++) {
@@ -23,6 +25,7 @@ void home() {
       image(backgroundimage, (x*backgroundimage.width), (y*backgroundimage.height));
     }
   }
+
   shapeMode(CENTER);
   //logo.resize(width/3,width/3);
   //image(logo,((width/2)-(logo.height/2)),((height/4)-(logo.height/2)));
@@ -38,7 +41,7 @@ void home() {
     fill(rectColor);
   }
   stroke(255);
-  //rect(rectX, rectY, rectSize, rectSize);
+  rect(rectX, rectY, rectwidth, rectheight);
 
   if (circleOver) {
     fill(circleHighlight);
@@ -46,14 +49,15 @@ void home() {
     fill(circleColor);
   }
   stroke(0);
-  ellipse(width/2.6, height/1.9, width/20, width/20);
+  ellipse(circleX, circleY, circleSize, circleSize);
+  ellipse(circle2X, circle2Y, width/20, width/20);
 }
 
 void update(int x, int y) {
   if ( overCircle(circleX, circleY, circleSize) ) {
     circleOver = true;
     rectOver = false;
-  } else if ( overRect(rectX, rectY, rectSize, rectSize) ) {
+  } else if ( overRect(rectX, rectY, rectwidth, rectheight) ) {
     rectOver = true;
     circleOver = false;
   } else {
@@ -67,19 +71,23 @@ void mousePressed() {
   }
   if (rectOver) {
     currentColor = rectColor;
+    println("Upgrade");
+    clear();
+    menu = false;
+    upgrade = true;
   }
 }
 
-boolean overRect(int x, int y, int width, int height) {
-  if (mouseX >= x && mouseX <= x+width &&
-    mouseY >= y && mouseY <= y+height) {
+boolean overRect(float x, float y, float width1, float height1) {
+  if (mouseX >= x-width1*0.5 && mouseX <= x+width1*0.5 &&
+    mouseY >= y-height1*0.5 && mouseY <= y+height1*0.5) {
     return true;
   } else {
     return false;
   }
 }
 
-boolean overCircle(int x, int y, int diameter) {
+boolean overCircle(float x, float y, float diameter) {
   float disX = x - mouseX;
   float disY = y - mouseY;
   if (sqrt(sq(disX) + sq(disY)) < diameter/2 ) {

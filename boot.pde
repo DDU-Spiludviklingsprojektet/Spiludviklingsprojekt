@@ -2,15 +2,24 @@
 void boot() {
   //noCursor();
   background(200);
+  
+  
+  
   rectColor = color(0);
   rectHighlight = color(51);
   circleColor = color(255);
   circleHighlight = color(204);
   baseColor = color(102);
   currentColor = baseColor;
-  circleX = width/2+circleSize/2+10;
-  circleY = height/2;
-  rectX = width/2-rectSize-10;
-  rectY = height/2-rectSize/2;
+  circleX = width/2.547;
+  circleY = height/1.9;
+  circle2X = (width/1.643);
+  circle2Y = (height/1.9);
+  circleSize = width/20;
+  rectX = width/1.99;
+  rectY = height/1.37;
+  rectwidth = 200;  // Diameter of rect
+  rectheight = 60;
+  rectMode(CENTER);
   ellipseMode(CENTER);
 }
