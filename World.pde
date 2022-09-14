@@ -1,4 +1,3 @@
-
 class Planet {
   PVector Position = new PVector();
   PVector Radius = new PVector();
@@ -12,7 +11,7 @@ class Planet {
   //Mass of planet
   float mass;
 
-  Planet(float tempPositionx, float tempPositiony, boolean tempatmosphere, float tempradius, float tempedgeofatmosphere, float tempairdensity,float tempmass) {
+  Planet(float tempPositionx, float tempPositiony, boolean tempatmosphere, float tempradius, float tempedgeofatmosphere, float tempairdensity, float tempmass) {
     Position.x = tempPositionx;
     Position.y = tempPositiony;
     atmosphere = tempatmosphere;
@@ -21,10 +20,10 @@ class Planet {
     airdensity = tempairdensity;
     mass = tempmass;
   }
-  float getairdensity(){
+  float getairdensity() {
     return airdensity;
   }
-  float getmass(){
+  float getmass() {
     return mass;
   }
 }

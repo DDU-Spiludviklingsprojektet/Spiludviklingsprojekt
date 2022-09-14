@@ -48,9 +48,7 @@ void setup() {
 
   boot();
 }
-Raket rocket;
-Planet earth;
-Planet moon;
+
 
 //Code to exit fullscreen & program
 void draw() {
