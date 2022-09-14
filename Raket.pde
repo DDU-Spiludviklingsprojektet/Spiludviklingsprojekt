@@ -39,7 +39,7 @@ class Raket {
   float planetmass = earth.mass;
   float planetradius;
   //densiteten skal laves som funktion af luftmodstand.
-  float rho = e.airdensity;
+  float rho = earth.getairdensity;
 
 
 

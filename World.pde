@@ -8,16 +8,22 @@ class Planet {
   float edgeofatmosphere;
   //Air density at sea level
   float airdensity;
+  //Mass of planet
+  float mass;
 
-  Planet(float tempPositionx, float tempPositiony, boolean tempatmosphere, float tempradius, float tempedgeofatmosphere, float tempairdensity) {
+  Planet(float tempPositionx, float tempPositiony, boolean tempatmosphere, float tempradius, float tempedgeofatmosphere, float tempairdensity,float tempmass) {
     Position.x = tempPositionx;
     Position.y = tempPositiony;
     atmosphere = tempatmosphere;
     Radius.y = tempradius;
     edgeofatmosphere = tempedgeofatmosphere;
     airdensity = tempairdensity;
+    mass = tempmass;
   }
-  float airdensity(){
+  float getairdensity(){
     return airdensity;
+  }
+  float getmass(){
+    return mass;
   }
 }

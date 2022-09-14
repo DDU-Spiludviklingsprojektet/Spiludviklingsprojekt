@@ -41,9 +41,13 @@ void setup() {
   buttonsx = width/2;
   buttonsy = height*0.7;
   buttonssize = width/3;
+  
 
   boot();
 }
+Raket rocket;
+Planet earth;
+Planet moon;
 
 //Code to exit fullscreen & program
 void draw() {
