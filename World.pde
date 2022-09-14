@@ -17,7 +17,7 @@ class Planet {
     edgeofatmosphere = tempedgeofatmosphere;
     airdensity = tempairdensity;
   }
-  float airdensity(){
-    return Raket.Location;
-  }
+  //float airdensity(){
+  //  return Raket.Location;
+  //}
 }

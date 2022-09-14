@@ -5,8 +5,8 @@ void boot() {
   
   
   
-  rectColor = color(0);
-  rectHighlight = color(51);
+  rectColor = color(255, 255, 255, 0);
+  rectHighlight = color(17,0.9);
   circleColor = color(255);
   circleHighlight = color(204);
   baseColor = color(102);
