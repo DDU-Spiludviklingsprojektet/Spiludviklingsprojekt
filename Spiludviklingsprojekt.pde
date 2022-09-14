@@ -15,9 +15,10 @@ PImage cursor;
 PShape logo;
 PShape buttons;
 int cols;
-int rows; 
+int rows;
 boolean upgrade = false;
 boolean menu = true;
+boolean game = false;
 void settings() {
   size(1280, 720, FX2D);
 }
@@ -51,15 +52,16 @@ void draw() {
       exit();
     }
   }
-  
-  if(menu==true) {
-  home();
+
+  if (menu==true) {
+    home();
   }
-  if(upgrade==true) {
-   upgrade(); 
+  if (upgrade==true) {
+    upgrade();
   }
-  
-  
+  if (game==true) {
+    game();
+  }
 }
 
 void background() {

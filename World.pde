@@ -18,6 +18,6 @@ class Planet {
     airdensity = tempairdensity;
   }
   float airdensity(){
-    return Raket.Location;
+    return airdensity;
   }
 }
