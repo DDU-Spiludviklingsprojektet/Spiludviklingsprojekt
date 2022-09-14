@@ -1,24 +1,17 @@
 class Raket {
-  //Meassured in meters
+  //Vectors for calculations
   PVector Heading = new PVector(0, 1);
   PVector Acceleration = new PVector();
   PVector Velocity = new PVector();
   PVector Location = new PVector();
   PVector Center = new PVector(0, 0);
 
-  // Drymass in KG
   float drymass;
-  //Fuel density in kg per cubic meter
   float fueldensity;
-  //Tank size in cubic meters
   float tanksize;
-  //ISP in seconds
   float ISP;
-  //Enginepower in KN
   float power;
-  //Drag coefficient
   float CD;
-  //Rocket area
   float Area;
 
   Raket(float tempdrymass, float tempfueldensity, float temptanksize, float tempISP, float temppower, float tempCD, float tempArea) {
@@ -31,7 +24,7 @@ class Raket {
     Area = tempArea;
   }
 
-  float throttle;
+  int throttle;
   float pi = 3.14;
   float G = pow(6.674, -11);
   float G0 = 9.82;
@@ -56,7 +49,9 @@ class Raket {
   void turn(float x) {
     Heading.rotate(x*pi/180);
   }
-
+  int getThrottle() {
+    return throttle;
+  }
   void setThrottle(int x) {
     throttle = x;
   }
@@ -80,11 +75,7 @@ class Raket {
     PVector Drag = Velocity.setMag(-1*x);
     Acceleration.add(Drag);
   }
-
-  void draw() {
-    engine();
-    gravity();
-    drag();
+  void forces() {
     Acceleration.add(Velocity);
     Velocity.add(Location);
   }

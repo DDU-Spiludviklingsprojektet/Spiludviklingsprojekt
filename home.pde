@@ -25,33 +25,34 @@ void home() {
       image(backgroundimage, (x*backgroundimage.width), (y*backgroundimage.height));
     }
   }
-
-  shapeMode(CENTER);
-  imageMode(CENTER);
-  //logo.resize(width/3,width/3);
-  //image(logo,((width/2)-(logo.height/2)),((height/4)-(logo.height/2)));
-  image(logo, width/2, height/4, width/3, width/3);
-  shape(buttons_img, (width/2), (height*0.7), width/3, width/3);
+}
 
 
+shapeMode(CENTER);
+imageMode(CENTER);
+//logo.resize(width/3,width/3);
+//image(logo,((width/2)-(logo.height/2)),((height/4)-(logo.height/2)));
+image(logo, width/2, height/4, width/3, width/3);
+shape(buttons, (width/2), (height*0.7), width/3, width/3);
 
-  update(mouseX, mouseY);
-  if (rectOver) {
-    fill(#66000000);
-  } else {
-    fill(rectColor);
-  }
-  stroke(255);
-  rect(rectX, rectY, rectwidth, rectheight);
 
-  if (circleOver) {
-    fill(circleHighlight);
-  } else {
-    fill(circleColor);
-  }
-  stroke(0);
-  ellipse(circleX, circleY, circleSize, circleSize);
-  ellipse(circle2X, circle2Y, width/20, width/20);
+update(mouseX, mouseY);
+if (rectOver) {
+  fill(#66000000);
+} else {
+  fill(rectColor);
+}
+stroke(255);
+rect(rectX, rectY, rectwidth, rectheight);
+
+if (circleOver) {
+  fill(circleHighlight);
+} else {
+  fill(circleColor);
+}
+stroke(0);
+ellipse(circleX, circleY, circleSize, circleSize);
+ellipse(circle2X, circle2Y, width/20, width/20);
 }
 
 void update(int x, int y) {
