@@ -17,7 +17,7 @@ PImage logo;
 PShape buttons;
 PShape upgradebt;
 int cols;
-int rows; 
+int rows;
 boolean upgrade = false;
 boolean menu = true;
 boolean game = false;
@@ -44,7 +44,7 @@ void setup() {
   buttonsx = width/2;
   buttonsy = height*0.7;
   buttonssize = width/3;
-  
+
 
   boot();
 }

@@ -1,5 +1,5 @@
 class Raket {
-  //Meassured in meters
+  //Vectors for calculations
   PVector Heading = new PVector(0, 1);
   PVector Acceleration = new PVector();
   PVector Velocity = new PVector();

@@ -16,25 +16,37 @@ float ISP = 300;
 float power = 20;
 //Drag coefficient
 float CD = 0.5;
-//Rocket area
+//Rocket area in square Meters
 float Area = 10;
 
 //set values for starting planet
+//Where is the planet (XY pos)
 float earthpositionx = 0;
 float earthpositiony = 0;
-boolean earthatmosphere = true;
+//What is the radius of the planet in Meters
 float earthradius = 637100;
+//Is there an atmosphere?
+boolean earthatmosphere = true;
+//How far does the atmosphere go (Must still be a float with no atmosphere, but irrelevant in that case).
 float earthedgeofatmosphere = 50000;
+//What is the air density at surface level, in kg per cubic meters (Air on earth about 1 kg per cubic meter)
 float earthairdensity = 1;
+//What is the mass of the object? In kg
 float earthmass = pow(5.97, 23);
 
 //set values for moon
+//Where is the planet (XY pos)
 float moonpositionx = 0;
 float moonpositiony = 0;
-boolean moonatmosphere = false;
+//What is the radius of the planet in Meters
 float moonradius = 17100;
+//Is there an atmosphere?
+boolean moonatmosphere = false;
+//How far does the atmosphere go (Must still be a float with no atmosphere, but irrelevant in that case).
 float moonedgeofatmosphere = 50000;
+//What is the air density at surface level, in kg per cubic meters (Air on earth about 1 kg per cubic meter), again irrelevant if no atmosphere
 float moonairdensity = 1;
+//What is the mass of the object? In kg
 float moonmass = pow(5.97, 23);
 
 void game() {
