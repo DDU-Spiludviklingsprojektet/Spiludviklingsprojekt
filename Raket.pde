@@ -36,10 +36,10 @@ class Raket {
   float G = pow(6.674, -11);
   float G0 = 9.82;
   //Disse to skal tages et andet sted fra når man har genereret planeten.
-  float planetmass;
+  float planetmass = earth.mass;
   float planetradius;
   //densiteten skal laves som funktion af luftmodstand.
-  float rho;
+  float rho = e.airdensity;
 
 
 

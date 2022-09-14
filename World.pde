@@ -1,3 +1,4 @@
+
 class Planet {
   PVector Position = new PVector();
   PVector Radius = new PVector();
@@ -17,7 +18,7 @@ class Planet {
     edgeofatmosphere = tempedgeofatmosphere;
     airdensity = tempairdensity;
   }
-  //float airdensity(){
-  //  return Raket.Location;
-  //}
+  float airdensity(){
+    return airdensity;
+  }
 }
