@@ -21,4 +21,6 @@ class Planet {
   float getmass() {
     return mass;
   }
+  float getradius(){
+    return Radius.Mag();
 }
