@@ -10,17 +10,19 @@ final static String CURSOR_IMG = "/sprites/cursor.png";
 final static String background = "/sprites/background.gif";
 final static String LOGO_IMG = "/sprites/logo.png";
 final static String BUTTONS_IMG = "/sprites/buttons.svg";
-final static String UPGRADE_IMG = "/sprites/upgrade.svg";
+
 PImage backgroundimage;
 PImage cursor;
 PImage logo;
-PShape buttons;
-PShape upgradebt;
+PShape buttons_img;
+
 int cols;
 int rows;
-boolean upgrade = false;
-boolean menu = true;
+boolean upgrade_page = true;
+boolean menu = false;
 boolean game = false;
+
+
 void settings() {
   size(1280, 720, FX2D);
 }
@@ -32,8 +34,7 @@ void setup() {
   surface.setTitle(TITLE);
   surface.setResizable(true);
   logo = loadImage(LOGO_IMG);
-  buttons = loadShape(BUTTONS_IMG);
-  upgradebt = loadShape(UPGRADE_IMG);
+  buttons_img = loadShape(BUTTONS_IMG);
   // Load custom cursor
   cursor = loadImage(CURSOR_IMG);
   cursor(cursor, -32, -32);
@@ -45,7 +46,7 @@ void setup() {
   buttonsy = height*0.7;
   buttonssize = width/3;
 
-
+  upgrade_setup();
   boot();
 }
 
@@ -61,7 +62,7 @@ void draw() {
   if (menu==true) {
     home();
   }
-  if (upgrade==true) {
+  if (upgrade_page==true) {
     upgrade();
   }
   if (game==true) {

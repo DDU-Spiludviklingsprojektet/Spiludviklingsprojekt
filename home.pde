@@ -27,13 +27,13 @@ void home() {
   }
 }
 
+
 shapeMode(CENTER);
 imageMode(CENTER);
 //logo.resize(width/3,width/3);
 //image(logo,((width/2)-(logo.height/2)),((height/4)-(logo.height/2)));
 image(logo, width/2, height/4, width/3, width/3);
 shape(buttons, (width/2), (height*0.7), width/3, width/3);
-
 
 
 update(mouseX, mouseY);
@@ -76,7 +76,10 @@ void mousePressed() {
     println("Upgrade");
     clear();
     menu = false;
-    upgrade = true;
+    upgrade_page = true;
+  }
+    for (int i = 0; i < buttons.length; i++) {
+    buttons[i].click(mouseX, mouseY);
   }
 }
 
