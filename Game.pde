@@ -18,6 +18,8 @@ float power = 20;
 float CD = 0.5;
 //Rocket area in square Meters
 float Area = 10;
+//Starting throttle in %
+int Throttle = 0;
 
 //set values for starting planet
 //Where is the planet (XY pos)
@@ -49,8 +51,13 @@ float moonairdensity = 1;
 //What is the mass of the object? In kg
 float moonmass = pow(5.97, 23);
 
+//Physics variables, used for later calculation
+float pi = 3.14;
+float G = pow(6.674, -11);
+float G0 = 9.82;
+
 void game() {
-  rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area);
+  rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area,Throttle);
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass);
   input();
@@ -72,7 +79,7 @@ void input() {
       break;
     }
     //if CTRL or Control decrease throttle 5%
-  case 17: 
+  case 17:
     if (rocket.getThrottle() <= 4) {
       rocket.setThrottle(0);
       break;
@@ -81,24 +88,24 @@ void input() {
       break;
     }
     //if ESC is pressed, go to main menu
-  case 27: 
+  case 27:
     game = false;
     menu = true;
     break;
     //if Left arrow is pressed, turn 5 degrees left
-  case 37: 
+  case 37:
     rocket.turn(5);
     break;
     //if Right arrow is pressed, turn 5 degrees right
-  case 39: 
+  case 39:
     rocket.turn(-5);
     break;
     //if X is pressed, turn off the engine
-  case 88: 
+  case 88:
     rocket.setThrottle(0);
     break;
     //if Z is pressed, set the engine to max power.
-  case 90: 
+  case 90:
     rocket.setThrottle(100);
     break;
   }
