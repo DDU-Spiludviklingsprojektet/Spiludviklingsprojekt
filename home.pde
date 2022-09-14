@@ -27,7 +27,7 @@ void home() {
   }
 }
 
-
+/*
 shapeMode(CENTER);
 imageMode(CENTER);
 //logo.resize(width/3,width/3);
@@ -40,8 +40,9 @@ update(mouseX, mouseY);
 if (rectOver) {
   fill(#66000000);
 } else {
-  fill(rectColor);
+  fill(rectColor)
 }
+
 stroke(255);
 rect(rectX, rectY, rectwidth, rectheight);
 
@@ -54,8 +55,8 @@ stroke(0);
 ellipse(circleX, circleY, circleSize, circleSize);
 ellipse(circle2X, circle2Y, width/20, width/20);
 }
-
-void update(int x, int y) {
+*/
+void update() {
   if ( overCircle(circleX, circleY, circleSize) ) {
     circleOver = true;
     rectOver = false;

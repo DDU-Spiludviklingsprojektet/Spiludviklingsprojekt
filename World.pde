@@ -15,16 +15,17 @@ class Planet {
     airdensity = tempairdensity;
     mass = tempmass;
   }
-  PVector getPostition(){
-   return Position; 
+  PVector getPosition() {
+    return Position;
   }
-  
+
   float getairdensity() {
     return airdensity;
   }
   float getmass() {
     return mass;
   }
-  float getradius(){
-    return Radius.Mag();
+  float getradius() {
+    return Radius.mag();
+  }
 }
