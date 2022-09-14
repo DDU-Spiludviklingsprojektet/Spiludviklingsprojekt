@@ -9,12 +9,15 @@ class Planet {
   //Air density at sea level
   float airdensity;
 
-  Planet(float tempPositionx, float tempPositiony, boolean tempatmosphere, float tempradius,float tempedgeofatmosphere,float tempairdensity) {
+  Planet(float tempPositionx, float tempPositiony, boolean tempatmosphere, float tempradius, float tempedgeofatmosphere, float tempairdensity) {
     Position.x = tempPositionx;
     Position.y = tempPositiony;
     atmosphere = tempatmosphere;
     Radius.y = tempradius;
     edgeofatmosphere = tempedgeofatmosphere;
     airdensity = tempairdensity;
+  }
+  float airdensity(){
+    return Raket.Location;
   }
 }
