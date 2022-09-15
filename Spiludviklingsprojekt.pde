@@ -10,7 +10,9 @@ final static String CURSOR_IMG = "/sprites/cursor.png";
 final static String background = "/sprites/background.gif";
 final static String LOGO_IMG = "/sprites/logo.png";
 final static String BUTTONS_IMG = "/sprites/buttons.svg";
+final static String RAKET_IMG = "/sprites/raket.svg";
 
+PShape raket;
 PImage backgroundimage;
 PImage cursor;
 PImage logo;
@@ -33,6 +35,7 @@ void setup() {
   getSurface().setIcon(loadImage(ICON));
   surface.setTitle(TITLE);
   surface.setResizable(true);
+  raket = loadShape(RAKET_IMG);
   logo = loadImage(LOGO_IMG);
   buttons_img = loadShape(BUTTONS_IMG);
   // Load custom cursor
