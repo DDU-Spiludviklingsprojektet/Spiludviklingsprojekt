@@ -52,7 +52,9 @@ class Raket {
 
   void turn(float x) {
     Heading.rotate(x*pi/180);
-    
+  }
+  PVector getLocation(){
+    return Location;
   }
 
   String nearestplanet() {

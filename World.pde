@@ -24,7 +24,7 @@ class Planet {
   }
 
   float getairdensity() {
-    return airdensity;
+    return (((15/(rocket.getAltitude()+0.09)-14)*500)+120)*airdensity;
   }
   float getmass() {
     return mass;
