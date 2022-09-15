@@ -95,11 +95,11 @@ void input() {
       break;
       //if Left arrow is pressed, turn 5 degrees left
     case 37:
-      rocket.turn(5);
+      rocket.setTurn(5);
       break;
       //if Right arrow is pressed, turn 5 degrees right
     case 39:
-      rocket.turn(-5);
+      rocket.setTurn(-5);
       break;
       //if X is pressed, turn off the engine
     case 88:

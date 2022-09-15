@@ -1,4 +1,5 @@
 class Planet {
+  //setup for the object, all variables explained in game.
   PVector Position = new PVector();
   PVector Radius = new PVector();
   boolean atmosphere;
@@ -15,21 +16,29 @@ class Planet {
     airdensity = tempairdensity;
     mass = tempmass;
   }
+  
+  //function returns positionvector of the planet
   PVector getPosition() {
     return Position;
   }
+
+  //returns radius vector of the planet
+  PVector getRadius() {
+    return Radius;
+  }
   
-  PVector getRadius(){
-   return Radius; 
+   //returns radius float of the planet
+  float getRadiusMag() {
+    return Radius.mag();
   }
 
-  float getairdensity() {
-    return airdensity;
+  //returns air density based on current altitude
+  float getAirdensity() {
+    return (((15/(rocket.getAltitude()+0.09)-14)*500)+120)*airdensity;
   }
-  float getmass() {
+  
+  //returns mass of the planet
+  float getMass() {
     return mass;
-  }
-  float getradius() {
-    return Radius.mag();
   }
 }
