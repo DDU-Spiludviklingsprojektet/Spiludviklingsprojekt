@@ -3,7 +3,7 @@ class Raket {
   PVector Heading = new PVector(0, 1);
   PVector Acceleration = new PVector();
   PVector Velocity = new PVector();
-  PVector Location = new PVector();
+  PVector Location = earth.getPosition().add(earth.getRadius());
   PVector Center = new PVector(0, 0);
 
   float drymass;

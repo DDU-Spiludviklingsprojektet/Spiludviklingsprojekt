@@ -18,6 +18,10 @@ class Planet {
   PVector getPosition() {
     return Position;
   }
+  
+  PVector getRadius(){
+   return Radius; 
+  }
 
   float getairdensity() {
     return airdensity;
