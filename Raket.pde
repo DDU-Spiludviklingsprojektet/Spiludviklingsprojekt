@@ -24,6 +24,7 @@ class Raket {
     CD = tempCD;
     Area = tempArea;
     throttle = tempthrottle;
+    shape(raket, 10,10);
   }
 
   float currentmass() {
@@ -51,6 +52,7 @@ class Raket {
 
   void turn(float x) {
     Heading.rotate(x*pi/180);
+    
   }
 
   String nearestplanet() {
