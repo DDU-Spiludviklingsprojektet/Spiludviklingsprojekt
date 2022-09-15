@@ -37,9 +37,9 @@ class Raket {
 
   float getAltitude() {
     if (nearestplanet() == "earth") {
-      return Location.dist(earth.getPosition())-earth.getradius().dist(0,0);
+      return Location.dist(earth.getPosition())-earth.getRadius().dist(earth.getPosition());
     } else {
-      return Location.dist(moon.getPosition())-moon.getradius().dist(0,0);
+      return Location.dist(moon.getPosition())-moon.getRadius().dist(earth.getPosition());
     }
   }
 
