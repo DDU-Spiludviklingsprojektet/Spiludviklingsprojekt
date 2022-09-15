@@ -4,7 +4,6 @@ class Raket {
   PVector Acceleration = new PVector();
   PVector Velocity = new PVector();
   PVector Location = earth.getPosition().add(earth.getRadius());
-  PVector Center = new PVector(0, 0);
 
   float drymass;
   float fueldensity;
@@ -33,6 +32,14 @@ class Raket {
 
   float deltaV() {
     return ISP*G0*log(drymass/currentmass());
+  }
+
+  float getAltitude() {
+    if (nearestplanet() == "earth") {
+      return Location.dist(earth.getPosition())-earth.getradius().dist(0,0);
+    } else {
+      return Location.dist(moon.getPosition())-moon.getradius().dist(0,0);
+    }
   }
 
   int getThrottle() {
