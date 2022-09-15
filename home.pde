@@ -25,22 +25,20 @@ void home() {
       image(backgroundimage, (x*backgroundimage.width), (y*backgroundimage.height));
     }
   }
-}
 
-/*
+
 shapeMode(CENTER);
 imageMode(CENTER);
 //logo.resize(width/3,width/3);
 //image(logo,((width/2)-(logo.height/2)),((height/4)-(logo.height/2)));
 image(logo, width/2, height/4, width/3, width/3);
-shape(buttons, (width/2), (height*0.7), width/3, width/3);
-
+//shape(buttons, (width/2), (height*0.7), width/3, width/3);
 
 update(mouseX, mouseY);
 if (rectOver) {
   fill(#66000000);
 } else {
-  fill(rectColor)
+  fill(rectColor);
 }
 
 stroke(255);
@@ -55,8 +53,7 @@ stroke(0);
 ellipse(circleX, circleY, circleSize, circleSize);
 ellipse(circle2X, circle2Y, width/20, width/20);
 }
-*/
-void update() {
+void update(int x, int y) {
   if ( overCircle(circleX, circleY, circleSize) ) {
     circleOver = true;
     rectOver = false;
@@ -79,8 +76,10 @@ void mousePressed() {
     menu = false;
     upgrade_page = true;
   }
+  for (int upg = 0; upg < upgrades.length; upg++) {
     for (int i = 0; i < buttons.length; i++) {
-    buttons[i].click(mouseX, mouseY);
+    buttons[upg][i].click(mouseX, mouseY, buttons);
+    }
   }
 }
 

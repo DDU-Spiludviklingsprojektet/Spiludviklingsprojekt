@@ -4,7 +4,6 @@
 // Button class. Assume the button is off  when it first appears.  
 
 // Button class
-
 class Button  {    
 
   // Button location and size
@@ -14,20 +13,29 @@ class Button  {
   float h;   
   // Is the button on or off?
   boolean on;  
+  int index;
 
   // Constructor initializes all variables
-  Button(float tempX, float tempY, float tempW, float tempH)  {    
+  Button(float tempX, float tempY, float tempW, float tempH, int tempi)  {    
     x  = tempX;   
     y  = tempY;   
     w  = tempW;   
     h  = tempH;   
+    index = tempi;
     on = false;  // Button always starts as off
   }    
 
-  void click(int mx, int my) {
+  void click(int mx, int my, Button[][] b) {
     // Check to see if a point is inside the rectangle
     if (mx > x && mx < x + w && my > y && my < y + h) {
+      if(on == false) {
+        if (index == 0 ) {
       on = !on;
+        }
+      else if (b[1][index-1].on == true) {
+        on = !on;
+      }
+      }
     }
   }
 
