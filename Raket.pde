@@ -77,6 +77,7 @@ class Raket {
   //sets new throttle percentage
   void setThrottle(int x) {
     throttle = x;
+    println("thr = " + throttle);
   }
 
   //Changes direction, by rotating heading vector
@@ -117,7 +118,7 @@ class Raket {
 
   //adds acceleration to velocity, and velocity to location.
   void forces() {
-    Acceleration = new PVector(0,0);
+    Acceleration = new PVector(0, 0);
     engine();
     drag();
     gravity();
