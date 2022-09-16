@@ -19,6 +19,7 @@ class Planet {
   
   //function returns positionvector of the planet
   PVector getPosition() {
+    
     return Position;
   }
 

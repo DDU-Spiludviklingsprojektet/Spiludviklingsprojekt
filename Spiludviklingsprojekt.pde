@@ -20,9 +20,9 @@ PShape buttons_img;
 
 int cols;
 int rows;
-boolean upgrade_page = true;
+boolean upgrade_page = false;
 boolean menu = false;
-boolean game = false;
+boolean game = true;
 
 
 void settings() {

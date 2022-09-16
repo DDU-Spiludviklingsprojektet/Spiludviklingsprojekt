@@ -26,7 +26,7 @@ int Throttle = 0;
 float earthpositionx = 0;
 float earthpositiony = 0;
 //What is the radius of the planet in Meters
-float earthradius = 637100;
+float earthradius = 100;//637100;
 //Is there an atmosphere?
 boolean earthatmosphere = true;
 //How far does the atmosphere go (Must still be a float with no atmosphere, but irrelevant in that case).
@@ -39,7 +39,7 @@ float earthmass = pow(5.97, 23);
 //set values for moon
 //Where is the planet (XY pos)
 float moonpositionx = 0;
-float moonpositiony = 0;
+float moonpositiony = 1000000;
 //What is the radius of the planet in Meters
 float moonradius = 17100;
 //Is there an atmosphere?
@@ -57,14 +57,20 @@ float G = pow(6.674, -11);
 float G0 = 9.82;
 
 void game() {
-  rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass);
+  rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
+    println(earth.getPosition());
+    println(earth.getRadius());
+    println(earth.getMass());
   input();
-  rocket.engine();
-  rocket.gravity();
-  rocket.drag();
-  rocket.forces();
+  //rocket.engine();
+  //rocket.gravity();
+  //rocket.drag();
+  //rocket.forces();
+  //println(rocket.getDeltaV());
+  //println(rocket.getLocation().x);
+  //println(rocket.getAltitude());
 }
 
 void input() {
@@ -76,13 +82,13 @@ void input() {
         rocket.setThrottle(100);
         break;
       } else {
-        rocket.setThrottle(rocket.getThrottle()+5);
+        rocket.setThrottle(5);
         break;
       }
       //if CTRL or Control decrease throttle 5%
     case 17:
       if (rocket.getThrottle() <= 4) {
-        rocket.setThrottle(0);
+        rocket.setThrottle(rocket.getThrottle()+5);
         break;
       } else {
         rocket.setThrottle(rocket.getThrottle()-5);

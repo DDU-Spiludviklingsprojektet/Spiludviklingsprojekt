@@ -3,7 +3,7 @@ class Raket {
   PVector Heading = new PVector(0, 1);
   PVector Acceleration = new PVector();
   PVector Velocity = new PVector();
-  PVector Location = earth.getPosition().add(earth.getRadius());
+  PVector Location = PVector.add(earth.getRadius(),earth.getPosition());
 
   //setup of the object, all variables described in Game tab.
   float drymass;
@@ -25,7 +25,7 @@ class Raket {
     CD = tempCD;
     Area = tempArea;
     throttle = tempthrottle;
-    shape(raket, 10, 10);
+    shape(raket, Location.x, Location.y);
   }
 
   //returns mass of rocket
@@ -74,6 +74,7 @@ class Raket {
   //sets new throttle percentage
   void setThrottle(int x) {
     throttle = x;
+    println("test_x " + throttle);
   }
 
   //Changes direction, by rotating heading vector
