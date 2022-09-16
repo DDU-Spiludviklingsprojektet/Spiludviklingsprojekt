@@ -49,9 +49,10 @@ void setup() {
   buttonsy = height*0.7;
   buttonssize = width/3;
 
+  game_setup();
   upgrade_setup();
   boot();
-} 
+}
 
 
 //Code to exit fullscreen & program

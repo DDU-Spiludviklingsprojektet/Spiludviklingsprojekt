@@ -35,7 +35,12 @@ class Planet {
 
   //returns air density based on current altitude
   float getAirdensity() {
-    return (((15/(rocket.getAltitude()+0.09)-14)*500)+120)*airdensity;
+    if(rocket.getAltitude() >= 0 && rocket.getAltitude() <= edgeofatmosphere){
+    return edgeofatmosphere - 1/edgeofatmosphere * rocket.getAltitude();
+    }
+    else{
+     return 0; 
+    }
   }
   
   //returns mass of the planet

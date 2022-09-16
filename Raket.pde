@@ -3,7 +3,10 @@ class Raket {
   PVector Heading = new PVector(0, 1);
   PVector Acceleration = new PVector();
   PVector Velocity = new PVector();
-  PVector Location = PVector.add(earth.getRadius(),earth.getPosition());
+  PVector Location = PVector.add(earth.getRadius(), earth.getPosition());
+  PVector Gravity = new PVector();
+  PVector Engine = new PVector();
+  PVector Drag = new PVector();
 
   //setup of the object, all variables described in Game tab.
   float drymass;
@@ -41,7 +44,7 @@ class Raket {
   //returns altitude of rocket over current planet with stronget gravity
   float getAltitude() {
     if (getNearestplanet() == "earth") {
-      return Location.dist(earth.getPosition())-earth.getRadiusMag();
+      return (Location.dist(earth.getPosition()))-(earth.getRadiusMag());
     } else {
       return Location.dist(moon.getPosition())-moon.getRadiusMag();
     }
@@ -74,20 +77,19 @@ class Raket {
   //sets new throttle percentage
   void setThrottle(int x) {
     throttle = x;
-    println("test_x " + throttle);
   }
 
   //Changes direction, by rotating heading vector
   void setTurn(float x) {
     Heading.rotate(x*pi/180);
+    println("head = " + Heading);
   }
 
   //calculates engine force, and adds to acceleration vector
   void engine() {
     if (getFuel()>0) {
       float x = (power*throttle)/getCurrentmass()*1000;
-      Heading.setMag(x);
-      Acceleration.add(Heading);
+      Engine = Heading.setMag(x);
     }
   }
 
@@ -95,27 +97,40 @@ class Raket {
   void gravity() {
     if ("earth" == getNearestplanet()) {
       float x = G * earth.getMass()/pow(Location.dist(earth.getPosition()), 2);
-      PVector Gravity = earth.getPosition().sub(Location);
+      Gravity = PVector.sub(earth.getPosition(), Location);
       Gravity.setMag(x);
-      Acceleration.add(Gravity);
     } else {
       float x = G * moon.getMass()/pow(Location.dist(moon.getPosition()), 2);
-      PVector Gravity = moon.getPosition().sub(Location);
+      Gravity = PVector.sub(moon.getPosition(), Location);
       Gravity.setMag(x);
-      Acceleration.add(Gravity);
     }
   }
 
   //calculates drag force, and adds to acceleration vector
   void drag() {
-    float x = CD*(earth.getAirdensity()*pow(Velocity.mag(), 2))/2*Area;
-    PVector Drag = Velocity.setMag(-1*x);
-    Acceleration.add(Drag);
+    PVector temp = new PVector();
+    temp = Velocity.copy();
+    float x = CD*(earth.getAirdensity()*pow(temp.mag(), 2))/2*Area;
+    println(earth.getAirdensity());
+    Drag = temp.setMag(x);
   }
 
   //adds acceleration to velocity, and velocity to location.
   void forces() {
-    Acceleration.add(Velocity);
-    Velocity.add(Location);
+    Acceleration = new PVector(0,0);
+    engine();
+    drag();
+    gravity();
+    println("Engine = " + Engine);
+    Acceleration.add(Engine);
+    println ("Drag = " + Drag);
+    Acceleration.add(Drag);
+    println("G = " + Gravity);
+    Acceleration.add(Gravity);
+    println("acc = " + Acceleration);
+    Velocity.add(Acceleration);
+    println("vel = " + Velocity);
+    Location.add(Velocity);
+    println("loc = " + Location);
   }
 }
