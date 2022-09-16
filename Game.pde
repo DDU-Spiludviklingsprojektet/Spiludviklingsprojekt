@@ -12,7 +12,7 @@ float tanksize = 100000;
 //ISP in seconds
 float ISP = 300;
 //Enginepower in KN
-float power = 20;
+float power = 200;
 //Drag coefficient
 float CD = 0.5;
 //Rocket area in square Meters
@@ -65,7 +65,6 @@ void game_setup() {
 void game() {
     rocket.forces();
     input();
-    
     println(i);
     i++;
 }
@@ -97,11 +96,11 @@ void input() {
             break;
         //ifLeft arrow is pressed, turn 5 degrees left
         case 37:
-            rocket.setTurn(1);
+            rocket.setHeading(1);
             break;
         //ifRight arrow is pressed, turn 5 degrees right
         case 39:
-            rocket.setTurn( - 1);
+            rocket.setHeading( - 1);
             break;
         //ifX is pressed, turn off the engine
         case 88:

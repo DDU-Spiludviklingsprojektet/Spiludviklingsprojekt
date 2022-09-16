@@ -80,10 +80,17 @@ class Raket {
     println("thr = " + throttle);
   }
 
-  //Changes direction, by rotating heading vector
-  void setTurn(float x) {
-    Heading.rotate(x*pi/180);
+//input float sets heading vector direction
+  void setHeading(float x) {
+    Heading = PVector.fromAngle(x*pi/180);
   }
+
+  //returns heading vector
+  PVector getHeading() {
+    return Heading;
+  }
+
+//input float sets heading vector direction
 
   //calculates engine force, and adds to acceleration vector
   void engine() {
@@ -115,6 +122,11 @@ class Raket {
     println("drag = " + x);
     Drag = temp.setMag(x);
   }
+  void planetcollision() {
+    if (Location.dist(earth.getPosition()) <= earth.getRadiusMag()&&Acceleration.y<=0) {
+      Velocity = new PVector(0, 0);
+    }
+  }
 
   //adds acceleration to velocity, and velocity to location.
   void forces() {
@@ -124,15 +136,17 @@ class Raket {
     gravity();
     println("Engine = " + Engine);
     Acceleration.add(Engine);
-    println ("Drag = " + Drag);
-    Acceleration.add(Drag);
+    //println ("Drag = " + Drag);
+    //Acceleration.add(Drag);
     println("G = " + Gravity);
     Acceleration.add(Gravity);
     println("acc = " + Acceleration);
     Velocity.add(Acceleration);
+    planetcollision();
     println("vel = " + Velocity);
     Location.add(Velocity);
     println("loc = " + Location);
      println("head = " + Heading);
+     println(rocket.getNearestplanet());
   }
 }
