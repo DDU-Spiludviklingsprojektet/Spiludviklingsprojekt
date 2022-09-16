@@ -2,6 +2,7 @@
 import processing.javafx.*;
 import de.bezier.data.sql.*;
 import de.bezier.data.sql.mapper.*;
+import processing.sound.*;
 
 //Variable setup, pretty self explainatory names
 final static String ICON = "sprites/icon.png";
@@ -21,9 +22,10 @@ PShape buttons_img;
 int cols;
 int rows;
 boolean upgrade_page = false;
-boolean menu = false;
-boolean game = true;
-
+boolean menu = true;
+boolean game = false;
+boolean mute = false;
+SoundFile menu_sound;
 
 void settings() {
   size(1280, 720, FX2D);
@@ -33,9 +35,10 @@ void setup() {
   frameRate(30);
   //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON));
+  menu_sound = new SoundFile(this, "sprites/title_sang.mp3");
+  
   surface.setTitle(TITLE);
   surface.setResizable(true);
-  raket = loadShape(RAKET_IMG);
   logo = loadImage(LOGO_IMG);
   buttons_img = loadShape(BUTTONS_IMG);
   // Load custom cursor
@@ -56,12 +59,18 @@ void setup() {
 
 //Code to exit fullscreen & program
 void draw() {
+  if (mute == false) {
+      
+  }
+  if (mute == true) {
+   menu_sound.stop(); 
+  }
   if (keyPressed) {
     if (key == 'u') {
       exit();
     }
   }
-
+  println(mute);
   if (menu==true) {
     home();
   }

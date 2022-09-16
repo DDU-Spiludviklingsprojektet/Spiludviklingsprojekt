@@ -12,27 +12,30 @@ class Button  {
   float w;   
   float h;   
   // Is the button on or off?
-  boolean on;  
-  int index;
+  boolean on;
+  int index01;
+  int index02;
 
   // Constructor initializes all variables
-  Button(float tempX, float tempY, float tempW, float tempH, int tempi)  {    
+  Button(float tempX, float tempY, float tempW, float tempH, int tempi01, int tempi02)  {    
     x  = tempX;   
     y  = tempY;   
     w  = tempW;   
-    h  = tempH;   
-    index = tempi;
+    h  = tempH;
+    index01 = tempi01;
+    index02 = tempi02;
     on = false;  // Button always starts as off
   }    
 
-  void click(int mx, int my, Button[][] b) {
+  void click(int mx, int my, Button[][] b, int upg) {
     // Check to see if a point is inside the rectangle
     if (mx > x && mx < x + w && my > y && my < y + h) {
-      if(on == false) {
-        if (index == 0 ) {
+      if(b[upg][index02].on == false) {
+        println(b[upg][index02].index02);
+        if (b[upg][index02].index02 == 0 ) {
       on = !on;
         }
-      else if (b[1][index-1].on == true) {
+      else if (b[upg][index02-1].on == true) {
         on = !on;
       }
       }

@@ -68,6 +68,12 @@ void update(int x, int y) {
 void mousePressed() {
   if (menu == true && circleOver) {
     currentColor = circleColor;
+    if (mute == false) {
+    mute = true;
+    }
+    else if (mute == true) {
+     mute = false;
+    }
   }
   if (menu == true && rectOver) {
     currentColor = rectColor;
@@ -78,7 +84,7 @@ void mousePressed() {
   }
   for (int upg = 0; upg < upgrades.length; upg++) {
     for (int i = 0; i < buttons.length; i++) {
-    buttons[upg][i].click(mouseX, mouseY, buttons);
+    buttons[upg][i].click(mouseX, mouseY, buttons, upg);
     }
   }
 }
