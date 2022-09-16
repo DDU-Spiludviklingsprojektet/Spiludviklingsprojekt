@@ -83,14 +83,14 @@ class Raket {
   //Changes direction, by rotating heading vector
   void setTurn(float x) {
     Heading.rotate(x*pi/180);
-    println("head = " + Heading);
   }
 
   //calculates engine force, and adds to acceleration vector
   void engine() {
     if (getFuel()>0) {
       float x = (power*throttle)/getCurrentmass()*1000;
-      Engine = Heading.setMag(x);
+      Engine = Heading.copy();
+      Engine.setMag(x);
     }
   }
 
@@ -112,7 +112,7 @@ class Raket {
     PVector temp = new PVector();
     temp = Velocity.copy();
     float x = CD*(earth.getAirdensity()*pow(temp.mag(), 2))/2*Area;
-    println(earth.getAirdensity());
+    println("drag = " + x);
     Drag = temp.setMag(x);
   }
 
@@ -133,5 +133,6 @@ class Raket {
     println("vel = " + Velocity);
     Location.add(Velocity);
     println("loc = " + Location);
+     println("head = " + Heading);
   }
 }
