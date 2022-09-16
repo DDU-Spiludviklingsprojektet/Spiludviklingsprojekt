@@ -31,7 +31,6 @@ class Button  {
     // Check to see if a point is inside the rectangle
     if (mx > x && mx < x + w && my > y && my < y + h) {
       if(b[upg][index02].on == false) {
-        println(b[upg][index02].index02);
         if (b[upg][index02].index02 == 0 ) {
       on = !on;
         }

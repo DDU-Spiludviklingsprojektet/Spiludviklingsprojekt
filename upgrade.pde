@@ -22,7 +22,6 @@ void upgrade_setup() {
   for (int upg = 0; upg < upgrades.length; upg++) {
     for (int i = 0; i < buttons.length; i++) {
     buttons[upg][i] = new Button(930 + (i * 65), 140 + (upg * 120), 50, 50, upg, i);
-    println(i);
   }
   
   }

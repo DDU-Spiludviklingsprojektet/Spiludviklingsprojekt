@@ -31,12 +31,16 @@ void settings() {
   size(1280, 720, FX2D);
 }
 
+void mute() {
+  
+}
+
 void setup() {
   frameRate(30);
   //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON));
   menu_sound = new SoundFile(this, "sprites/title_sang.mp3");
-  
+  menu_sound.loop();
   surface.setTitle(TITLE);
   surface.setResizable(true);
   logo = loadImage(LOGO_IMG);
@@ -60,18 +64,18 @@ void setup() {
 
 //Code to exit fullscreen & program
 void draw() {
-  if (mute == false) {
-      
-  }
   if (mute == true) {
-   menu_sound.stop(); 
+   menu_sound.amp(0.0); 
   }
+  else {
+    menu_sound.amp(1.0);
+  }
+  
   if (keyPressed) {
     if (key == 'u') {
       exit();
     }
   }
-  println(mute);
   if (menu==true) {
     home();
   }

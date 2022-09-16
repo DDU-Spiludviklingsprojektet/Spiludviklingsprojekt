@@ -29,7 +29,7 @@ class Raket {
     CD = tempCD;
     Area = tempArea;
     throttle = tempthrottle;
-    shape(raket, Location.x, Location.y);
+    //shape(raket, Location.x, Location.y);
   }
 
   //returns mass of rocket

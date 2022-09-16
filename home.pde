@@ -68,12 +68,7 @@ void update(int x, int y) {
 void mousePressed() {
   if (menu == true && circleOver) {
     currentColor = circleColor;
-    if (mute == false) {
-    mute = true;
-    }
-    else if (mute == true) {
-     mute = false;
-    }
+    mute = !mute;
   }
   if (menu == true && rectOver) {
     currentColor = rectColor;
