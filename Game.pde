@@ -1,7 +1,6 @@
-//Creates Objects
-Raket rocket;
 Planet earth;
 Planet moon;
+Raket rocket;
 
 //set values for rocket
 // Drymass in KG
@@ -13,7 +12,7 @@ float tanksize = 100000;
 //ISP in seconds
 float ISP = 300;
 //Enginepower in KN
-float power = 20;
+float power = 200;
 //Drag coefficient
 float CD = 0.5;
 //Rocket area in square Meters
@@ -26,7 +25,7 @@ int Throttle = 0;
 float earthpositionx = 0;
 float earthpositiony = 0;
 //What is the radius of the planet in Meters
-float earthradius = 100;//637100;
+float earthradius = 63710;
 //Is there an atmosphere?
 boolean earthatmosphere = true;
 //How far does the atmosphere go (Must still be a float with no atmosphere, but irrelevant in that case).
@@ -55,66 +54,61 @@ float moonmass = pow(5.97, 23);
 float pi = 3.14;
 float G = pow(6.674, -11);
 float G0 = 9.82;
+int i = 0;
 
+//Creates Objects
+void game_setup() {
+    earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass);
+    moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass);
+    rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
+}
 void game() {
-  earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass);
-  moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass);
-  rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
-    println(earth.getPosition());
-    println(earth.getRadius());
-    println(earth.getMass());
-  input();
-  //rocket.engine();
-  //rocket.gravity();
-  //rocket.drag();
-  //rocket.forces();
-  //println(rocket.getDeltaV());
-  //println(rocket.getLocation().x);
-  //println(rocket.getAltitude());
+    rocket.forces();
+    input();
+    println(i);
+    i++;
 }
 
 void input() {
-  if (keyPressed == true) {
     switch(keyCode) {
-      //if Shift, increase throttle 5%
-    case 16:
-      if (rocket.getThrottle() >=96) {
-        rocket.setThrottle(100);
-        break;
-      } else {
-        rocket.setThrottle(5);
-        break;
-      }
-      //if CTRL or Control decrease throttle 5%
-    case 17:
-      if (rocket.getThrottle() <= 4) {
-        rocket.setThrottle(rocket.getThrottle()+5);
-        break;
-      } else {
-        rocket.setThrottle(rocket.getThrottle()-5);
-        break;
-      }
-      //if ESC is pressed, go to main menu
-    case 27:
-      game = false;
-      menu = true;
-      break;
-      //if Left arrow is pressed, turn 5 degrees left
-    case 37:
-      rocket.setTurn(5);
-      break;
-      //if Right arrow is pressed, turn 5 degrees right
-    case 39:
-      rocket.setTurn(-5);
-      break;
-      //if X is pressed, turn off the engine
-    case 88:
-      rocket.setThrottle(0);
-      break;
-      //if Z is pressed, set the engine to max power.
-    case 90:
-      rocket.setThrottle(100);
-      break;
+        //ifShift, increase throttle 5%
+        case 16:
+            if (rocket.getThrottle() >= 96) {
+                rocket.setThrottle(100);
+                break;
+        } else {
+                rocket.setThrottle(rocket.getThrottle() + 5);
+                break;
+            }
+           //if CTRL or Control decrease throttle 5%
+            case 17:
+            if (rocket.getThrottle() <= 4) {
+                rocket.setThrottle(0);
+                break;
+        } else {
+            rocket.setThrottle(rocket.getThrottle() - 5);
+            break;
+        }
+        //ifESC is pressed, go to main menu
+        case 27:
+           game = false;
+           menu = true;
+            break;
+        //ifLeft arrow is pressed, turn 5 degrees left
+        case 37:
+            rocket.setHeading(1);
+            break;
+        //ifRight arrow is pressed, turn 5 degrees right
+        case 39:
+            rocket.setHeading( - 1);
+            break;
+        //ifX is pressed, turn off the engine
+        case 88:
+            rocket.setThrottle(0);
+            break;
+        //ifZ is pressed, set the engine to max power.
+        case 90:
+            rocket.setThrottle(100);
+            break;
     }
-  }
 }

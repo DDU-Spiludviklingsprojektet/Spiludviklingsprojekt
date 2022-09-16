@@ -18,7 +18,6 @@ class Raket {
   float Area;
   int throttle;
   float fuelpercent = 100;
-  float goalheading = 0;
 
   Raket(float tempdrymass, float tempfueldensity, float temptanksize, float tempISP, float temppower, float tempCD, float tempArea, int tempthrottle) {
     drymass = tempdrymass;
@@ -80,14 +79,18 @@ class Raket {
     throttle = x;
     println("thr = " + throttle);
   }
-  void setChangedirection(float x) {
-    goalheading = (x*pi)/180+goalheading;
-    setHeading(goalheading+pi/2);
-  }
+
   //input float sets heading vector direction
   void setHeading(float x) {
-    Heading = PVector.fromAngle(x);
+    Heading = PVector.fromAngle(x*pi/180);
   }
+
+  //returns heading vector
+  PVector getHeading() {
+    return Heading;
+  }
+
+  //input float sets heading vector direction
 
   //calculates engine force, and adds to acceleration vector
   void engine() {
@@ -115,9 +118,9 @@ class Raket {
   void drag() {
     PVector temp = new PVector();
     temp = Velocity.copy();
-    float x = CD*(earth.getAirdensity()*pow(temp.mag(), 2))/2*Area*0.000000001;
+    float x = CD*(earth.getAirdensity()*pow(temp.mag(), 2))/2*Area;
     println("drag = " + x);
-    Drag = temp.setMag(x*-1);
+    Drag = temp.setMag(x);
   }
   void planetcollision() {
     if (Location.dist(earth.getPosition()) <= earth.getRadiusMag()&&Acceleration.y<=0) {
@@ -133,8 +136,8 @@ class Raket {
     gravity();
     println("Engine = " + Engine);
     Acceleration.add(Engine);
-    println ("Drag = " + Drag);
-    Acceleration.add(Drag);
+    //println ("Drag = " + Drag);
+    //Acceleration.add(Drag);
     println("G = " + Gravity);
     Acceleration.add(Gravity);
     println("acc = " + Acceleration);
