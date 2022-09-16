@@ -4,13 +4,13 @@ import de.bezier.data.sql.*;
 import de.bezier.data.sql.mapper.*;
 
 //Variable setup, pretty self explainatory names
-final static String ICON = "/sprites/icon.png";
+final static String ICON = "sprites/icon.png";
 final static String TITLE = "Raket";
-final static String CURSOR_IMG = "/sprites/cursor.png";
-final static String background = "/sprites/background.gif";
-final static String LOGO_IMG = "/sprites/logo.png";
-final static String BUTTONS_IMG = "/sprites/buttons.svg";
-final static String RAKET_IMG = "/sprites/raket.svg";
+final static String CURSOR_IMG = "sprites/cursor.png";
+final static String background = "sprites/background.gif";
+final static String LOGO_IMG = "sprites/logo.png";
+final static String BUTTONS_IMG = "sprites/buttons.svg";
+final static String RAKET_IMG = "sprites/raket.svg";
 
 PShape raket;
 PImage backgroundimage;
