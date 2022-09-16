@@ -1,6 +1,6 @@
-final static String UPGRADE_IMG = "/sprites/upgrade.svg";
-final static String KASSE_TJEK_IMG = "/sprites/kasse_tjek.svg";
-final static String KASSE_IMG = "/sprites/kasse.svg";
+final static String UPGRADE_IMG = "sprites/upgrade.svg";
+final static String KASSE_TJEK_IMG = "sprites/kasse_tjek.svg";
+final static String KASSE_IMG = "sprites/kasse.svg";
 
 PShape upgrade_img;
 PShape kasse_tjek;
