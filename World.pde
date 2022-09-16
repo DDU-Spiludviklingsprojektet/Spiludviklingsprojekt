@@ -23,6 +23,37 @@ class Planet {
     return Position;
   }
 
+  //return edgeofatmosphere
+  float getedgeofatmosphere() {
+
+    return edgeofatmosphere;
+  }
+
+  //returns airdensity
+  float getairdensity() {
+
+    return airdensity;
+  }
+
+  //returns mass
+  float getmass() {
+
+    return mass;
+  }
+
+  //returns radius
+  float getradius() {
+
+    return Radius.y;
+  }
+
+  //returns atmosphere
+  boolean getatmosphere() {
+
+    return atmosphere;
+  }
+
+
   //returns radius vector of the planet
   PVector getRadius() {
     return Radius;
