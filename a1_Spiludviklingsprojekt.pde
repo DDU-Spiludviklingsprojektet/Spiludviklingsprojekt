@@ -1,17 +1,17 @@
 //Import of libraries for database and for making the windows resizeable
 import processing.javafx.*;
-import de.bezier.data.sql.*;
 import de.bezier.data.sql.mapper.*;
 import processing.sound.*;
 
 //Variable setup, pretty self explainatory names
-final static String TITLE = "Raket";
-final static String ICON_IMG = "sprites/icon.png";
-final static String CURSOR_IMG = "sprites/cursor.png";
-final static String BACKGROUND_IMG = "sprites/background.gif";
-final static String LOGO_IMG = "sprites/logo.png";
-final static String BUTTONS_IMG = "sprites/buttons.svg";
-final static String RAKET_IMG = "sprites/raket.svg";
+final static String TITLE = "Crab Space Program";
+final static String ICON_IMG = "data/img/icon.png";
+final static String CURSOR_IMG = "data/img/cursor.png";
+final static String BACKGROUND_IMG = "data/background.gif";
+final static String LOGO_IMG = "data/img/logo.png";
+final static String BUTTONS_IMG = "data/svg/buttons.svg";
+final static String RAKET_IMG = "data/svg/raket.svg";
+final static String MENU_SOUND = "data/audio/title_sang.mp3";
 
 //Initializing variabls for shapes, images and sound
 
@@ -27,9 +27,9 @@ SoundFile menu_sound;
 int cols;
 int rows;
 //
+boolean menu = true;
 boolean upgrade_page = false;
-boolean menu = false;
-boolean game = true;
+boolean game = false;
 boolean mute = false;
 
 
@@ -38,12 +38,13 @@ void settings() {
 }
 
 void setup() {
+  leaderboard();
   frameRate(30);
   //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON_IMG));
   
   
-  menu_sound = new SoundFile(this, "sprites/title_sang.mp3");
+  menu_sound = new SoundFile(this, MENU_SOUND);
   menu_sound.loop();
   
   surface.setTitle(TITLE);

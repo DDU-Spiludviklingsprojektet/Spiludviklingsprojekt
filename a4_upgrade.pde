@@ -1,7 +1,8 @@
-final static String UPGRADE_IMG = "sprites/upgrade.svg";
-final static String KASSE_TJEK_IMG = "sprites/kasse_tjek.svg";
-final static String KASSE_IMG = "sprites/kasse.svg";
-final static String lift_off = "sprites/Lift_off.svg";
+final static String UPGRADE_IMG = "data/svg/upgrade.svg";
+final static String KASSE_TJEK_IMG = "data/svg/kasse_tjek.svg";
+final static String KASSE_IMG = "data/svg/kasse.svg";
+final static String lift_off = "data/svg/Lift_off.svg";
+final static String BIT8_FONT = "data/font/PressStart2P-vaV7.ttf";
 PFont bit8;
 PShape upgrade_img;
 PShape kasse_tjek;
@@ -12,7 +13,7 @@ String[] upgrade_name = {"Test1","Test2","Test3","Test4","Test5"};
 
 
 void upgrade_setup() {
-  bit8 = createFont("sprites/PressStart2P-vaV7.ttf", 32);
+  bit8 = createFont(BIT8_FONT, 32);
   upgrade_img = loadShape(UPGRADE_IMG);
   kasse_tjek = loadShape(KASSE_TJEK_IMG);
   kasse = loadShape(KASSE_IMG);
