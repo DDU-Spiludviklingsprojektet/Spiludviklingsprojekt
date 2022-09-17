@@ -5,7 +5,10 @@ final static String BAGGRUND_IMG = "data/svg/baggrund_liftoff.svg";
 final static String RAKET_HOLDER_IMG = "data/svg/raket_holder.svg";
 final static String lift_off_bt = "data/svg/Lift_off.svg";
 final static String BIT8_FONT = "data/font/PressStart2P-vaV7.ttf";
+final static String LEFT_IMG = "data/svg/left.svg";
+
 PFont bit8;
+PShape left_img;
 PShape upgrade_img;
 PShape background_liftoff_img;
 PShape kasse_tjek;
@@ -23,6 +26,7 @@ void upgrade_setup() {
   kasse = loadShape(KASSE_IMG);
   background_liftoff_img = loadShape(BAGGRUND_IMG);
   raket_holder = loadShape(RAKET_HOLDER_IMG);
+  left_img = loadShape(LEFT_IMG);
   // A loop to evenly space out the buttons along the window
   for (int upg = 0; upg < upgrades.length; upg++) {
     for (int i = 0; i < buttons.length; i++) {
@@ -43,6 +47,8 @@ void upgrade() {
   shapeMode(CENTER);
   shape (raket_holder, 500, 400, 200, 500);
   shape (raket_img, 467,475,384,384);
+  println(left_img.width + "hjej" + left_img.height);
+  shape (left_img, width/15 ,height/15,128,128);
 for (int upg = 0; upg < upgrades.length; upg++)
   for (int i = 0; i < buttons.length; i++) {
     buttons[upg][i].display();

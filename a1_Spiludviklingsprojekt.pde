@@ -1,3 +1,10 @@
+import uibooster.*;
+import uibooster.components.*;
+import uibooster.model.*;
+import uibooster.model.formelements.*;
+import uibooster.model.options.*;
+import uibooster.utils.*;
+
 //Import of libraries for database and for making the windows resizeable
 import processing.javafx.*;
 import de.bezier.data.sql.mapper.*;
@@ -27,8 +34,8 @@ SoundFile menu_sound;
 int cols;
 int rows;
 //
-boolean menu = false;
-boolean upgrade_page = true;
+boolean menu = true;
+boolean upgrade_page = false;
 boolean game = false;
 boolean mute = false;
 
@@ -38,7 +45,7 @@ void settings() {
 }
 
 void setup() {
-  mysql();
+  mysql_setup();
   frameRate(30);
   //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON_IMG));

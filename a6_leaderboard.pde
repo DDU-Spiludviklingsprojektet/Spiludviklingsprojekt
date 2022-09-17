@@ -4,7 +4,7 @@ import de.bezier.data.sql.*; //<>//
 
 MySQL db;
 
-void mysql()
+void mysql_setup()
 {
     db = new MySQL( this, "sql11.freemysqlhosting.net", "sql11520356", "sql11520356", "bdyDz8PF2s" );  // open database file
     db.setDebug(false);
@@ -21,10 +21,10 @@ void mysql()
             println( t );
         }
         
-        lb t1 = new lb();
-        t1.fieldOne = 2;
-        t1.id = 1;
-        db.saveToDatabase(t1);
+        //lb t1 = new lb();
+        //t1.fieldOne = 2;
+        //t1.id = 1;
+        //db.saveToDatabase(t1);
     }
 }
 
