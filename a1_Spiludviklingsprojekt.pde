@@ -27,8 +27,8 @@ SoundFile menu_sound;
 int cols;
 int rows;
 //
-boolean menu = true;
-boolean upgrade_page = false;
+boolean menu = false;
+boolean upgrade_page = true;
 boolean game = false;
 boolean mute = false;
 
@@ -38,7 +38,7 @@ void settings() {
 }
 
 void setup() {
-  leaderboard();
+  mysql();
   frameRate(30);
   //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON_IMG));
@@ -52,6 +52,7 @@ void setup() {
   
   logo_img = loadImage(LOGO_IMG);
   buttons_img = loadShape(BUTTONS_IMG);
+  raket_img = loadShape(RAKET_IMG);
   // Load custom cursor
   cursor_img = loadImage(CURSOR_IMG);
   cursor(cursor_img, -32, -32);
