@@ -32,6 +32,39 @@ class Raket {
     //shape(raket, Location.x, Location.y);
   }
 
+  //Til Simon:
+  public float getISP() {
+    return ISP;
+  }
+  public float getPower() {
+    return power;
+  }
+  public float getDryMass() {
+    return drymass;
+  }
+  public float getFuelDensity() {
+    return fueldensity;
+  }
+  public float getCD() {
+    return CD;
+  }
+  public void setISP(float tempISP) {
+    ISP = tempISP;
+  }
+  public void setPower(float temppower) {
+    power = temppower;
+  }
+  public void setDryMass(float tempdrymass) {
+    drymass = tempdrymass;
+  }
+  public void setFuelDensity(float tempfueldensity) {
+    fueldensity = tempfueldensity;
+  }
+  public void setCD(float tempCD) {
+    CD = tempCD;
+  }
+
+
   //returns mass of rocket
   float getCurrentmass() {
     return (drymass+tanksize*fueldensity);

@@ -55,6 +55,7 @@ float pi = 3.14;
 float G = pow(6.674, -11);
 float G0 = 9.82;
 int i = 0;
+float zoomlevel = 1;
 
 //Creates Objects
 void game_setup() {
@@ -65,8 +66,31 @@ void game_setup() {
 void game() {
     rocket.forces();
     input();
+    graphics();
     println(i);
     i++;
+}
+
+void graphics() {
+    gamebackground();
+}
+
+void gamebackground(){
+    if(rocket.getAltitude()>earth.getedgeofatmosphere()){
+        background(0,0,0);
+    } else {
+        //draw background that is black if rocket.getAltitude is equal to earth.getedgeofatmosphere, and is blue if rocket.getAltitude is 0 and gradually transisions between them
+        background(0,0, 255*((earth.getedgeofatmosphere()-rocket.getAltitude())/earth.getedgeofatmosphere()));
+    }
+}
+
+void mousewheel(MouseEvent event) {
+    //println(event.getCount());
+    if (event.getCount() > 0) {
+        zoomlevel = zoomlevel * 0.95
+    } else {
+        rocket.setThrottle(rocket.getThrottle()-1);
+    }
 }
 
 void input() {

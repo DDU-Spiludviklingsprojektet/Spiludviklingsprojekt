@@ -25,7 +25,6 @@ class Planet {
 
   //return edgeofatmosphere
   float getedgeofatmosphere() {
-
     return edgeofatmosphere;
   }
 
