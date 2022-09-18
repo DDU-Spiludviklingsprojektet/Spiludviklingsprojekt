@@ -21,7 +21,6 @@ import processing.sound.*;
 final static String TITLE = "Crab Space Program";
 final static String ICON_IMG = "data/img/icon.png";
 final static String CURSOR_IMG = "data/img/cursor.png";
-
 final static String RAKET_IMG = "data/svg/raket.svg";
 final static String MENU_SOUND = "data/audio/title_sang.mp3";
 final static String ARROW_IMG = "data/svg/arrow.svg";
@@ -30,7 +29,6 @@ String name;
 
 //The strings are used for making PImage objects.
 PImage cursor_img;
-
 PShape raket_img;
 PShape arrow_img;
 PShape exit_img;
@@ -40,7 +38,7 @@ SoundFile menu_sound;
 
 
 //The following boolean statements are used to control the current page of the program.
-boolean menu = false;
+boolean menu = true;
 boolean upgrade_page = false;
 boolean game = false;
 boolean lb = false;
@@ -54,45 +52,33 @@ void settings() {
 
 //The function setup is used to 
 void setup() {
-  //ProgressDialog dialog = new UiBooster().showProgressDialog("Please wait", "Waiting", 0, 120);
+  //mysql_setup();
+  home_setup();
+  //game_setup();
+  upgrade_setup();
+  //boot();
+  
 
-  mysql_setup();
-  //dialog.setProgress(10);
-y  //Set custom desktop icon
-  getSurface().setIcon(loadImage(ICON_IMG));
 
 
-  menu_sound = new SoundFile(this, MENU_SOUND);
-  menu_sound.loop();
 
   surface.setTitle(TITLE);
-  //surface.setResizable(true);
 
-
-  raket_img = loadShape(RAKET_IMG);
-  // Load custom cursor
+//Set custom desktop icon
+  getSurface().setIcon(loadImage(ICON_IMG));
+  
+  raket_img = loadShape(RAKET_IMG);  
   cursor_img = loadImage(CURSOR_IMG);
   arrow_img = loadShape(ARROW_IMG);
   exit_img = loadShape(EXIT_IMG);
+  
   cursor(cursor_img, -32, -32);
-  //dialog.setProgress(60);
-  logox = width/2;
-  logoy = height/4;
-  logosize = width/3;
-  buttonsx = width/2;
-  buttonsy = height*0.7;
-  buttonssize = width/3;
-  home_setup();
-  game_setup();
-  upgrade_setup();
-  boot();
-  //dialog.setProgress(120);
-  //dialog.setMessage("Ready");
-  //dialog.close();
+  
+  menu_sound = new SoundFile(this, MENU_SOUND);
+  menu_sound.loop();
 }
 
 
-//Code to exit fullscreen & program
 void draw() {
   //if (name == null) {
   //navnpopup();

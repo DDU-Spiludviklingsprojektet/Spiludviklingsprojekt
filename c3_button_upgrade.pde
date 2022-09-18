@@ -4,7 +4,7 @@
 // Button class. Assume the button is off  when it first appears.
 
 // Button class
-class Button {
+class Button_upg {
 
   // Button location and size
   float x;
@@ -17,7 +17,7 @@ class Button {
   int index02;
 
   // Constructor initializes all variables
-  Button(float tempX, float tempY, float tempW, float tempH, int tempi01, int tempi02) {
+  Button_upg(float tempX, float tempY, float tempW, float tempH, int tempi01, int tempi02) {
     x  = tempX;
     y  = tempY;
     w  = tempW;
@@ -27,7 +27,7 @@ class Button {
     on = false;  // Button always starts as off
   }
 
-  void click(int mx, int my, Button[][] b, int upg) {
+  void click(int mx, int my, Button_upg[][] b, int upg) {
     // Check to see if a point is inside the rectangle
     if (mx > x && mx < x + w && my > y && my < y + h) {
       switch(upg) {
@@ -68,7 +68,7 @@ class Button {
     rect(x, y, w, h);
   }
 
-  void if_money_buy_switch(Button[][] b, int upg, int amount) {
+  void if_money_buy_switch(Button_upg[][] b, int upg, int amount) {
     if (money > amount) {
       if (b[upg][index02].on == false && b[upg][index02].index02 == 0 ) {
         on = !on;
