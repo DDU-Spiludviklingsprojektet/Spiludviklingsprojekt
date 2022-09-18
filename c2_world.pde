@@ -76,4 +76,18 @@ class Planet {
   float getMass() {
     return mass;
   }
+
+  //returns pvector from rocket to planet center
+  PVector getDistance() {
+    return PVector.sub(Position, rocket.getLocation());
+  }
+
+  void planetdraw() {
+    println("planloc = " + getDistance());
+    println("rad = " + getRadiusMag());
+    ellipseMode(CENTER);
+    println("x = " + (width/2+getDistance().x*zoomlevel-getRadiusMag()*zoomlevel));
+    println("y = " + (height/2+getDistance().y*zoomlevel-getRadiusMag()*zoomlevel));
+    circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
+  }
 }
