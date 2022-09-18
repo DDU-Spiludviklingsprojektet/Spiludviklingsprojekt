@@ -16,8 +16,10 @@ PShape kasse;
 PShape raket_holder;
 Button[][] buttons = new Button[5][5];
 int[] upgrades = new int[5];
-String[] upgrade_name = {"Test1","Test2","Test3","Test4","Test5"};
-
+String[] upgrade_name = {"ISP", "Power", "Drymass", "Fueldensity", "CD"};
+int money = 1000;
+String money_text = "Money:";
+String sc1 = money_text + money;
 
 void upgrade_setup() {
   bit8 = createFont(BIT8_FONT, 32);
@@ -30,9 +32,8 @@ void upgrade_setup() {
   // A loop to evenly space out the buttons along the window
   for (int upg = 0; upg < upgrades.length; upg++) {
     for (int i = 0; i < buttons.length; i++) {
-    buttons[upg][i] = new Button(930 + (i * 65), 140 + (upg * 120), 50, 50, upg, i);
-  }
-  
+      buttons[upg][i] = new Button(930 + (i * 65), 140 + (upg * 120), 50, 50, upg, i);
+    }
   }
 }
 
@@ -41,20 +42,25 @@ void upgrade() {
   background(200);
   rectMode(CORNERS);
   fill(204, 102, 0);
-  shapeMode(CORNERS); 
+  shapeMode(CORNERS);
   shape(upgrade_img, (width*0.7), 0, width, height);
-  shape(background_liftoff_img, -20 , 0, (width*0.7), height);
+  shape(background_liftoff_img, -20, 0, (width*0.7), height);
   shapeMode(CENTER);
   shape (raket_holder, 500, 400, 200, 500);
-  shape (raket_img, 467,475,384,384);
-  println(left_img.width + "hjej" + left_img.height);
-  shape (left_img, width/15 ,height/15,128,128);
-for (int upg = 0; upg < upgrades.length; upg++)
-  for (int i = 0; i < buttons.length; i++) {
-    buttons[upg][i].display();
-    textFont(bit8);
-    textSize(20);
-    fill(255);
-    text(upgrade_name[upg], 930, 130 + (upg * 120));
-  }
+  shape (raket_img, 467, 475, 384, 384);
+  shape (left_img, width/15, height/15, 128, 128);
+
+  textFont(bit8);
+  textSize(20);
+  fill(0);
+  text(sc1, 680, 30);
+
+  for (int upg = 0; upg < upgrades.length; upg++)
+    for (int i = 0; i < buttons.length; i++) {
+      buttons[upg][i].display();
+      textFont(bit8);
+      textSize(20);
+      fill(255);
+      text(upgrade_name[upg], 930, 130 + (upg * 120));
+    }
 }

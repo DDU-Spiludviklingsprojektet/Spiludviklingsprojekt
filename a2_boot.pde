@@ -1,10 +1,10 @@
 //Bootscreen/loading screen at the start
 
 void boot() {
-  
-  background(200); 
+
+  background(200);
   rectColor = color(255, 255, 255, 0);
-  rectHighlight = color(17,0.9);
+  rectHighlight = color(17, 0.9);
   circleColor = color(255);
   circleHighlight = color(204);
   baseColor = color(102);

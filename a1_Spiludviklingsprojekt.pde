@@ -34,11 +34,11 @@ SoundFile menu_sound;
 int cols;
 int rows;
 //
-boolean menu = true;
-boolean upgrade_page = false;
+boolean menu = false;
+boolean upgrade_page = true;
 boolean game = false;
+boolean lb = false;
 boolean mute = false;
-
 
 void settings() {
   size(1280, 720, FX2D);
@@ -49,14 +49,14 @@ void setup() {
   frameRate(30);
   //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON_IMG));
-  
-  
+
+
   menu_sound = new SoundFile(this, MENU_SOUND);
   menu_sound.loop();
-  
+
   surface.setTitle(TITLE);
   surface.setResizable(true);
-  
+
   logo_img = loadImage(LOGO_IMG);
   buttons_img = loadShape(BUTTONS_IMG);
   raket_img = loadShape(RAKET_IMG);
@@ -80,12 +80,11 @@ void setup() {
 //Code to exit fullscreen & program
 void draw() {
   if (mute == true) {
-   menu_sound.amp(0.0); 
-  }
-  else {
+    menu_sound.amp(0.0);
+  } else {
     menu_sound.amp(1.0);
   }
-  
+
   if (keyPressed) {
     if (key == 'u') {
       exit();
