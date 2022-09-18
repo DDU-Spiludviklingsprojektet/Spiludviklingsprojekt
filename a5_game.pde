@@ -98,7 +98,7 @@ void graphics() {
 
 void end() {
   if (rocket.getNearestplanet() == "moon" && rocket.getAltitude() <=5) {
-    rotate(0);
+    rotate(-rocket.getGoalheading());
     shapeMode(CENTER);
     shape(end_img, 0, 0, width, height);
   }
