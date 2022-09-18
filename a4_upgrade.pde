@@ -26,7 +26,7 @@ Button_upg[][] buttons = new Button_upg[5][5];
 int[] upgrades = new int[5];
 String[] upgrade_name = {"ISP", "Power", "Drymass", "Fueldensity", "CD"};
 
-int money = 2000;
+int money = 200;
 String money_text = "Money:";
 String sc1 = money_text + money;
 

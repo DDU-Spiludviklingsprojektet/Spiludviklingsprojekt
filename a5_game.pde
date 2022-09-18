@@ -87,10 +87,6 @@ void game_setup() {
 }
 
 void game() {
-  back_bt2.update_rect();
-  back_bt2.farve();
-  back_bt2.render();
-  
   rocket.forces();
   graphics();
   input();
@@ -102,10 +98,25 @@ void graphics() {
   gamebackground();
   earth.earthdraw();
   moon.moondraw();
+  back2();
   rocket.draw();
   overlays();
+
   end();
+
 }
+
+void back2(){
+  back_bt2.update_rect();
+  back_bt2.farve();
+  back_bt2.render();
+  if(back_bt2.isClicked()){
+  println("Upgrade");
+  clear();
+  upgrade_page = true;
+  game = false;
+  }
+  }
 
 void end() {
   if (rocket.getNearestplanet() == "moon" && rocket.getAltitude() <=5) {
@@ -131,6 +142,7 @@ void overlays() {
 void highscore() {
   if (rocket.getAltitude()>highscore) {
     highscore = rocket.getAltitude();
+    money = money + highscore/1000;
   }
 }
 
