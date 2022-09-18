@@ -73,19 +73,21 @@ void game() {
 }
 
 void graphics() {
-    gamebackground();
-    earth.draw();
-    //moon.draw();
-    rocket.draw();
+  gamebackground();
+  fill(0, 255, 0);
+  earth.planetdraw();
+  fill(100);
+  moon.planetdraw();
+  rocket.draw();
 }
 
-void gamebackground(){
-    if(rocket.getAltitude()>earth.getedgeofatmosphere()){
-        background(0,0,0);
-    } else {
-        //draw background that is black if rocket.getAltitude is equal to earth.getedgeofatmosphere, and is blue if rocket.getAltitude is 0 and gradually transisions between them
-        background(0,0, 255*((earth.getedgeofatmosphere()-rocket.getAltitude())/earth.getedgeofatmosphere()));
-    }
+void gamebackground() {
+  if (rocket.getAltitude()>earth.getedgeofatmosphere()) {
+    background(0, 0, 0);
+  } else {
+    //draw background that is black if rocket.getAltitude is equal to earth.getedgeofatmosphere, and is blue if rocket.getAltitude is 0 and gradually transisions between them
+    background(0, 0, 255*((earth.getedgeofatmosphere()-rocket.getAltitude())/earth.getedgeofatmosphere()));
+  }
 }
 
 void mouseWheel(MouseEvent event) {
@@ -96,13 +98,7 @@ void mouseWheel(MouseEvent event) {
     zoomlevel = zoomlevel*0.9;
   }
 }
-/*mousewheel(MouseEvent event) {
-    if (event.getCount() > 0) {
-        zoomlevel = zoomlevel * 0.95;
-    } else if(event.getCount() < 0){
-        zoomlevel = zoomlevel * 1.05;
-    }
-}*/
+
 
 void input() {
   switch(keyCode) {

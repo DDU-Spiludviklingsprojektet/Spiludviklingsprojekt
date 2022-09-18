@@ -82,13 +82,12 @@ class Planet {
     return PVector.sub(Position, rocket.getLocation());
   }
 
-  void draw() {
-    //draws the planet
-    //fill(0,255,0);
-   // translate(getDistance().x, getDistance().y);
-   println("planloc = " + getDistance());
-   println("rad = " + getRadiusMag());
-    ellipse(getDistance().x, getDistance().y, Radius.y*2, Radius.y*2);
+  void planetdraw() {
+    println("planloc = " + getDistance());
+    println("rad = " + getRadiusMag());
+    ellipseMode(CENTER);
+    println("x = " + (width/2+getDistance().x*zoomlevel-getRadiusMag()*zoomlevel));
+    println("y = " + (height/2+getDistance().y*zoomlevel-getRadiusMag()*zoomlevel));
+    circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
   }
-
 }

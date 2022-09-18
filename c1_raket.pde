@@ -180,9 +180,9 @@ class Raket {
     println(rocket.getNearestplanet());
   }
   void draw() {
-      translate(width/2, height/2);
-      rotate(goalheading);
-      println(goalheading);
-    shape(raket_img, 0-zoomlevel*10, 0-zoomlevel*10,zoomlevel*20,zoomlevel*20);
+    translate(width/2, height/2);
+    rotate(goalheading);
+    println(goalheading);
+    shape(raket_img, 0-zoomlevel*10, 0-zoomlevel*10, zoomlevel*20, zoomlevel*20);
   }
 }

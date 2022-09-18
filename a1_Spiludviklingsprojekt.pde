@@ -35,8 +35,8 @@ int cols;
 int rows;
 //
 boolean menu = false;
-boolean upgrade_page = true;
-boolean game = false;
+boolean upgrade_page = false;
+boolean game = true;
 boolean lb = false;
 boolean mute = false;
 
