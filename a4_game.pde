@@ -1,11 +1,14 @@
+//Importing images
 final static String JORDEN_IMG = "data/svg/jorden.svg";
 final static String MOON_IMG = "data/svg/moon.svg";
 final static String END_IMG = "data/svg/end.svg";
 final static String OVERLAY_IMG = "data/svg/velocity.svg";
+//Creating PShape objects
 PShape jorden_img;
 PShape moon_img;
 PShape end_img;
 PShape overlay_img;
+//Creating button object
 Button_rect back_bt2;
 
 
@@ -87,6 +90,7 @@ void game_setup() {
   overlay_img = loadShape(OVERLAY_IMG);
 }
 
+//Draws the game physics etc.
 void game() {
   rocket.forces();
   graphics();
@@ -95,6 +99,7 @@ void game() {
   highscore();
 }
 
+//Draws the graphics
 void graphics() {
   gamebackground();
   earth.earthdraw();
@@ -105,6 +110,7 @@ void graphics() {
   end();
 }
 
+//Creates the back button
 void back2() {
   back_bt2.update_rect();
   back_bt2.farve();
@@ -116,6 +122,7 @@ void back2() {
   }
 }
 
+//Creates the end screen
 void end() {
   if (rocket.getNearestplanet() == "moon" && rocket.getAltitude() <=5) {
     rotate(-rocket.getGoalheading());
@@ -124,23 +131,26 @@ void end() {
   }
 }
 
+//Creates the background and its color
 void gamebackground() {
   if (rocket.getAltitude()>earth.getedgeofatmosphere()|| rocket.getNearestplanet()!="earth") {
     background(0, 0, 0);
   } else {
-    //draw background that is black if rocket.getAltitude is equal to earth.getedgeofatmosphere, and is blue if rocket.getAltitude is 0 and gradually transisions between them
     background(0, 0, 255*((earth.getedgeofatmosphere()-rocket.getAltitude())/earth.getedgeofatmosphere()));
   }
 }
 
+//Creates the text information on screen
 void overlays() {
   rotate(-rocket.getGoalheading());
   textFont(bit8);
   textSize(20*width/1280);
   fill(255);
-  text("Fuel: " + int(rocket.getFuel()) +  "\nThrottle: " + int(rocket.getThrottle()) + "\nAltitude: " + int(rocket.getAltitude()), -width/2+width/20, -height/2+height/8);
+  text("Fuel: " + int(rocket.getFuel()) +  "\nThrottle: " + int(rocket.getThrottle()) + "\nAltitude: " + int(rocket.getAltitude()) + "\nTimewrap: " + timewrap, -width/2+width/20, -height/2+height/8);
 }
 
+//Calculates the highscore based on the highest altitude reached
+//TODO, it kinda works, but not as intended, and is kind of broken. But it is not a priority to fix it. Therefore it is still here, broken.
 void highscore() {
   if (rocket.getAltitude()>highscore) {
     highscore = rocket.getAltitude();
@@ -148,7 +158,9 @@ void highscore() {
   }
 }
 
-
+//Crates timewrap to make the game more playable and reduce gametime.
+//TODO, make the game based on time, instead of frames, so slower computers can timewrap.
+//Also move the keypresses to the input function, and find a better way to do the delay.
 void timewrap() {
   if (frames == 10) {
     frames = 0;
@@ -169,6 +181,7 @@ void timewrap() {
   frameRate(30*timewrap);
 }
 
+//Zooms in and out
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
   if (e > 0) {
@@ -178,7 +191,7 @@ void mouseWheel(MouseEvent event) {
   }
 }
 
-
+//Take input from the user
 void input() {
   if (keyPressed) {
     switch(keyCode) {

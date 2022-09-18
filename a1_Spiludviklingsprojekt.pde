@@ -40,7 +40,6 @@ PShape exit_img;
 //The strings are used for making SoundFile objects.
 SoundFile menu_sound;
 
-
 //The following boolean statements are used to control the current page of the program.
 boolean menu = true;
 boolean upgrade_page = false;
@@ -71,7 +70,7 @@ void setup() {
   menu_sound.loop();
 }
 
-
+//Draws the game, depending on the current page
 void draw() {
   if (menu==true) {
     home();
@@ -84,7 +83,7 @@ void draw() {
   }
 }
 
-
+//TODO, ask for name when starting the game.
 void navnpopup() {
   name = new UiBooster().showTextInputDialog("Navn");
   if (navntaget(name) == true) {

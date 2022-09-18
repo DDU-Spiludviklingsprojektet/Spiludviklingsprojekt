@@ -79,6 +79,9 @@ class Planet {
     return PVector.sub(Position, rocket.getLocation());
   }
 
+  //TODO: These two functions should really be one function, it is a class afterall, and it should be better adaptable to new planets
+  //The color really should have been a setup for the object. But I wasnt forward thinking enough to do that.
+  //Draws the earth
   void earthdraw() {
     if (zoomlevel <= 0.2 || rocket.getAltitude() >=2000) {
       shape(jorden_img, width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel*1.01, getRadiusMag()*2*zoomlevel*1.01);
@@ -88,6 +91,7 @@ class Planet {
       circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
     }
   }
+  //Draws the moon
   void moondraw() {
     if (zoomlevel <= 0.2 || rocket.getAltitude() >=2000) {
       shape(moon_img, width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel*1.01, getRadiusMag()*2*zoomlevel*1.01);

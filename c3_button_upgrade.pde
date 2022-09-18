@@ -1,6 +1,5 @@
 // Button class
 class Button_upg {
-
   // Button location and size
   float x;
   float y;

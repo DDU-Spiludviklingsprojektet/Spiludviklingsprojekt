@@ -1,6 +1,7 @@
+//Creates the data for the leaderboard
+//Due to time constraints, the implementation of this function is not complete.
 StringList navne;
 import de.bezier.data.sql.*;
-
 MySQL db;
 
 void mysql_setup()
@@ -10,7 +11,7 @@ void mysql_setup()
 
   if ( db.connect() )
   {
-
+    //TODO
   }
 }
 //Tjekker om navnet er taget. Sender true hvis navnet er det og false hvis det ikke findes.
@@ -24,7 +25,6 @@ public boolean navntaget(String tempname) {
     navne = new StringList();
     navne.append(s);
   }
-
   return navne.hasValue(tempname);
 }
 

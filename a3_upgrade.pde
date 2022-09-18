@@ -21,17 +21,17 @@ PShape lift_off_img;
 Button_rect back_bt;
 Button_rect lift_offbt;
 
-//
+//Creates doubble array for storing the upgrades
 Button_upg[][] buttons = new Button_upg[5][5];
 int[] upgrades = new int[5];
 String[] upgrade_name = {"ISP", "Power", "Drymass", "Fueldensity", "CD"};
 
+//Start variables
 int money = 200;
 String money_text = "Money:";
 String sc1 = money_text + money;
 
-
-
+//The void setup for the upgrade menu
 void upgrade_setup() {
   background(200);
   //loads shapes and fonts
@@ -49,7 +49,6 @@ void upgrade_setup() {
   back_bt = new Button_rect(back_img, width/15, height/15, 128, 128, (width/15)+1, (height/15)-14, 122, 43, 255, 10);
   lift_offbt = new Button_rect(lift_off_img, width/3, height*0.97, 192, 192, width/2.995, (height*0.97)-20, 178, 70, 255, 10);
 
-
   // Places buttons for upgrade menu
   for (int upg = 0; upg < upgrades.length; upg++) {
     for (int i = 0; i < buttons.length; i++) {
@@ -58,7 +57,7 @@ void upgrade_setup() {
   }
 }
 
-
+//The void draw for the upgrade menu
 void upgrade() {
   background(200);
   //Places bacground images. Both for upgrade and for landscape
@@ -108,6 +107,7 @@ void upgrade() {
     }
 }
 
+//When the mouse is pressed, calculates which button is clicked
 void mousePressed() {
   for (int upg = 0; upg < upgrades.length; upg++) {
     for (int i = 0; i < upgrades.length; i++) {
