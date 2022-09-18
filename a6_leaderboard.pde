@@ -1,6 +1,5 @@
- //<>//
 StringList navne;
-import de.bezier.data.sql.*; //<>//
+import de.bezier.data.sql.*;
 
 MySQL db;
 
@@ -12,11 +11,6 @@ void mysql_setup()
   if ( db.connect() )
   {
 
-    //lb t1 = new lb();
-    //t1.name = "Simon";
-    //t1.id = 1;
-    //t1.value = money;
-    //db.saveToDatabase(t1);
   }
 }
 //Tjekker om navnet er taget. Sender true hvis navnet er det og false hvis det ikke findes.
@@ -60,6 +54,5 @@ void lb() {
   {
     lb name = new lb();
     db.setFromRow( name );
-    println(name);
   }
 }

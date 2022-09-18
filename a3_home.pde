@@ -17,20 +17,20 @@ Button_ell lb_bt;
 Button_ell mute_bt;
 
 void home_setup() {
-//Loads shapes and images
+  //Loads shapes and images
   background_img = loadShape(BACKGROUND_IMG);
   logo_img = loadImage(LOGO_IMG);
   buttons_img = loadShape(BUTTONS_IMG);
   empty_img = loadShape(EMPTY_IMG);
 
-//Creates buttons
+  //Creates buttons
   start_bt = new Button_rect(empty_img, 100, 100, 200, 60, width/1.99, height/1.365, 200, 60, 255, 0);
   lb_bt = new Button_ell(width/1.642, height/1.89, 70, 70);
   mute_bt = new Button_ell(width/2.544, height/1.89, 65, 65);
 }
 
 void home() {
-//Places images and shapes
+  //Places images and shapes
   shapeMode(CORNERS);
   shape(background_img, 0, 0, width, height);
   shapeMode(CENTER);
@@ -38,21 +38,20 @@ void home() {
   image(logo_img, width/2, height/4, width/3, width/3);
   shape(buttons_img, (width/2), (height*0.7), width/3, width/3);
 
-//If statments for the three buttons
+  //If statments for the three buttons
   if (start_bt.isClicked()) {
-    println("Upgrade");
     clear();
     menu = false;
     upgrade_page = true;
   }
   if (mute_bt.isClicked()) {
-  mute();
+    mute();
   }
-  if (lb_bt.isClicked()) {  
+  if (lb_bt.isClicked()) {
     lb();
   }
-  
-//Update, render and farve function for the three buttons. To react when clickt. To make the collored when hovering and render button
+
+  //Update, render and farve function for the three buttons. To react when clickt. To make the collored when hovering and render button
   start_bt.update_rect();
   start_bt.farve();
   start_bt.render();

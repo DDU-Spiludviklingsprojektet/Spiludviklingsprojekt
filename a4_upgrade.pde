@@ -33,8 +33,8 @@ String sc1 = money_text + money;
 
 
 void upgrade_setup() {
-   background(200);
-//loads shapes and fonts
+  background(200);
+  //loads shapes and fonts
   back_img = loadShape(BACK_IMG);
   bit8 = createFont(BIT8_FONT, 32);
   upgrade_img = loadShape(UPGRADE_IMG);
@@ -44,13 +44,13 @@ void upgrade_setup() {
   raket_holder = loadShape(RAKET_HOLDER_IMG);
   back_img = loadShape(BACK_IMG);
   lift_off_img = loadShape(LIFT_OFF_IMG);
-  
-//Loads buttons - Back and lift off
+
+  //Loads buttons - Back and lift off
   back_bt = new Button_rect(back_img, width/15, height/15, 128, 128, (width/15)+1, (height/15)-14, 122, 43, 255, 10);
-  lift_offbt = new Button_rect(lift_off_img, width/3, height*0.97 , 192, 192, width/2.995, (height*0.97)-20 , 178, 70, 255, 10);
-  
-  
-// Places buttons for upgrade menu
+  lift_offbt = new Button_rect(lift_off_img, width/3, height*0.97, 192, 192, width/2.995, (height*0.97)-20, 178, 70, 255, 10);
+
+
+  // Places buttons for upgrade menu
   for (int upg = 0; upg < upgrades.length; upg++) {
     for (int i = 0; i < buttons.length; i++) {
       buttons[upg][i] = new Button_upg(930 + (i * 65), 140 + (upg * 120), 50, 50, upg, i);
@@ -61,45 +61,43 @@ void upgrade_setup() {
 
 void upgrade() {
   background(200);
-//Places bacground images. Both for upgrade and for landscape
+  //Places bacground images. Both for upgrade and for landscape
   shapeMode(CORNERS);
   shape(upgrade_img, (width*0.7), 0, width, height);
   shape(backgro_img, 0, 0, 896, 720);
-//Places rocket
+  //Places rocket
   shapeMode(CENTER);
   shape (raket_holder, 430, 400, 400, 500);
   shape (raket_img, 467, 465, 384, 384);
-  
-//Back button updater, render and to check if it has been clicked
+
+  //Back button updater, render and to check if it has been clicked
   back_bt.update_rect();
   back_bt.farve();
   back_bt.render();
   lift_offbt.update_rect();
   lift_offbt.farve();
   lift_offbt.render();
-  
-  if(back_bt.isClicked()){
-  println("Home");
-  clear();
-  upgrade_page = false;
-  menu = true;
+
+  if (back_bt.isClicked()) {
+    clear();
+    upgrade_page = false;
+    menu = true;
   }
-  if(lift_offbt.isClicked()){
-  println("Game");
-  clear();
-  upgrade_page = false;
-  game = true;
+  if (lift_offbt.isClicked()) {
+    clear();
+    upgrade_page = false;
+    game = true;
   }
-  
-//Makes text fore Money
-String sc1 = money_text + money;
+
+  //Makes text fore Money
+  String sc1 = money_text + money;
   textFont(bit8);
   textSize(20);
   fill(0);
   text(sc1, 680, 30);
-  
-  
-//Makes text above eache array of buttons
+
+
+  //Makes text above eache array of buttons
   for (int upg = 0; upg < upgrades.length; upg++)
     for (int i = 0; i < buttons.length; i++) {
       buttons[upg][i].display();
