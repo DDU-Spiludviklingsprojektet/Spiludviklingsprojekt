@@ -19,7 +19,7 @@ final static String LOGO_IMG = "data/img/logo.png";
 final static String BUTTONS_IMG = "data/svg/buttons.svg";
 final static String RAKET_IMG = "data/svg/raket.svg";
 final static String MENU_SOUND = "data/audio/title_sang.mp3";
-final static String ARROW_IMG = "data/svg/arrow.svg"
+final static String ARROW_IMG = "data/svg/arrow.svg";
 String name;
 //Initializing variabls for shapes, images and sound
 
