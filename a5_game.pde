@@ -79,6 +79,7 @@ void graphics() {
   fill(100);
   moon.planetdraw();
   rocket.draw();
+  overlays();
 }
 
 void gamebackground() {
@@ -88,6 +89,10 @@ void gamebackground() {
     //draw background that is black if rocket.getAltitude is equal to earth.getedgeofatmosphere, and is blue if rocket.getAltitude is 0 and gradually transisions between them
     background(0, 0, 255*((earth.getedgeofatmosphere()-rocket.getAltitude())/earth.getedgeofatmosphere()));
   }
+}
+
+void overlays() {
+  //Heri er alt dette der er oven på spillet
 }
 
 void mouseWheel(MouseEvent event) {

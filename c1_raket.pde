@@ -124,6 +124,7 @@ class Raket {
   //input float sets heading vector direction
   void setHeading(float x) {
     Heading = PVector.fromAngle(x);
+    Heading.x = - Heading.x;
   }
 
   //calculates engine force, and adds to acceleration vector
@@ -156,7 +157,7 @@ class Raket {
     println("drag = " + x);
     Drag = temp.setMag(x*-1);
   }
-  
+
   void planetcollision() {
     if (getNearestplanet() == "earth") {
       PVector tempDist = PVector.sub(Location, earth.getPosition());
@@ -172,7 +173,7 @@ class Raket {
       }
     }
   }
-  
+
   //adds acceleration to velocity, and velocity to location.
   void forces() {
     Acceleration = new PVector();
@@ -195,13 +196,15 @@ class Raket {
     println(rocket.getNearestplanet());
   }
   void draw() {
-    if (zoomlevel >0.02){
-    translate(width/2, height/2);
-    rotate(goalheading);
-    println(goalheading);
-    shape(raket_img, 0-zoomlevel*10, 0-zoomlevel*10, zoomlevel*20, zoomlevel*20);
+    shapeMode(CENTER);
+    if (zoomlevel >0.5) {
+      translate(width/2, height/2);
+      rotate(goalheading);
+      shape(raket_img, 0, 0, zoomlevel*width/25, zoomlevel*width/25);
     } else {
-      
+      translate(width/2, height/2);
+      rotate(goalheading);
+      shape(arrow_img, 0, 0, width/50, width/50);
     }
   }
 }

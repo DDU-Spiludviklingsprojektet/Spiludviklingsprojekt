@@ -36,8 +36,7 @@ void home_setup() {
   rectwidth = 200;  // Diameter of rect
   rectheight = 60;
   rectMode(CENTER);
-  ellipseMode(CENTER); 
-  
+  ellipseMode(CENTER);
 }
 
 void home() {
@@ -70,8 +69,8 @@ void home() {
     fill(circleColor);
   }
   ellipse(circleX, circleY, circleSize, circleSize);
-  
-    if (circleOver2) {
+
+  if (circleOver2) {
     fill(circleHighlight);
   } else {
     fill(circleColor);
@@ -93,8 +92,7 @@ void update(int x, int y) {
     rectOver = false;
     circleOver1 = false;
     circleOver2 = true;
-  }
-  else {
+  } else {
     circleOver1 = circleOver2 = rectOver = false;
   }
 }

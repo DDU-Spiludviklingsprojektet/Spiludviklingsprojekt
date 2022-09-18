@@ -1,6 +1,6 @@
 // fjenett 20120226 //<>//
 StringList navne;
-import de.bezier.data.sql.*;
+import de.bezier.data.sql.*; //<>//
 
 MySQL db;
 
@@ -18,8 +18,6 @@ void mysql_setup()
     //t1.value = money;
     //db.saveToDatabase(t1);
   }
-  
-  
 }
 //Tjekker om navnet er taget. Sender true hvis navnet er det og false hvis det ikke findes.
 public boolean navntaget(String tempname) {
@@ -34,8 +32,6 @@ public boolean navntaget(String tempname) {
   }
 
   return navne.hasValue(tempname);
-  
-  
 }
 
 class lb
@@ -56,15 +52,14 @@ class lb
   public int getId () {
     return id;
   }
-  
 }
 
 void lb() {
-    db.query( "SELECT * FROM %s", "lb" );
-    while (db.next())
-    {
-      lb name = new lb();
-      db.setFromRow( name );
-      println(name);
-    }
+  db.query( "SELECT * FROM %s", "lb" );
+  while (db.next())
+  {
+    lb name = new lb();
+    db.setFromRow( name );
+    println(name);
+  }
 }
