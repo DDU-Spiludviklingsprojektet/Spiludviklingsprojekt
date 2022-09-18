@@ -28,6 +28,14 @@ class Button_rect {
     corners = c;
   }
 
+  void farve() {
+    if (mouseX>=button_Pos.x-(button_Width/2) && mouseX <= button_Pos.x+(button_Width/2) && mouseY >= button_Pos.y-(button_Height/2) && mouseY <= button_Pos.y+(button_Height/2)) {
+      farve = #66000000;
+    } else {
+      farve = color(255, 255, 255, 0);
+    }
+  }
+
   void update_rect()
   {
     if (mouseX>=button_Pos.x-(button_Width/2) && mouseX <= button_Pos.x+(button_Width/2) && mouseY >= button_Pos.y-(button_Height/2) && mouseY <= button_Pos.y+(button_Height/2))
@@ -77,22 +85,33 @@ class Button_ell {
     //farve = color(f);
   }
 
+  void farve() {
+    float disX = Pos.x - mouseX;
+    float disY = Pos.y - mouseY;
+    if (sqrt(sq(disX) + sq(disY)) < Width/2) {
+      farve = #66000000;
+    } else {
+      farve = color(255, 255, 255, 0);
+    }
+  }
+
+
   void update_ell()
   {
     float disX = Pos.x - mouseX;
     float disY = Pos.y - mouseY;
-    if (sqrt(sq(disX) + sq(disY)) < Width/2)
+    if (mousePressed == true && mouseButton == LEFT && Pressed == false)
     {
-      //Pressed = true;
-      farve = #66000000;
-      if (mousePressed == true && mouseButton == LEFT && Pressed == false)
+      Pressed = true;
+      if (sqrt(sq(disX) + sq(disY)) < Width/2)
       {
         Clicked = true;
       }
     } else
     {
-      farve = color(255, 255, 255, 0);
       Clicked = false;
+    }
+    if (mousePressed !=true) {
       Pressed = false;
     }
   }
@@ -107,6 +126,6 @@ class Button_ell {
   }
 }
 
-
+//mousePressed == true && mouseButton == LEFT && Pressed == false
 
 // - https://www.youtube.com/watch?v=z903vXot-Lg&ab_channel=ChristopherOckerby
