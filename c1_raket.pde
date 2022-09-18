@@ -105,6 +105,8 @@ class Raket {
 
   //returns the fuelpercent of the rocket
   float getFuel() {
+    float x = throttle*(tanksize*fueldensity/power)/pow(10,10);
+    fuelpercent = fuelpercent - x;
     return fuelpercent;
   }
 
