@@ -1,9 +1,11 @@
 final static String JORDEN_IMG = "data/svg/jorden.svg";
 final static String MOON_IMG = "data/svg/moon.svg";
 final static String END_IMG = "data/svg/end.svg";
+final static String OVERLAY_IMG = "data/svg/velocity.svg";
 PShape jorden_img;
 PShape moon_img;
 PShape end_img;
+PShape overlay_img;
 
 //Initailisation of the objects used in the game.
 Planet earth;
@@ -78,6 +80,7 @@ void game_setup() {
   jorden_img = loadShape(JORDEN_IMG);
   moon_img = loadShape(MOON_IMG);
   end_img = loadShape(END_IMG);
+  overlay_img = loadShape(OVERLAY_IMG);
 }
 
 void game() {
