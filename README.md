@@ -1,7 +1,7 @@
 # Spiludviklingsprojekt
 Udviklet af Simon S, Rolf og Holger
 
-Video demo af projektet:
+Video demo af projektet: https://youtu.be/5TuhFwcmR4w
 
 Dette er vores repository til DDU SO6 projektet, hvor at vi udvikler et spil til undervisningsbrug omkring raketter.
 
