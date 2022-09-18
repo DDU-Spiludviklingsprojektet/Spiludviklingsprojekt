@@ -72,6 +72,7 @@ int timewrap = 1;
 int frames = 0;
 float highscore = 0;
 
+
 //Creates Objects
 void game_setup() {
   back_bt2 = new Button_rect(back_img, width/15, height/15, 128, 128, (width/15)+1, (height/15)-14, 122, 43, 255, 10);
@@ -92,6 +93,8 @@ void game() {
   input();
   timewrap();
   highscore();
+  println(rocket.getFuel());
+  println(rocket.getDeltaV());
 }
 
 void graphics() {
@@ -136,7 +139,11 @@ void gamebackground() {
 }
 
 void overlays() {
-  //Heri er alt dette der er oven på spillet
+  rotate(-rocket.getGoalheading());
+  textFont(bit8);
+  textSize(20*width/1280);
+  fill(255);
+  text("Fuel: " + rocket.getFuel() +  "\nThrottle: " + rocket.getThrottle() + "\nAltitude: " + rocket.getAltitude(), -width/2+width/20, -height/2+height/8);
 }
 
 void highscore() {
