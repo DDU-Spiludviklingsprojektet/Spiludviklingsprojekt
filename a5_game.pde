@@ -3,7 +3,7 @@ Planet earth;
 Planet moon;
 Raket rocket;
 
-//A lot of different values for easy tweaking. 
+//A lot of different values for easy tweaking.
 
 //set values for rocket
 // Drymass in KG
@@ -41,7 +41,7 @@ float earthmass = pow(5.97, 23);
 //set values for moon
 //Where is the planet (XY pos)
 float moonpositionx = 0;
-float moonpositiony = 1000000;
+float moonpositiony = 300000;
 //What is the radius of the planet in Meters
 float moonradius = 17100;
 //Is there an atmosphere?
@@ -58,6 +58,8 @@ float pi = 3.14;
 float G = pow(6.674, -11);
 float G0 = 9.82;
 float zoomlevel = 5;
+int timewrap = 1;
+int frames = 0;
 
 //Creates Objects
 void game_setup() {
@@ -66,9 +68,11 @@ void game_setup() {
   rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
 }
 void game() {
+
   rocket.forces();
   graphics();
   input();
+  timewrap();
 }
 
 void graphics() {
@@ -82,8 +86,8 @@ void graphics() {
 }
 
 void gamebackground() {
-  if (rocket.getAltitude()>earth.getedgeofatmosphere()) {
-    background(0, 0, 0);
+    if (rocket.getAltitude()>earth.getedgeofatmosphere()|| rocket.getNearestplanet()!="earth"){
+      background(0, 0, 0);
   } else {
     //draw background that is black if rocket.getAltitude is equal to earth.getedgeofatmosphere, and is blue if rocket.getAltitude is 0 and gradually transisions between them
     background(0, 0, 255*((earth.getedgeofatmosphere()-rocket.getAltitude())/earth.getedgeofatmosphere()));
@@ -92,6 +96,27 @@ void gamebackground() {
 
 void overlays() {
   //Heri er alt dette der er oven på spillet
+}
+
+void timewrap() {
+  if (frames == 10) {
+    frames = 0;
+  }
+  if (frames == 0) {
+    if (keyPressed) {
+      if (key==',') {
+        timewrap--;
+      } else if (key=='.') {
+        timewrap++;
+      }
+    }
+  }
+  if (timewrap <= 0) {
+    timewrap = 1;
+  }
+  frames++;
+  frameRate(30*timewrap);
+  println(timewrap);
 }
 
 void mouseWheel(MouseEvent event) {
@@ -105,45 +130,47 @@ void mouseWheel(MouseEvent event) {
 
 
 void input() {
-  switch(keyCode) {
-    //ifShift, increase throttle 5%
-  case 16:
-    if (rocket.getThrottle() >= 96) {
-      rocket.setThrottle(100);
+  if (keyPressed) {
+    switch(keyCode) {
+      //ifShift, increase throttle 5%
+    case 16:
+      if (rocket.getThrottle() >= 96) {
+        rocket.setThrottle(100);
+        break;
+      } else {
+        rocket.setThrottle(rocket.getThrottle() + 5);
+        break;
+      }
+      //if CTRL or Control decrease throttle 5%
+    case 17:
+      if (rocket.getThrottle() <= 4) {
+        rocket.setThrottle(0);
+        break;
+      } else {
+        rocket.setThrottle(rocket.getThrottle() - 5);
+        break;
+      }
+      //ifESC is pressed, go to main menu
+    case 27:
+      game = false;
+      menu = true;
       break;
-    } else {
-      rocket.setThrottle(rocket.getThrottle() + 5);
+      //ifLeft arrow is pressed, turn 5 degrees left
+    case 37:
+      rocket.setChangedirection(-1);
       break;
-    }
-    //if CTRL or Control decrease throttle 5%
-  case 17:
-    if (rocket.getThrottle() <= 4) {
+      //ifRight arrow is pressed, turn 5 degrees right
+    case 39:
+      rocket.setChangedirection( 1);
+      break;
+      //ifX is pressed, turn off the engine
+    case 88:
       rocket.setThrottle(0);
       break;
-    } else {
-      rocket.setThrottle(rocket.getThrottle() - 5);
+      //ifZ is pressed, set the engine to max power.
+    case 90:
+      rocket.setThrottle(100);
       break;
     }
-    //ifESC is pressed, go to main menu
-  case 27:
-    game = false;
-    menu = true;
-    break;
-    //ifLeft arrow is pressed, turn 5 degrees left
-  case 37:
-    rocket.setChangedirection(-1);
-    break;
-    //ifRight arrow is pressed, turn 5 degrees right
-  case 39:
-    rocket.setChangedirection( 1);
-    break;
-    //ifX is pressed, turn off the engine
-  case 88:
-    rocket.setThrottle(0);
-    break;
-    //ifZ is pressed, set the engine to max power.
-  case 90:
-    rocket.setThrottle(100);
-    break;
   }
 }
