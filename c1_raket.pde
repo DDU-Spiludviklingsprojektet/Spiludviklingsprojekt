@@ -110,12 +110,16 @@ class Raket {
 
   //sets new throttle percentage
   void setThrottle(int x) {
-    throttle = x;
-    println("thr = " + throttle);
+    if (keyPressed == true &&(keyCode == 16 || keyCode == 17)) {
+      throttle = x;
+      println("thr = " + throttle);
+    }
   }
   void setChangedirection(float x) {
-    goalheading = (x*pi)/180+goalheading;
-    setHeading(goalheading+pi/2);
+    if (keyPressed == true &&(keyCode == 37 || keyCode == 39)) {
+      goalheading = (x*pi)/180+goalheading;
+      setHeading(goalheading+pi/2);
+    }
   }
   //input float sets heading vector direction
   void setHeading(float x) {
@@ -152,12 +156,23 @@ class Raket {
     println("drag = " + x);
     Drag = temp.setMag(x*-1);
   }
+  
   void planetcollision() {
-    if (Location.dist(earth.getPosition()) <= earth.getRadiusMag()&&Acceleration.y<=0) {
-      Velocity = new PVector(0, 0);
+    if (getNearestplanet() == "earth") {
+      PVector tempDist = PVector.sub(Location, earth.getPosition());
+      if (tempDist.mag() <= earth.getRadiusMag()&& PVector.dist(PVector.add(tempDist, Acceleration), earth.getPosition())<=tempDist.mag()) {
+        Velocity = new PVector(0, 0);
+        Location = PVector.add(earth.getPosition(), tempDist.setMag(earth.getRadiusMag()));
+      }
+    } else {
+      PVector tempDist = PVector.sub(Location, moon.getPosition());
+      if (tempDist.mag() <= moon.getRadiusMag()&& PVector.dist(PVector.add(tempDist, Acceleration), moon.getPosition())<=tempDist.mag()) {
+        Velocity = new PVector(0, 0);
+        Location = PVector.add(moon.getPosition(), tempDist.setMag(moon.getRadiusMag()));
+      }
     }
   }
-
+  
   //adds acceleration to velocity, and velocity to location.
   void forces() {
     Acceleration = new PVector();
@@ -180,9 +195,13 @@ class Raket {
     println(rocket.getNearestplanet());
   }
   void draw() {
+    if (zoomlevel >0.02){
     translate(width/2, height/2);
     rotate(goalheading);
     println(goalheading);
     shape(raket_img, 0-zoomlevel*10, 0-zoomlevel*10, zoomlevel*20, zoomlevel*20);
+    } else {
+      
+    }
   }
 }
