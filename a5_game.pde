@@ -116,8 +116,9 @@ void back2(){
   if(back_bt2.isClicked()){
   println("Upgrade");
   clear();
-  upgrade_page = true;
   game = false;
+  upgrade_page = true;
+
   }
   }
 
@@ -149,7 +150,7 @@ void overlays() {
 void highscore() {
   if (rocket.getAltitude()>highscore) {
     highscore = rocket.getAltitude();
-    money = money + highscore/1000;
+    money = money + int(highscore/1000);
   }
 }
 
