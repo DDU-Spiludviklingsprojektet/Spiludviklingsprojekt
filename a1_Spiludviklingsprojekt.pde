@@ -52,11 +52,19 @@ void settings() {
 
 //The function setup is used to 
 void setup() {
+  raket_img = loadShape(RAKET_IMG);  
+  cursor_img = loadImage(CURSOR_IMG);
+  arrow_img = loadShape(ARROW_IMG);
+  exit_img = loadShape(EXIT_IMG);
+  
+  
+  
+  
   //mysql_setup();
   home_setup();
-  //game_setup();
+  game_setup();
   upgrade_setup();
-  //boot();
+  boot();
   
 
 
@@ -67,10 +75,7 @@ void setup() {
 //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON_IMG));
   
-  raket_img = loadShape(RAKET_IMG);  
-  cursor_img = loadImage(CURSOR_IMG);
-  arrow_img = loadShape(ARROW_IMG);
-  exit_img = loadShape(EXIT_IMG);
+
   
   cursor(cursor_img, -32, -32);
   

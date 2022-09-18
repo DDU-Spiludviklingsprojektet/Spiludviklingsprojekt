@@ -12,7 +12,7 @@ PShape buttons_img;
 PShape empty_img;
 
 Button_rect start_bt;
-
+Button_ell mute_bt;
 
 
 String is_mute;
@@ -30,12 +30,16 @@ boolean circleOver2 = false;
 
 
 void home_setup() {
-  start_bt = new Button_rect(empty_img, 100, 100, 200, 60, width/1.99, height/1.9, 200, 60, 255, 0);
-
   background_img = loadShape(BACKGROUND_IMG);
   logo_img = loadImage(LOGO_IMG);
   buttons_img = loadShape(BUTTONS_IMG);
   empty_img = loadShape(EMPTY_IMG);
+  
+  
+  start_bt = new Button_rect(empty_img, 100, 100, 200, 60, width/1.99, height/1.365, 200, 60, 255, 0);
+  mute_bt = new Button_ell(200, 200, 60, 60);
+
+
 }
 
 void home() {
@@ -53,8 +57,14 @@ void home() {
     menu = false;
     upgrade_page = true;
   }
+  if (mute_bt.isClicked()) {
+  
+  
+  }
   start_bt.update_rect();
   start_bt.render();
+  mute_bt.update_ell();
+  mute_bt.render();
   
 }
 
