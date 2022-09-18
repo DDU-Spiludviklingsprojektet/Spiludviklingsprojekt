@@ -33,6 +33,7 @@ String sc1 = money_text + money;
 
 
 void upgrade_setup() {
+   background(200);
 //loads shapes and fonts
   back_img = loadShape(BACK_IMG);
   bit8 = createFont(BIT8_FONT, 32);
@@ -46,7 +47,7 @@ void upgrade_setup() {
   
 //Loads buttons - Back and lift off
   back_bt = new Button_rect(back_img, width/15, height/15, 128, 128, (width/15)+1, (height/15)-14, 122, 43, 255, 10);
-  //lift_offbt = new ButtonV(width/3, height*0.97 , 192, 192, 255);
+  lift_offbt = new Button_rect(lift_off_img, width/3, height*0.97 , 192, 192, width/2.995, (height*0.97)-20 , 178, 70, 255, 10);
   
   
 // Places buttons for upgrade menu
@@ -69,15 +70,27 @@ void upgrade() {
   shape (raket_img, 467, 465, 384, 384);
   
 //Back button updater, render and to check if it has been clicked
-  //back_bt.update_rect();
+  back_bt.update_rect();
+  back_bt.farve();
   back_bt.render();
+  lift_offbt.update_rect();
+  lift_offbt.farve();
+  lift_offbt.render();
+  
   if(back_bt.isClicked()){
+  println("Home");
+  clear();
   upgrade_page = false;
   menu = true;
   }
+  if(lift_offbt.isClicked()){
+  println("Game");
+  clear();
+  upgrade_page = false;
+  game = true;
+  }
   
 //Makes text fore Money
-  shape(lift_off_img, width/3, height*0.97 , 192, 192);
   textFont(bit8);
   textSize(20);
   fill(0);

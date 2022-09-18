@@ -33,23 +33,28 @@ class Button_upg {
       switch(upg) {
       case 0:
         println("0");
+        on = !on;
         break;
 
       case 1:
         println("1");
+        on = !on;
         break;
 
 
       case 2:
         println("2");
+        on = !on;
         break;
 
       case 3:
         println("3");
+        on = !on;
         break;
 
       case 4:
         println("4");
+        on = !on;
         break;
       }
     }

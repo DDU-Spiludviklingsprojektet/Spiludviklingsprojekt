@@ -126,6 +126,4 @@ class Button_ell {
   }
 }
 
-//mousePressed == true && mouseButton == LEFT && Pressed == false
-
 // - https://www.youtube.com/watch?v=z903vXot-Lg&ab_channel=ChristopherOckerby

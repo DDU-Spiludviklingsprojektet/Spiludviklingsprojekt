@@ -38,8 +38,8 @@ SoundFile menu_sound;
 
 
 //The following boolean statements are used to control the current page of the program.
-boolean menu = true;
-boolean upgrade_page = false;
+boolean menu = false;
+boolean upgrade_page = true;
 boolean game = false;
 boolean lb = false;
 
