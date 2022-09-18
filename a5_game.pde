@@ -144,7 +144,7 @@ void overlays() {
   textFont(bit8);
   textSize(20*width/1280);
   fill(255);
-  text("Fuel: " + rocket.getFuel() +  "\nThrottle: " + rocket.getThrottle() + "\nAltitude: " + rocket.getAltitude(), -width/2+width/20, -height/2+height/8);
+  text("Fuel: " + int(rocket.getFuel()) +  "\nThrottle: " + int(rocket.getThrottle()) + "\nAltitude: " + int(rocket.getAltitude()), -width/2+width/20, -height/2+height/8);
 }
 
 void highscore() {
