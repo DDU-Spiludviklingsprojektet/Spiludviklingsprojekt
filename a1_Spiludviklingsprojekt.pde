@@ -1,3 +1,6 @@
+//Firstly Libraries are imported, following libraries are imported:
+
+//Import of UI elements library.
 import uibooster.*;
 import uibooster.components.*;
 import uibooster.model.*;
@@ -5,12 +8,16 @@ import uibooster.model.formelements.*;
 import uibooster.model.options.*;
 import uibooster.utils.*;
 
-//Import of libraries for database and for making the windows resizeable
+//Import of JavaFX library.
 import processing.javafx.*;
+
+//Import of SQL library.
 import de.bezier.data.sql.mapper.*;
+
+//Import of the sound library.
 import processing.sound.*;
 
-//Variable setup, pretty self explainatory names
+//String variable is declared to store the parth to files used in the program.
 final static String TITLE = "Crab Space Program";
 final static String ICON_IMG = "data/img/icon.png";
 final static String CURSOR_IMG = "data/img/cursor.png";
@@ -22,8 +29,8 @@ final static String MENU_SOUND = "data/audio/title_sang.mp3";
 final static String ARROW_IMG = "data/svg/arrow.svg";
 final static String EXIT_IMG = "data/svg/exit.svg";
 String name;
-//Initializing variabls for shapes, images and sound
 
+//The strings are used for making PImage objects.
 PImage cursor_img;
 PImage background_img;
 PImage logo_img;
@@ -32,28 +39,32 @@ PShape raket_img;
 PShape arrow_img;
 PShape exit_img;
 
-
+//The strings are used for making SoundFile objects.
 SoundFile menu_sound;
 
+//Declariation of variables used for creating a grid of pictures in the background of the main menu.
 int cols;
 int rows;
+
+//The following boolean statements are used to control the current page of the program.
 boolean menu = false;
 boolean upgrade_page = false;
 boolean game = true;
 boolean lb = false;
 boolean mute = false;
 
+//The function settings i used to create a window with a specific size, to start.
 void settings() {
   size(1280, 720, FX2D);
 }
 
+//The function setup is used to 
 void setup() {
   //ProgressDialog dialog = new UiBooster().showProgressDialog("Please wait", "Waiting", 0, 120);
 
   mysql_setup();
   //dialog.setProgress(10);
-  frameRate(30);
-  //Set custom desktop icon
+y  //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON_IMG));
 
 
