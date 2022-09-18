@@ -195,9 +195,13 @@ class Raket {
     println(rocket.getNearestplanet());
   }
   void draw() {
+    if (zoomlevel >0.02){
     translate(width/2, height/2);
     rotate(goalheading);
     println(goalheading);
     shape(raket_img, 0-zoomlevel*10, 0-zoomlevel*10, zoomlevel*20, zoomlevel*20);
+    } else {
+      
+    }
   }
 }
