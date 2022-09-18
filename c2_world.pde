@@ -79,10 +79,20 @@ class Planet {
     return PVector.sub(Position, rocket.getLocation());
   }
 
-  void draw() {
-    if (zoomlevel >= 5 || rocket.getAltitude() >=2000) {
-      
+  void earthdraw() {
+    if (zoomlevel <= 0.2 || rocket.getAltitude() >=2000) {
+      shape(jorden_img, width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel*1.01, getRadiusMag()*2*zoomlevel*1.01);
     } else {
+      fill(0, 255, 0);
+      ellipseMode(CENTER);
+      circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
+    }
+  }
+  void moondraw() {
+    if (zoomlevel <= 0.2 || rocket.getAltitude() >=2000) {
+      shape(moon_img, width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel*1.01, getRadiusMag()*2*zoomlevel*1.01);
+    } else {
+      fill(100);
       ellipseMode(CENTER);
       circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
     }

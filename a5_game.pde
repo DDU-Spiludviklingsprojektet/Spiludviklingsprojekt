@@ -65,38 +65,37 @@ float G0 = 9.82;
 float zoomlevel = 5;
 int timewrap = 1;
 int frames = 0;
+float highscore = 0;
 
 //Creates Objects
 void game_setup() {
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass);
   rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
-  
+
   jorden_img = loadShape(JORDEN_IMG);
   moon_img = loadShape(MOON_IMG);
-  
 }
-void game() {
 
+void game() {
   rocket.forces();
   graphics();
   input();
   timewrap();
+  highscore();
 }
 
 void graphics() {
   gamebackground();
-  fill(0, 255, 0);
-  earth.draw();
-  fill(100);
-  moon.draw();
+  earth.earthdraw();
+  moon.moondraw();
   rocket.draw();
   overlays();
 }
 
 void gamebackground() {
-    if (rocket.getAltitude()>earth.getedgeofatmosphere()|| rocket.getNearestplanet()!="earth"){
-      background(0, 0, 0);
+  if (rocket.getAltitude()>earth.getedgeofatmosphere()|| rocket.getNearestplanet()!="earth") {
+    background(0, 0, 0);
   } else {
     //draw background that is black if rocket.getAltitude is equal to earth.getedgeofatmosphere, and is blue if rocket.getAltitude is 0 and gradually transisions between them
     background(0, 0, 255*((earth.getedgeofatmosphere()-rocket.getAltitude())/earth.getedgeofatmosphere()));
@@ -106,6 +105,13 @@ void gamebackground() {
 void overlays() {
   //Heri er alt dette der er oven på spillet
 }
+
+void highscore() {
+  if (rocket.getAltitude()>highscore) {
+    highscore = rocket.getAltitude();
+  }
+}
+
 
 void timewrap() {
   if (frames == 10) {
