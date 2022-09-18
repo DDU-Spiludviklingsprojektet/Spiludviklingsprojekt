@@ -19,7 +19,7 @@ final static String LOGO_IMG = "data/img/logo.png";
 final static String BUTTONS_IMG = "data/svg/buttons.svg";
 final static String RAKET_IMG = "data/svg/raket.svg";
 final static String MENU_SOUND = "data/audio/title_sang.mp3";
-
+String name;
 //Initializing variabls for shapes, images and sound
 
 PImage cursor_img;
@@ -33,7 +33,6 @@ SoundFile menu_sound;
 
 int cols;
 int rows;
-//
 boolean menu = false;
 boolean upgrade_page = true;
 boolean game = false;
@@ -74,11 +73,16 @@ void setup() {
   game_setup();
   upgrade_setup();
   boot();
+  lb();
 }
 
 
 //Code to exit fullscreen & program
 void draw() {
+  if (name == null) {
+  navnpopup();
+  }
+  //println(s);
   if (mute == true) {
     menu_sound.amp(0.0);
   } else {
@@ -90,6 +94,7 @@ void draw() {
       exit();
     }
   }
+  
   if (menu==true) {
     home();
   }
@@ -111,4 +116,15 @@ void background() {
   if ( height%background_img.height >0) {
     rows++;
   }
+}
+
+void navnpopup() {
+    name = new UiBooster().showTextInputDialog("Navn");
+    if (navntaget(name) == true){
+      new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
+      navnpopup();
+    }
+      else {
+      return;
+      }
 }
