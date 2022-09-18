@@ -61,10 +61,11 @@ void setup() {
   
   
   //mysql_setup();
-  home_setup();
-  game_setup();
-  upgrade_setup();
   boot();
+  home_setup();
+  upgrade_setup();
+  game_setup();
+  
   
 
 

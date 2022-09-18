@@ -6,6 +6,8 @@ PShape jorden_img;
 PShape moon_img;
 PShape end_img;
 PShape overlay_img;
+Button_rect back_bt2;
+
 
 //Initailisation of the objects used in the game.
 Planet earth;
@@ -72,6 +74,8 @@ float highscore = 0;
 
 //Creates Objects
 void game_setup() {
+  back_bt2 = new Button_rect(back_img, width/15, height/15, 128, 128, (width/15)+1, (height/15)-14, 122, 43, 255, 10);
+  
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass);
   rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
@@ -83,6 +87,10 @@ void game_setup() {
 }
 
 void game() {
+  back_bt2.update_rect();
+  back_bt2.farve();
+  back_bt2.render();
+  
   rocket.forces();
   graphics();
   input();
