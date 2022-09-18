@@ -13,7 +13,7 @@ final static String LIFT_OFF_IMG = "data/svg/lift_off.svg";
 PFont bit8;
 PShape back_img;
 PShape upgrade_img;
-PShape background_liftoff_img;
+PShape backgro_img;
 PShape kasse_tjek;
 PShape kasse;
 PShape raket_holder;
@@ -40,7 +40,7 @@ void upgrade_setup() {
   upgrade_img = loadShape(UPGRADE_IMG);
   kasse_tjek = loadShape(KASSE_TJEK_IMG);
   kasse = loadShape(KASSE_IMG);
-  background_liftoff_img = loadShape(BAGGRUND_IMG);
+  backgro_img = loadShape(BAGGRUND_IMG);
   raket_holder = loadShape(RAKET_HOLDER_IMG);
   back_img = loadShape(BACK_IMG);
   lift_off_img = loadShape(LIFT_OFF_IMG);
@@ -64,7 +64,7 @@ void upgrade() {
 //Places bacground images. Both for upgrade and for landscape
   shapeMode(CORNERS);
   shape(upgrade_img, (width*0.7), 0, width, height);
-  //shape(background_liftoff_img, 0, 0, 896, 720);
+  shape(backgro_img, 0, 0, 896, 720);
 //Places rocket
   shapeMode(CENTER);
   shape (raket_holder, 430, 400, 400, 500);
