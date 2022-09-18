@@ -29,7 +29,7 @@ float earthradius = 63710;
 //Is there an atmosphere?
 boolean earthatmosphere = true;
 //How far does the atmosphere go (Must still be a float with no atmosphere, but irrelevant in that case).
-float earthedgeofatmosphere = 50000;
+float earthedgeofatmosphere = 5000;
 //What is the air density at surface level, in kg per cubic meters (Air on earth about 1 kg per cubic meter)
 float earthairdensity = 1;
 //What is the mass of the object? In kg
