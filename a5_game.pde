@@ -44,11 +44,11 @@ float moonradius = 17100;
 //Is there an atmosphere?
 boolean moonatmosphere = false;
 //How far does the atmosphere go (Must still be a float with no atmosphere, but irrelevant in that case).
-float moonedgeofatmosphere = 50000;
+float moonedgeofatmosphere = 0;
 //What is the air density at surface level, in kg per cubic meters (Air on earth about 1 kg per cubic meter), again irrelevant if no atmosphere
-float moonairdensity = 1;
+float moonairdensity = 0;
 //What is the mass of the object? In kg
-float moonmass = pow(5.97, 23);
+float moonmass = pow(5.97, 22);
 
 //Physics variables, used for later calculation
 float pi = 3.14;
@@ -79,6 +79,7 @@ void graphics() {
   fill(100);
   moon.planetdraw();
   rocket.draw();
+  overlays();
 }
 
 void gamebackground() {
@@ -88,6 +89,10 @@ void gamebackground() {
     //draw background that is black if rocket.getAltitude is equal to earth.getedgeofatmosphere, and is blue if rocket.getAltitude is 0 and gradually transisions between them
     background(0, 0, 255*((earth.getedgeofatmosphere()-rocket.getAltitude())/earth.getedgeofatmosphere()));
   }
+}
+
+void overlays() {
+  //Heri er alt dette der er oven på spillet
 }
 
 void mouseWheel(MouseEvent event) {

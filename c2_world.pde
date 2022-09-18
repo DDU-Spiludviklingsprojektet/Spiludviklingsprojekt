@@ -86,6 +86,8 @@ class Planet {
     println("planloc = " + getDistance());
     println("rad = " + getRadiusMag());
     ellipseMode(CENTER);
+    //translate(width/2+getDistance().x*zoomlevel,height/2+getDistance().x*zoomlevel);
+    //circle(0,0,getRadiusMag()*2*zoomlevel);
     println("x = " + (width/2+getDistance().x*zoomlevel-getRadiusMag()*zoomlevel));
     println("y = " + (height/2+getDistance().y*zoomlevel-getRadiusMag()*zoomlevel));
     circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);

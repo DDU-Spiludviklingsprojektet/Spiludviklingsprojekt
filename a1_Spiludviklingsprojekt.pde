@@ -38,8 +38,8 @@ SoundFile menu_sound;
 int cols;
 int rows;
 boolean menu = false;
-boolean upgrade_page = true;
-boolean game = false;
+boolean upgrade_page = false;
+boolean game = true;
 boolean lb = false;
 boolean mute = false;
 
@@ -48,10 +48,10 @@ void settings() {
 }
 
 void setup() {
-//ProgressDialog dialog = new UiBooster().showProgressDialog("Please wait", "Waiting", 0, 120);
+  //ProgressDialog dialog = new UiBooster().showProgressDialog("Please wait", "Waiting", 0, 120);
 
   mysql_setup();
-//dialog.setProgress(10);
+  //dialog.setProgress(10);
   frameRate(30);
   //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON_IMG));
@@ -71,7 +71,7 @@ void setup() {
   arrow_img = loadShape(ARROW_IMG);
   exit_img = loadShape(EXIT_IMG);
   cursor(cursor_img, -32, -32);
-//dialog.setProgress(60);
+  //dialog.setProgress(60);
   logox = width/2;
   logoy = height/4;
   logosize = width/3;
@@ -83,8 +83,8 @@ void setup() {
   upgrade_setup();
   boot();
   //dialog.setProgress(120);
-//dialog.setMessage("Ready");
-//dialog.close();
+  //dialog.setMessage("Ready");
+  //dialog.close();
 }
 
 
@@ -105,7 +105,7 @@ void draw() {
       exit();
     }
   }
-  
+
   if (menu==true) {
     home();
   }
@@ -130,12 +130,11 @@ void background() {
 }
 
 void navnpopup() {
-    name = new UiBooster().showTextInputDialog("Navn");
-    if (navntaget(name) == true){
-      new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
-      navnpopup();
-    }
-      else {
-      return;
-      }
+  name = new UiBooster().showTextInputDialog("Navn");
+  if (navntaget(name) == true) {
+    new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
+    navnpopup();
+  } else {
+    return;
+  }
 }
