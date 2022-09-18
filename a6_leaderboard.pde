@@ -1,4 +1,4 @@
-// fjenett 20120226 //<>//
+ //<>//
 StringList navne;
 import de.bezier.data.sql.*; //<>//
 

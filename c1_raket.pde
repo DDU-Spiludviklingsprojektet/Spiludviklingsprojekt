@@ -117,9 +117,13 @@ class Raket {
   }
   void setChangedirection(float x) {
     if (keyPressed == true &&(keyCode == 37 || keyCode == 39)) {
-      goalheading = (x*pi)/180+goalheading;
-      setHeading(goalheading+pi/2);
+      goalheading = radians(x)+goalheading;
+      setHeading(goalheading+PI/2);
     }
+  }
+  
+  float getGoalheading() {
+    return goalheading;
   }
   //input float sets heading vector direction
   void setHeading(float x) {

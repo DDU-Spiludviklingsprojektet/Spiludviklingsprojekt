@@ -63,7 +63,6 @@ float moonairdensity = 0;
 float moonmass = pow(5.97, 22);
 
 //Various vaiables used for the game.
-float pi = 3.14;
 float G = pow(6.674, -11);
 float G0 = 9.82;
 float zoomlevel = 5;
@@ -97,6 +96,15 @@ void graphics() {
   moon.moondraw();
   rocket.draw();
   overlays();
+  end();
+}
+
+void end() {
+  if (rocket.getNearestplanet() == "moon" && rocket.getAltitude() <=5) {
+    rotate(-rocket.getGoalheading());
+    shapeMode(CENTER);
+    shape(end_img, 0, 0, width, height);
+  }
 }
 
 void gamebackground() {
