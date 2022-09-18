@@ -16,8 +16,8 @@ PShape kasse_tjek;
 PShape kasse;
 PShape raket_holder;
 PShape lift_off_img;
-ButtonV back_bt;
-ButtonV lift_offbt;
+Button_rect back_bt;
+Button_rect lift_offbt;
 
 Button[][] buttons = new Button[5][5];
 int[] upgrades = new int[5];
@@ -30,7 +30,7 @@ String sc1 = money_text + money;
 
 void upgrade_setup() {
   back_img = loadShape(BACK_IMG);
-  back_bt = new ButtonV(back_img, width/15, height/15, 128, 128, (width/15)+1, (height/15)-14, 122, 43, 255, 10);
+  back_bt = new Button_rect(back_img, width/15, height/15, 128, 128, (width/15)+1, (height/15)-14, 122, 43, 255, 10);
   //lift_offbt = new ButtonV(width/3, height*0.97 , 192, 192, 255);
   
   bit8 = createFont(BIT8_FONT, 32);
