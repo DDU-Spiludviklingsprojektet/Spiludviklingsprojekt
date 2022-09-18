@@ -1,3 +1,8 @@
+final static String JORDEN_IMG = "data/svg/jorden.svg";
+final static String MOON_IMG = "data/svg/moon.svg";
+PShape jorden_img;
+PShape moon_img;
+
 //Initailisation of the objects used in the game.
 Planet earth;
 Planet moon;
@@ -64,6 +69,10 @@ void game_setup() {
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass);
   rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
+  
+  jorden_img = loadShape(JORDEN_IMG);
+  moon_img = loadShape(MOON_IMG);
+  
 }
 void game() {
   rocket.forces();

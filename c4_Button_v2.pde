@@ -28,7 +28,7 @@ class Button_rect {
     corners = c;
   }
 
-  void update()
+  void update_rect()
   {
     if (mouseX>=button_Pos.x-(button_Width/2) && mouseX <= button_Pos.x+(button_Width/2) && mouseY >= button_Pos.y-(button_Height/2) && mouseY <= button_Pos.y+(button_Height/2))
     {
@@ -51,7 +51,7 @@ class Button_rect {
     fill(farve);
     rectMode(CENTER);
     shapeMode(CENTER);
-    shape(button_img, img_Pos.x, img_Pos.y, img_Width, img_Height);
+    //shape(button_img, img_Pos.x, img_Pos.y, img_Width, img_Height);
     rect(button_Pos.x, button_Pos.y, button_Width, button_Height, corners);
   }
   boolean isClicked() {
