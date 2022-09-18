@@ -40,7 +40,7 @@ void upgrade_setup() {
   background_liftoff_img = loadShape(BAGGRUND_IMG);
   raket_holder = loadShape(RAKET_HOLDER_IMG);
   back_img = loadShape(BACK_IMG);
-  lift_off_img = loadShape(LIFT_OFF_IMG);
+  //lift_off_img = loadShape(LIFT_OFF_IMG);
   // A loop to evenly space out the buttons along the window
   for (int upg = 0; upg < upgrades.length; upg++) {
     for (int i = 0; i < buttons.length; i++) {

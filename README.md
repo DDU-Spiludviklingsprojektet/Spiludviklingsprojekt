@@ -5,6 +5,9 @@ Dette er vores repository til DDU SO6 projektet, hvor at vi udvikler et spil til
 
 Programmet ligger både som en processsing fil, hvori man kan se koden og køre det selv, samt som en .exe fil, hvis man bare vil køre spillet.
 
+Hvis at man vil køre koden selv i processing skal man benytte følgende libraries:
+
+
 I vores kode har vi følgende funktioner
 Til Raket objekt er der følgende get funktioner:
 - getCurrentmass() 

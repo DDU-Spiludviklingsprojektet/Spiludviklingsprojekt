@@ -1,6 +1,9 @@
+//Initailisation of the objects used in the game.
 Planet earth;
 Planet moon;
 Raket rocket;
+
+//A lot of different values for easy tweaking. 
 
 //set values for rocket
 // Drymass in KG
@@ -50,12 +53,11 @@ float moonairdensity = 0;
 //What is the mass of the object? In kg
 float moonmass = pow(5.97, 22);
 
-//Physics variables, used for later calculation
+//Various vaiables used for the game.
 float pi = 3.14;
 float G = pow(6.674, -11);
 float G0 = 9.82;
-int i = 0;
-float zoomlevel = 1;
+float zoomlevel = 5;
 
 //Creates Objects
 void game_setup() {
@@ -67,17 +69,14 @@ void game() {
   rocket.forces();
   graphics();
   input();
-  println("zoom = " + zoomlevel);
-  println(i);
-  i++;
 }
 
 void graphics() {
   gamebackground();
   fill(0, 255, 0);
-  earth.planetdraw();
+  earth.draw();
   fill(100);
-  moon.planetdraw();
+  moon.draw();
   rocket.draw();
   overlays();
 }

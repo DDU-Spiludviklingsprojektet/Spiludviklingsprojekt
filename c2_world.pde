@@ -19,7 +19,6 @@ class Planet {
 
   //function returns positionvector of the planet
   PVector getPosition() {
-
     return Position;
   }
 
@@ -42,13 +41,11 @@ class Planet {
 
   //returns radius
   float getradius() {
-
     return Radius.y;
   }
 
   //returns atmosphere
   boolean getatmosphere() {
-
     return atmosphere;
   }
 
@@ -82,14 +79,8 @@ class Planet {
     return PVector.sub(Position, rocket.getLocation());
   }
 
-  void planetdraw() {
-    println("planloc = " + getDistance());
-    println("rad = " + getRadiusMag());
+  void draw() {
     ellipseMode(CENTER);
-    //translate(width/2+getDistance().x*zoomlevel,height/2+getDistance().x*zoomlevel);
-    //circle(0,0,getRadiusMag()*2*zoomlevel);
-    println("x = " + (width/2+getDistance().x*zoomlevel-getRadiusMag()*zoomlevel));
-    println("y = " + (height/2+getDistance().y*zoomlevel-getRadiusMag()*zoomlevel));
     circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
   }
 }
