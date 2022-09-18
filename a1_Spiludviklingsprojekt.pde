@@ -33,9 +33,9 @@ SoundFile menu_sound;
 
 int cols;
 int rows;
-boolean menu = false;
+boolean menu = true;
 boolean upgrade_page = false;
-boolean game = true;
+boolean game = false;
 boolean lb = false;
 boolean mute = false;
 
@@ -44,7 +44,10 @@ void settings() {
 }
 
 void setup() {
+ProgressDialog dialog = new UiBooster().showProgressDialog("Please wait", "Waiting", 0, 120);
+
   mysql_setup();
+dialog.setProgress(10);
   frameRate(30);
   //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON_IMG));
@@ -62,26 +65,28 @@ void setup() {
   // Load custom cursor
   cursor_img = loadImage(CURSOR_IMG);
   cursor(cursor_img, -32, -32);
-
+dialog.setProgress(60);
   logox = width/2;
   logoy = height/4;
   logosize = width/3;
   buttonsx = width/2;
   buttonsy = height*0.7;
   buttonssize = width/3;
-
+  home_setup();
   game_setup();
   upgrade_setup();
   boot();
-  lb();
+  dialog.setProgress(120);
+dialog.setMessage("Ready");
+dialog.close();
 }
 
 
 //Code to exit fullscreen & program
 void draw() {
-  if (name == null) {
-  navnpopup();
-  }
+  //if (name == null) {
+  //navnpopup();
+  //}
   //println(s);
   if (mute == true) {
     menu_sound.amp(0.0);

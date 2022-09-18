@@ -7,8 +7,8 @@ color rectHighlight, circleHighlight;
 float circleSize;  // Diameter of circle
 color currentColor;
 boolean rectOver = false;
-boolean circleOver = false;
-
+boolean circleOver1 = false;
+boolean circleOver2 = false;
 
 
 float logox;
@@ -17,6 +17,28 @@ float logosize;
 float buttonsx;
 float buttonsy;
 float buttonssize;
+
+void home_setup() {
+  background(200);
+  rectColor = color(255, 255, 255, 0);
+  rectHighlight = color(#66000000);
+  circleColor = color(255, 255, 255, 0);
+  circleHighlight = color(204);
+  baseColor = color(102);
+  currentColor = baseColor;
+  circleX = width/2.547;
+  circleY = height/1.9;
+  circle2X = (width/1.643);
+  circle2Y = (height/1.9);
+  circleSize = width/20;
+  rectX = width/1.99;
+  rectY = height/1.37;
+  rectwidth = 200;  // Diameter of rect
+  rectheight = 60;
+  rectMode(CENTER);
+  ellipseMode(CENTER); 
+  
+}
 
 void home() {
   background();
@@ -36,39 +58,57 @@ void home() {
 
   update(mouseX, mouseY);
   if (rectOver) {
-    fill(#66000000);
+    fill(rectHighlight);
   } else {
     fill(rectColor);
   }
-
   stroke(255);
   rect(rectX, rectY, rectwidth, rectheight);
-
-  if (circleOver) {
+  if (circleOver1) {
     fill(circleHighlight);
   } else {
     fill(circleColor);
   }
   stroke(0);
   ellipse(circleX, circleY, circleSize, circleSize);
-  ellipse(circle2X, circle2Y, width/20, width/20);
+  
+    if (circleOver2) {
+    fill(circleHighlight);
+  } else {
+    fill(circleColor);
+  }
+  stroke(0);
+  ellipse(circle2X, circle2Y, circleSize, circleSize);
 }
+
+
 void update(int x, int y) {
   if ( overCircle(circleX, circleY, circleSize) ) {
-    circleOver = true;
+    circleOver1 = true;
+    circleOver2 = false;
     rectOver = false;
   } else if ( overRect(rectX, rectY, rectwidth, rectheight) ) {
     rectOver = true;
-    circleOver = false;
-  } else {
-    circleOver = rectOver = false;
+    circleOver1 = false;
+    circleOver2 = false;
+  } else if (overCircle(circle2X, circle2Y, circleSize)) {
+    rectOver = false;
+    circleOver1 = false;
+    circleOver2 = true;
+  }
+  else {
+    circleOver1 = circleOver2 = rectOver = false;
   }
 }
 
 void mousePressed() {
-  if (menu == true && circleOver) {
+  if (menu == true && circleOver1) {
     currentColor = circleColor;
     mute = !mute;
+  }
+  if (menu == true && circleOver2) {
+    currentColor = circleColor;
+    lb();
   }
   if (menu == true && rectOver) {
     currentColor = rectColor;
