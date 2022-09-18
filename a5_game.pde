@@ -55,6 +55,7 @@ float pi = 3.14;
 float G = pow(6.674, -11);
 float G0 = 9.82;
 int i = 0;
+float zoomlevel = 1;
 
 //Creates Objects
 void game_setup() {
@@ -64,10 +65,44 @@ void game_setup() {
 }
 void game() {
   rocket.forces();
+  graphics();
   input();
+  println("zoom = " + zoomlevel);
   println(i);
   i++;
 }
+
+void graphics() {
+    gamebackground();
+    earth.draw();
+    //moon.draw();
+    rocket.draw();
+}
+
+void gamebackground(){
+    if(rocket.getAltitude()>earth.getedgeofatmosphere()){
+        background(0,0,0);
+    } else {
+        //draw background that is black if rocket.getAltitude is equal to earth.getedgeofatmosphere, and is blue if rocket.getAltitude is 0 and gradually transisions between them
+        background(0,0, 255*((earth.getedgeofatmosphere()-rocket.getAltitude())/earth.getedgeofatmosphere()));
+    }
+}
+
+void mouseWheel(MouseEvent event) {
+  float e = event.getCount();
+  if (e > 0) {
+    zoomlevel = zoomlevel*1.1;
+  } else if (e < 0) {
+    zoomlevel = zoomlevel*0.9;
+  }
+}
+/*mousewheel(MouseEvent event) {
+    if (event.getCount() > 0) {
+        zoomlevel = zoomlevel * 0.95;
+    } else if(event.getCount() < 0){
+        zoomlevel = zoomlevel * 1.05;
+    }
+}*/
 
 void input() {
   switch(keyCode) {
@@ -96,11 +131,11 @@ void input() {
     break;
     //ifLeft arrow is pressed, turn 5 degrees left
   case 37:
-    rocket.setHeading(1);
+    rocket.setChangedirection(-1);
     break;
     //ifRight arrow is pressed, turn 5 degrees right
   case 39:
-    rocket.setHeading( - 1);
+    rocket.setChangedirection( 1);
     break;
     //ifX is pressed, turn off the engine
   case 88:
