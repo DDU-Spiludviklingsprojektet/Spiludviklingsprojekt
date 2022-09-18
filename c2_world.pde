@@ -80,7 +80,11 @@ class Planet {
   }
 
   void draw() {
-    ellipseMode(CENTER);
-    circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
+    if (zoomlevel >= 5 || rocket.getAltitude() >=2000) {
+      
+    } else {
+      ellipseMode(CENTER);
+      circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
+    }
   }
 }

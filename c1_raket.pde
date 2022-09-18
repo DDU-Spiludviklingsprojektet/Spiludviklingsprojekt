@@ -167,7 +167,8 @@ class Raket {
       }
     } else {
       PVector tempDist = PVector.sub(Location, moon.getPosition());
-      if (tempDist.mag() <= moon.getRadiusMag()&& PVector.dist(PVector.add(tempDist, Acceleration), moon.getPosition())<=tempDist.mag()) {
+      println("temDist = "+ tempDist);
+      if (tempDist.mag() <= moon.getRadiusMag()&& PVector.dist(PVector.add(tempDist, Acceleration), earth.getPosition())<=tempDist.mag()) {
         Velocity = new PVector(0, 0);
         Location = PVector.add(moon.getPosition(), tempDist.setMag(moon.getRadiusMag()));
       }
