@@ -32,29 +32,73 @@ class Button_upg {
     if (mx > x && mx < x + w && my > y && my < y + h) {
       switch(upg) {
       case 0:
-        println("0");
-        on = !on;
+        if (b[0][index02].on == false) {
+          if (b[0][index02].index02 == 0 && money >= 100) {
+            on = !on;
+            money = money - 100;
+            ISP = ISP + 20;
+          } else if (b[0][index02-1].on == true && money >= 100) {
+            on = !on;
+            money = money - 100;
+            ISP = ISP + 20;
+          }
+        }
         break;
 
       case 1:
-        println("1");
-        on = !on;
+        if (b[1][index02].on == false) {
+          if (b[1][index02].index02 == 0 && money >= 200) {
+            on = !on;
+            money = money - 200;
+            power = power + 5;
+          } else if (b[1][index02-1].on == true&& money >= 200) {
+            on = !on;
+            money = money - 200;
+            power = power + 5;
+          }
+        }
         break;
-
-
+        
       case 2:
-        println("2");
-        on = !on;
+        if (b[2][index02].on == false) {
+          if (b[2][index02].index02 == 0 && money >= 200) {
+            on = !on;
+            money = money - 200;
+            drymass = drymass - 2000;
+          } else if (b[2][index02-1].on == true && money >= 200) {
+            on = !on;
+            money = money - 200;
+            drymass = drymass - 2000;
+          }
+        }
         break;
 
       case 3:
-        println("3");
-        on = !on;
+        if (b[3][index02].on == false) {
+          if (b[3][index02].index02 == 0 && money >= 200) {
+            on = !on;
+            money = money - 200;
+            fueldensity = fueldensity + 0.16;
+          } else if (b[3][index02-1].on == true && money >= 200) {
+            on = !on;
+            money = money - 200;
+            fueldensity = fueldensity + 0.16;
+          }
+        }
         break;
 
       case 4:
-        println("4");
-        on = !on;
+        if (b[4][index02].on == false) {
+          if (b[4][index02].index02 == 0 && money >= 200) {
+            on = !on;
+            money = money - 200;
+            CD = CD - 0.1;
+          } else if (b[4][index02-1].on == true && money >= 200) {
+            on = !on;
+            money = money - 200;
+            CD = CD - 0.1;
+          }
+        }
         break;
       }
     }

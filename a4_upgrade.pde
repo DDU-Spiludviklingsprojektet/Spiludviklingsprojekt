@@ -26,7 +26,7 @@ Button_upg[][] buttons = new Button_upg[5][5];
 int[] upgrades = new int[5];
 String[] upgrade_name = {"ISP", "Power", "Drymass", "Fueldensity", "CD"};
 
-int money = 1000;
+int money = 2000;
 String money_text = "Money:";
 String sc1 = money_text + money;
 
@@ -60,10 +60,11 @@ void upgrade_setup() {
 
 
 void upgrade() {
+  background(200);
 //Places bacground images. Both for upgrade and for landscape
   shapeMode(CORNERS);
   shape(upgrade_img, (width*0.7), 0, width, height);
-  shape(background_liftoff_img, -20, 0, (width*0.7), height);
+  //shape(background_liftoff_img, 0, 0, 896, 720);
 //Places rocket
   shapeMode(CENTER);
   shape (raket_holder, 430, 400, 400, 500);
@@ -91,6 +92,7 @@ void upgrade() {
   }
   
 //Makes text fore Money
+String sc1 = money_text + money;
   textFont(bit8);
   textSize(20);
   fill(0);
