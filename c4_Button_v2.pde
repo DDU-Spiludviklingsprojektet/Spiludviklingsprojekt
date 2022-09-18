@@ -1,4 +1,4 @@
-class ButtonV {
+class Button_rect {
 
 
   PShape button_img;
@@ -13,7 +13,7 @@ class ButtonV {
   color farve;
   float corners;
   //Constructer to create a button
-  ButtonV(PShape img, float img_x, float img_y, float img_w, float img_h, float button_x, float button_y, float button_w, float button_h, int f, float c)
+  Button_rect(PShape img, float img_x, float img_y, float img_w, float img_h, float button_x, float button_y, float button_w, float button_h, int f, float c)
   {
     button_img = img;
     img_Pos.x = img_x;
@@ -26,7 +26,6 @@ class ButtonV {
     button_Height = button_h;
     farve = color(f);
     corners = c;
-
   }
 
   void updateV()
@@ -46,16 +45,64 @@ class ButtonV {
       Pressed = false;
     }
   }
-  
-  void renderV(){
-  noStroke();
-  fill(farve);
-  rectMode(CENTER);
-  shapeMode(CENTER);
-  shape(button_img, img_Pos.x, img_Pos.y, img_Width, img_Height);
-  rect(button_Pos.x, button_Pos.y, button_Width, button_Height, corners);
+
+  void render() {
+    noStroke();
+    fill(farve);
+    rectMode(CENTER);
+    shapeMode(CENTER);
+    shape(button_img, img_Pos.x, img_Pos.y, img_Width, img_Height);
+    rect(button_Pos.x, button_Pos.y, button_Width, button_Height, corners);
   }
   boolean isClicked() {
-  return Clicked;
+    return Clicked;
+  }
+}
+
+
+class Button_ell {
+  PVector Pos = new PVector(0, 0);
+  float Width = 0;
+  float Height = 0;
+  Boolean Pressed = false;
+  Boolean Clicked = false;
+  color farve;
+  //Constructer to create a button
+  Button_ell(float x, float y, float h, float w)
+  {
+    Pos.x = x;
+    Pos.y = y;
+    Width = w;
+    Height = h;
+    //farve = color(f);
+  }
+
+  void updateV()
+  {
+    float disX = Pos.x - mouseX;
+    float disY = Pos.y - mouseY;
+    if (sqrt(sq(disX) + sq(disY)) < Width/2)
+    {
+      //Pressed = true;
+      farve = #66000000;
+      if (mousePressed == true && mouseButton == LEFT && Pressed == false)
+      {
+        Clicked = true;
+      }
+    } else
+    {
+      farve = color(255, 255, 255, 0);
+      Clicked = false;
+      Pressed = false;
+    }
+  }
+
+  void render() {
+    noStroke();
+    fill(farve);
+    ellipse(Pos.x, Pos.y, Width, Height);
+  }
+  boolean isClicked() {
+    return Clicked;
   }
 }

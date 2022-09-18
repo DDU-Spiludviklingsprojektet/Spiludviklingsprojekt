@@ -21,9 +21,7 @@ import processing.sound.*;
 final static String TITLE = "Crab Space Program";
 final static String ICON_IMG = "data/img/icon.png";
 final static String CURSOR_IMG = "data/img/cursor.png";
-final static String BACKGROUND_IMG = "data/background.gif";
-final static String LOGO_IMG = "data/img/logo.png";
-final static String BUTTONS_IMG = "data/svg/buttons.svg";
+
 final static String RAKET_IMG = "data/svg/raket.svg";
 final static String MENU_SOUND = "data/audio/title_sang.mp3";
 final static String ARROW_IMG = "data/svg/arrow.svg";
@@ -32,9 +30,7 @@ String name;
 
 //The strings are used for making PImage objects.
 PImage cursor_img;
-PImage background_img;
-PImage logo_img;
-PShape buttons_img;
+
 PShape raket_img;
 PShape arrow_img;
 PShape exit_img;
@@ -72,10 +68,9 @@ y  //Set custom desktop icon
   menu_sound.loop();
 
   surface.setTitle(TITLE);
-  surface.setResizable(true);
+  //surface.setResizable(true);
 
-  logo_img = loadImage(LOGO_IMG);
-  buttons_img = loadShape(BUTTONS_IMG);
+
   raket_img = loadShape(RAKET_IMG);
   // Load custom cursor
   cursor_img = loadImage(CURSOR_IMG);
@@ -105,17 +100,6 @@ void draw() {
   //navnpopup();
   //}
   //println(s);
-  if (mute == true) {
-    menu_sound.amp(0.0);
-  } else {
-    menu_sound.amp(1.0);
-  }
-
-  if (keyPressed) {
-    if (key == 'u') {
-      exit();
-    }
-  }
 
   if (menu==true) {
     home();
@@ -128,17 +112,6 @@ void draw() {
   }
 }
 
-void background() {
-  background_img = loadImage(BACKGROUND_IMG);
-  cols = width/background_img.width;
-  rows = height/background_img.height;
-  if ( width%background_img.width> 0) {
-    cols++;
-  }
-  if ( height%background_img.height >0) {
-    rows++;
-  }
-}
 
 void navnpopup() {
   name = new UiBooster().showTextInputDialog("Navn");

@@ -1,3 +1,14 @@
+final static String BACKGROUND_IMG = "data/svg/forside_baggrund.svg";
+final static String LOGO_IMG = "data/img/logo.png";
+final static String BUTTONS_IMG = "data/svg/buttons.svg";
+final static String BUTTONS_RED_IMG = "data/svg/buttons_red.svg";
+
+PShape background_img;
+PImage logo_img;
+PShape buttons_img;
+
+
+String is_mute;
 float rectX, rectY;      // Position of square button
 float circleX, circleY, circle2X, circle2Y;  // Position of circle button
 int rectwidth;  // Diameter of rect
@@ -9,7 +20,6 @@ color currentColor;
 boolean rectOver = false;
 boolean circleOver1 = false;
 boolean circleOver2 = false;
-
 
 float logox;
 float logoy;
@@ -37,21 +47,19 @@ void home_setup() {
   rectheight = 60;
   rectMode(CENTER);
   ellipseMode(CENTER);
+  
+  
+  background_img = loadShape(BACKGROUND_IMG);
+  logo_img = loadImage(LOGO_IMG);
+  buttons_img = loadShape(BUTTONS_IMG);
 }
 
 void home() {
-  background();
-  for (int y=0; y<rows; y++) {
-    for (int x=0; x<cols; x++) {
-      image(background_img, (x*background_img.width), (y*background_img.height));
-    }
-  }
-
-
+  
+  shapeMode(CORNERS);
+  shape(background_img, 0, 0, width, height);
   shapeMode(CENTER);
   imageMode(CENTER);
-  //logo.resize(width/3,width/3);
-  //image(logo,((width/2)-(logo.height/2)),((height/4)-(logo.height/2)));
   image(logo_img, width/2, height/4, width/3, width/3);
   shape(buttons_img, (width/2), (height*0.7), width/3, width/3);
 
@@ -100,7 +108,7 @@ void update(int x, int y) {
 void mousePressed() {
   if (menu == true && circleOver1) {
     currentColor = circleColor;
-    mute = !mute;
+    mute();
   }
   if (menu == true && circleOver2) {
     currentColor = circleColor;
@@ -137,4 +145,18 @@ boolean overCircle(float x, float y, float diameter) {
   } else {
     return false;
   }
+}
+
+
+void mute(){
+  if (mute == false) {
+    menu_sound.amp(0.0);
+    mute = true;
+    buttons_img = loadShape(BUTTONS_RED_IMG);
+  } else if (mute == true) {
+    menu_sound.amp(1.0);
+    mute = false;
+    buttons_img = loadShape(BUTTONS_IMG);
+  }
+
 }
