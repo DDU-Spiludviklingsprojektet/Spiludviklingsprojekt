@@ -46,8 +46,8 @@ void upgrade() {
   shape(upgrade_img, (width*0.7), 0, width, height);
   shape(background_liftoff_img, -20, 0, (width*0.7), height);
   shapeMode(CENTER);
-  shape (raket_holder, 500, 400, 200, 500);
-  shape (raket_img, 467, 475, 384, 384);
+  shape (raket_holder, 430, 400, 400, 500);
+  shape (raket_img, 467, 465, 384, 384);
   shape (left_img, width/15, height/15, 128, 128);
 
   textFont(bit8);

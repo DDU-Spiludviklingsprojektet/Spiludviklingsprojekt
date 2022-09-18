@@ -68,8 +68,6 @@ class Button {
     rect(x, y, w, h);
   }
 
-
-
   void if_money_buy_switch(Button[][] b, int upg, int amount) {
     if (money > amount) {
       if (b[upg][index02].on == false && b[upg][index02].index02 == 0 ) {

@@ -19,7 +19,7 @@ final static String LOGO_IMG = "data/img/logo.png";
 final static String BUTTONS_IMG = "data/svg/buttons.svg";
 final static String RAKET_IMG = "data/svg/raket.svg";
 final static String MENU_SOUND = "data/audio/title_sang.mp3";
-
+String name;
 //Initializing variabls for shapes, images and sound
 
 PImage cursor_img;
@@ -33,10 +33,9 @@ SoundFile menu_sound;
 
 int cols;
 int rows;
-//
-boolean menu = false;
+boolean menu = true;
 boolean upgrade_page = false;
-boolean game = true;
+boolean game = false;
 boolean lb = false;
 boolean mute = false;
 
@@ -45,7 +44,10 @@ void settings() {
 }
 
 void setup() {
+ProgressDialog dialog = new UiBooster().showProgressDialog("Please wait", "Waiting", 0, 120);
+
   mysql_setup();
+dialog.setProgress(10);
   frameRate(30);
   //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON_IMG));
@@ -63,22 +65,29 @@ void setup() {
   // Load custom cursor
   cursor_img = loadImage(CURSOR_IMG);
   cursor(cursor_img, -32, -32);
-
+dialog.setProgress(60);
   logox = width/2;
   logoy = height/4;
   logosize = width/3;
   buttonsx = width/2;
   buttonsy = height*0.7;
   buttonssize = width/3;
-
+  home_setup();
   game_setup();
   upgrade_setup();
   boot();
+  dialog.setProgress(120);
+dialog.setMessage("Ready");
+dialog.close();
 }
 
 
 //Code to exit fullscreen & program
 void draw() {
+  //if (name == null) {
+  //navnpopup();
+  //}
+  //println(s);
   if (mute == true) {
     menu_sound.amp(0.0);
   } else {
@@ -90,6 +99,7 @@ void draw() {
       exit();
     }
   }
+  
   if (menu==true) {
     home();
   }
@@ -111,4 +121,15 @@ void background() {
   if ( height%background_img.height >0) {
     rows++;
   }
+}
+
+void navnpopup() {
+    name = new UiBooster().showTextInputDialog("Navn");
+    if (navntaget(name) == true){
+      new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
+      navnpopup();
+    }
+      else {
+      return;
+      }
 }
