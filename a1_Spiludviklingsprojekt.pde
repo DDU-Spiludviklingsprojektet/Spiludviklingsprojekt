@@ -1,4 +1,8 @@
 //Firstly Libraries are imported, following libraries are imported:
+//JAVAFX
+//Sound
+//BezierSQLLib
+//UiBooster
 
 //Import of UI elements library.
 import uibooster.*;
@@ -50,47 +54,25 @@ void settings() {
   size(1280, 720, FX2D);
 }
 
-//The function setup is used to 
+//The function setup is used to
 void setup() {
-  raket_img = loadShape(RAKET_IMG);  
+  raket_img = loadShape(RAKET_IMG);
   cursor_img = loadImage(CURSOR_IMG);
   arrow_img = loadShape(ARROW_IMG);
   exit_img = loadShape(EXIT_IMG);
-  
-  
-  
-  
-  //mysql_setup();
-  boot();
   home_setup();
   upgrade_setup();
   game_setup();
-  
-  
-
-
-
-
   surface.setTitle(TITLE);
-
-//Set custom desktop icon
+  //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON_IMG));
-  
-
-  
   cursor(cursor_img, -32, -32);
-  
   menu_sound = new SoundFile(this, MENU_SOUND);
   menu_sound.loop();
 }
 
 
 void draw() {
-  //if (name == null) {
-  //navnpopup();
-  //}
-  //println(s);
-
   if (menu==true) {
     home();
   }
@@ -108,7 +90,5 @@ void navnpopup() {
   if (navntaget(name) == true) {
     new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
     navnpopup();
-  } else {
-    return;
-  }
+  } 
 }

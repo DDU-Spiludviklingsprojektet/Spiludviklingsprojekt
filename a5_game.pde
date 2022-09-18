@@ -76,7 +76,7 @@ float highscore = 0;
 //Creates Objects
 void game_setup() {
   back_bt2 = new Button_rect(back_img, width/15, height/15, 128, 128, (width/15)+1, (height/15)-14, 122, 43, 255, 10);
-  
+
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass);
   rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
@@ -93,8 +93,6 @@ void game() {
   input();
   timewrap();
   highscore();
-  println(rocket.getFuel());
-  println(rocket.getDeltaV());
 }
 
 void graphics() {
@@ -104,23 +102,19 @@ void graphics() {
   back2();
   rocket.draw();
   overlays();
-
   end();
-
 }
 
-void back2(){
+void back2() {
   back_bt2.update_rect();
   back_bt2.farve();
   back_bt2.render();
-  if(back_bt2.isClicked()){
-  println("Upgrade");
-  clear();
-  game = false;
-  upgrade_page = true;
-
+  if (back_bt2.isClicked()) {
+    clear();
+    game = false;
+    upgrade_page = true;
   }
-  }
+}
 
 void end() {
   if (rocket.getNearestplanet() == "moon" && rocket.getAltitude() <=5) {
@@ -173,7 +167,6 @@ void timewrap() {
   }
   frames++;
   frameRate(30*timewrap);
-  println(timewrap);
 }
 
 void mouseWheel(MouseEvent event) {
@@ -207,11 +200,6 @@ void input() {
         rocket.setThrottle(rocket.getThrottle() - 5);
         break;
       }
-      //ifESC is pressed, go to main menu
-    case 27:
-      game = false;
-      menu = true;
-      break;
       //ifLeft arrow is pressed, turn 5 degrees left
     case 37:
       rocket.setChangedirection(-1);
@@ -219,14 +207,6 @@ void input() {
       //ifRight arrow is pressed, turn 5 degrees right
     case 39:
       rocket.setChangedirection( 1);
-      break;
-      //ifX is pressed, turn off the engine
-    case 88:
-      rocket.setThrottle(0);
-      break;
-      //ifZ is pressed, set the engine to max power.
-    case 90:
-      rocket.setThrottle(100);
       break;
     }
   }

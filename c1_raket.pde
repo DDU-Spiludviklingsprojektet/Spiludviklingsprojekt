@@ -105,7 +105,7 @@ class Raket {
 
   //returns the fuelpercent of the rocket
   float getFuel() {
-    float x = throttle*(tanksize*fueldensity/power)/pow(10,10);
+    float x = throttle*(tanksize*fueldensity/power)/pow(10, 10);
     fuelpercent = fuelpercent - x;
     return fuelpercent;
   }
@@ -114,7 +114,6 @@ class Raket {
   void setThrottle(int x) {
     if (keyPressed == true &&(keyCode == 16 || keyCode == 17)) {
       throttle = x;
-      println("thr = " + throttle);
     }
   }
   void setChangedirection(float x) {
@@ -123,7 +122,7 @@ class Raket {
       setHeading(goalheading+PI/2);
     }
   }
-  
+
   float getGoalheading() {
     return goalheading;
   }
@@ -160,7 +159,6 @@ class Raket {
     PVector temp = new PVector();
     temp = Velocity.copy();
     float x = CD*(earth.getAirdensity()*pow(temp.mag(), 2))/2*Area*0.000000001;
-    println("drag = " + x);
     Drag = temp.setMag(x*-1);
   }
 
@@ -173,7 +171,6 @@ class Raket {
       }
     } else {
       PVector tempDist = PVector.sub(Location, moon.getPosition());
-      println("temDist = "+ tempDist);
       if (tempDist.mag() <= moon.getRadiusMag()&& PVector.dist(PVector.add(tempDist, Acceleration), earth.getPosition())<=tempDist.mag()) {
         Velocity = new PVector(0, 0);
         Location = PVector.add(moon.getPosition(), tempDist.setMag(moon.getRadiusMag()));
@@ -187,20 +184,12 @@ class Raket {
     engine();
     drag();
     gravity();
-    println("Engine = " + Engine);
     Acceleration.add(Engine);
-    println ("Drag = " + Drag);
     Acceleration.add(Drag);
-    println("G = " + Gravity);
     Acceleration.add(Gravity);
-    println("acc = " + Acceleration);
     Velocity.add(Acceleration);
     planetcollision();
-    println("vel = " + Velocity);
     Location.add(Velocity);
-    println("loc = " + Location);
-    println("head = " + Heading);
-    println(rocket.getNearestplanet());
   }
   void draw() {
     shapeMode(CENTER);

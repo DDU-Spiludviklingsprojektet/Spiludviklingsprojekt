@@ -1,8 +1,3 @@
-// Exercise 9-8: Write a Button class (see Example 5-5 for a non-object-oriented button). The button
-// class should register when a mouse is pressed over the button and change color.  Create button objects
-// of different sizes and locations using an array. Before writing the main program, sketch out the
-// Button class. Assume the button is off  when it first appears.
-
 // Button class
 class Button_upg {
 
@@ -58,7 +53,7 @@ class Button_upg {
           }
         }
         break;
-        
+
       case 2:
         if (b[2][index02].on == false) {
           if (b[2][index02].index02 == 0 && money >= 200) {

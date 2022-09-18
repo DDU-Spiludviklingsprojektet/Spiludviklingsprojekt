@@ -1,6 +1,4 @@
 class Button_rect {
-
-
   PShape button_img;
   PVector img_Pos = new PVector(0, 0);
   PVector button_Pos = new PVector(0, 0);
@@ -125,5 +123,3 @@ class Button_ell {
     return Clicked;
   }
 }
-
-// - https://www.youtube.com/watch?v=z903vXot-Lg&ab_channel=ChristopherOckerby
