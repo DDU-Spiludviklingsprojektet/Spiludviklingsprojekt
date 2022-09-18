@@ -5,45 +5,32 @@ final static String BUTTONS_IMG = "data/svg/buttons.svg";
 final static String BUTTONS_RED_IMG = "data/svg/buttons_red.svg";
 final static String EMPTY_IMG = "data/svg/empty.svg";
 
-
+//Makes variables for shape and images
 PShape background_img;
 PImage logo_img;
 PShape buttons_img;
 PShape empty_img;
 
+//Variables for buttons
 Button_rect start_bt;
+Button_ell lb_bt;
 Button_ell mute_bt;
 
-
-String is_mute;
-float rectX, rectY;      // Position of square button
-float circleX, circleY, circle2X, circle2Y;  // Position of circle button
-int rectwidth;  // Diameter of rect
-int rectheight;
-color rectColor, circleColor, baseColor;
-color rectHighlight, circleHighlight;
-float circleSize;  // Diameter of circle
-color currentColor;
-boolean rectOver = false;
-boolean circleOver1 = false;
-boolean circleOver2 = false;
-
-
 void home_setup() {
+//Loads shapes and images
   background_img = loadShape(BACKGROUND_IMG);
   logo_img = loadImage(LOGO_IMG);
   buttons_img = loadShape(BUTTONS_IMG);
   empty_img = loadShape(EMPTY_IMG);
-  
-  
+
+//Creates buttons
   start_bt = new Button_rect(empty_img, 100, 100, 200, 60, width/1.99, height/1.365, 200, 60, 255, 0);
-  mute_bt = new Button_ell(200, 200, 60, 60);
-
-
+  lb_bt = new Button_ell(width/1.642, height/1.89, 70, 70);
+  mute_bt = new Button_ell(width/2.544, height/1.89, 65, 65);
 }
 
 void home() {
-
+//Places images and shapes
   shapeMode(CORNERS);
   shape(background_img, 0, 0, width, height);
   shapeMode(CENTER);
@@ -51,6 +38,7 @@ void home() {
   image(logo_img, width/2, height/4, width/3, width/3);
   shape(buttons_img, (width/2), (height*0.7), width/3, width/3);
 
+//If statments for the three buttons
   if (start_bt.isClicked()) {
     println("Upgrade");
     clear();
@@ -58,17 +46,24 @@ void home() {
     upgrade_page = true;
   }
   if (mute_bt.isClicked()) {
-  
-  
+  mute();
   }
-  start_bt.update_rect();
-  start_bt.render();
-  mute_bt.update_ell();
-  mute_bt.render();
+  if (lb_bt.isClicked()) {  
+  }
   
+//Update, render and farve function for the three buttons. To react when clickt. To make the collored when hovering and render button
+  start_bt.update_rect();
+  start_bt.farve();
+  start_bt.render();
+  lb_bt.update_ell();
+  lb_bt.farve();
+  lb_bt.render();
+  mute_bt.update_ell();
+  mute_bt.farve();
+  mute_bt.render();
 }
 
-
+//Function for mute.
 void mute() {
   if (mute == false) {
     menu_sound.amp(0.0);
