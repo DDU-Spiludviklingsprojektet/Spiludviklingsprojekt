@@ -31,9 +31,9 @@ PShape exit_img;
 
 SoundFile menu_sound;
 
-boolean menu = false;
+boolean menu = true;
 boolean upgrade_page = false;
-boolean game = true;
+boolean game = false;
 boolean lb = false;
 boolean mute = false;
 

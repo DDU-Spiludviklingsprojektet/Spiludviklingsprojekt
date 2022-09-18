@@ -28,7 +28,7 @@ class Button_rect {
     corners = c;
   }
 
-  void updateV()
+  void update()
   {
     if (mouseX>=button_Pos.x-(button_Width/2) && mouseX <= button_Pos.x+(button_Width/2) && mouseY >= button_Pos.y-(button_Height/2) && mouseY <= button_Pos.y+(button_Height/2))
     {
@@ -77,7 +77,7 @@ class Button_ell {
     //farve = color(f);
   }
 
-  void updateV()
+  void update()
   {
     float disX = Pos.x - mouseX;
     float disY = Pos.y - mouseY;
@@ -106,3 +106,7 @@ class Button_ell {
     return Clicked;
   }
 }
+
+
+
+// - https://www.youtube.com/watch?v=z903vXot-Lg&ab_channel=ChristopherOckerby

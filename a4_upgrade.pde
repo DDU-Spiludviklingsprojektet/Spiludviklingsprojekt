@@ -62,8 +62,8 @@ void upgrade() {
   shape (raket_img, 467, 465, 384, 384);
   
   
-  back_bt.updateV();
-  back_bt.renderV();
+  back_bt.update();
+  back_bt.render();
   shape (back_img, width/15, height/15, 128, 128);
   if(back_bt.isClicked()){
   upgrade_page = false;
