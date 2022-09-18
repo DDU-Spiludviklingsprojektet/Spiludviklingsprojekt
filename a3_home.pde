@@ -23,7 +23,7 @@ void home_setup() {
   rectColor = color(255, 255, 255, 0);
   rectHighlight = color(#66000000);
   circleColor = color(255, 255, 255, 0);
-  circleHighlight = color(204);
+  circleHighlight = color(#66000000);
   baseColor = color(102);
   currentColor = baseColor;
   circleX = width/2.547;
@@ -32,7 +32,7 @@ void home_setup() {
   circle2Y = (height/1.9);
   circleSize = width/20;
   rectX = width/1.99;
-  rectY = height/1.37;
+  rectY = (height/1.37)+2;
   rectwidth = 200;  // Diameter of rect
   rectheight = 60;
   rectMode(CENTER);
@@ -57,19 +57,18 @@ void home() {
   shape(buttons_img, (width/2), (height*0.7), width/3, width/3);
 
   update(mouseX, mouseY);
+  noStroke();
   if (rectOver) {
     fill(rectHighlight);
   } else {
     fill(rectColor);
   }
-  stroke(255);
   rect(rectX, rectY, rectwidth, rectheight);
   if (circleOver1) {
     fill(circleHighlight);
   } else {
     fill(circleColor);
   }
-  stroke(0);
   ellipse(circleX, circleY, circleSize, circleSize);
   
     if (circleOver2) {
@@ -77,7 +76,6 @@ void home() {
   } else {
     fill(circleColor);
   }
-  stroke(0);
   ellipse(circle2X, circle2Y, circleSize, circleSize);
 }
 

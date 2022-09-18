@@ -66,6 +66,7 @@ void setup() {
   raket_img = loadShape(RAKET_IMG);
   // Load custom cursor
   cursor_img = loadImage(CURSOR_IMG);
+  arrow_img = loadShape(ARROW_IMG);
   cursor(cursor_img, -32, -32);
 //dialog.setProgress(60);
   logox = width/2;
