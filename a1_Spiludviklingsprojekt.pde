@@ -20,6 +20,7 @@ final static String BUTTONS_IMG = "data/svg/buttons.svg";
 final static String RAKET_IMG = "data/svg/raket.svg";
 final static String MENU_SOUND = "data/audio/title_sang.mp3";
 final static String ARROW_IMG = "data/svg/arrow.svg";
+final static String EXIT_IMG = "data/svg/exit.svg";
 String name;
 //Initializing variabls for shapes, images and sound
 
@@ -29,14 +30,15 @@ PImage logo_img;
 PShape buttons_img;
 PShape raket_img;
 PShape arrow_img;
+PShape exit_img;
 
 
 SoundFile menu_sound;
 
 int cols;
 int rows;
-boolean menu = true;
-boolean upgrade_page = false;
+boolean menu = false;
+boolean upgrade_page = true;
 boolean game = false;
 boolean lb = false;
 boolean mute = false;
@@ -67,6 +69,7 @@ void setup() {
   // Load custom cursor
   cursor_img = loadImage(CURSOR_IMG);
   arrow_img = loadShape(ARROW_IMG);
+  exit_img = loadShape(EXIT_IMG);
   cursor(cursor_img, -32, -32);
 //dialog.setProgress(60);
   logox = width/2;

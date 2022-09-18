@@ -69,14 +69,14 @@ void home() {
   } else {
     fill(circleColor);
   }
-  ellipse(circleX, circleY, circleSize, circleSize);
+  ellipse(circleX, circleY+2, circleSize-2, circleSize+3);
   
     if (circleOver2) {
     fill(circleHighlight);
   } else {
     fill(circleColor);
   }
-  ellipse(circle2X, circle2Y, circleSize, circleSize);
+  ellipse(circle2X+1, circle2Y+2, circleSize+3, circleSize+4);
 }
 
 
