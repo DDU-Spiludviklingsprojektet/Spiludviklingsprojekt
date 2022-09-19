@@ -6,7 +6,7 @@ MySQL db;
 
 void mysql_setup()
 {
-  db = new MySQL( this, "node02.hyperservers.dk", "s1_spiludviklingsprojekt", "u1_ySaPwFzhh2", "wuukU10yYtm.1Ng5+hn@QuK." );  // open database file
+  db = new MySQL( this, "node02.hyperservers.dk", "s1_spiludviklingsprojekt", "u1_ySaPwFzhh2", "xxxx" );  // open database file
   db.setDebug(false);
 
   if ( db.connect() )
