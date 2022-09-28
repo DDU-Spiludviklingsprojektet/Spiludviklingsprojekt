@@ -28,6 +28,8 @@ public boolean navntaget(String tempname) {
   return navne.hasValue(tempname);
 }
 
+//////
+
 class lb
 {
   int id;
