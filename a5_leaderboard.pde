@@ -11,7 +11,16 @@ void mysql_setup()
 
   if ( db.connect() )
   {
-    //TODO
+    db.query( "SELECT * FROM leaderboard ORDER BY score DESC LIMIT 10" );
+    while ( db.next() )
+    {
+      navne.add(db.getString("name"));
+    }
+    //Der er brug for at vi tilføjer de andre ting også
+  }
+  else
+  {
+    println("Could not connect to database, too bad!");
   }
 }
 //Tjekker om navnet er taget. Sender true hvis navnet er det og false hvis det ikke findes.
