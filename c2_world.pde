@@ -6,8 +6,12 @@ class Planet {
   float edgeofatmosphere;
   float airdensity;
   float mass;
+  PShape image;
+  int red;
+  int green;
+  int blue;
 
-  Planet(float tempPositionx, float tempPositiony, boolean tempatmosphere, float tempradius, float tempedgeofatmosphere, float tempairdensity, float tempmass) {
+  Planet(float tempPositionx, float tempPositiony, boolean tempatmosphere, float tempradius, float tempedgeofatmosphere, float tempairdensity, float tempmass, PShape tempimage, int tempred, int tempgreen, int tempblue) {
     Position.x = tempPositionx;
     Position.y = tempPositiony;
     atmosphere = tempatmosphere;
@@ -15,6 +19,10 @@ class Planet {
     edgeofatmosphere = tempedgeofatmosphere;
     airdensity = tempairdensity;
     mass = tempmass;
+    image = tempimage;
+    red = tempred;
+    green = tempgreen;
+    blue = tempblue;
   }
 
   //function returns positionvector of the planet
@@ -79,26 +87,24 @@ class Planet {
     return PVector.sub(Position, rocket.getLocation());
   }
 
-  //TODO: These two functions should really be one function, it is a class afterall, and it should be better adaptable to new planets
-  //The color really should have been a setup for the object. But I wasnt forward thinking enough to do that.
-  //Draws the earth
-  void earthdraw() {
-    if (zoomlevel <= 0.2 || rocket.getAltitude() >=2000) {
-      shape(jorden_img, width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel*1.01, getRadiusMag()*2*zoomlevel*1.01);
-    } else {
-      fill(0, 255, 0);
-      ellipseMode(CENTER);
-      circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
+  //draws the planet
+  void draw() {
+    //Draws a blue circle at the position of the planet, which extends to the edge of the atmosphere
+    if (atmosphere == true) {
+      for (int i=0; i<255; i++) {
+        fill(0, 0, i);
+        ellipseMode(CENTER);
+        circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, (getRadiusMag()+edgeofatmosphere-(edgeofatmosphere*i/255))*2*zoomlevel);
+      }
     }
+  
+  if (zoomlevel <= 0.2 || rocket.getAltitude() >=2000) {
+    shape(image, width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel*1.01, getRadiusMag()*2*zoomlevel*1.01);
+  } else {
+    fill(red, green, blue);
+    ellipseMode(CENTER);
+    circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
   }
-  //Draws the moon
-  void moondraw() {
-    if (zoomlevel <= 0.2 || rocket.getAltitude() >=2000) {
-      shape(moon_img, width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel*1.01, getRadiusMag()*2*zoomlevel*1.01);
-    } else {
-      fill(100);
-      ellipseMode(CENTER);
-      circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
-    }
-  }
+}
+
 }

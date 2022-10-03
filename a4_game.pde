@@ -51,11 +51,15 @@ float earthedgeofatmosphere = 5000;
 float earthairdensity = 1;
 //What is the mass of the object? In kg
 float earthmass = pow(5.97, 23);
+int earthred = 0;
+int earthgreen = 255;
+int earthblue = 0;
+
 
 //set values for moon
 //Where is the planet (XY pos)
 float moonpositionx = 0;
-float moonpositiony = 300000;
+float moonpositiony = -300000;
 //What is the radius of the planet in Meters
 float moonradius = 17100;
 //Is there an atmosphere?
@@ -66,6 +70,9 @@ float moonedgeofatmosphere = 0;
 float moonairdensity = 0;
 //What is the mass of the object? In kg
 float moonmass = pow(5.97, 22);
+int moonred = 100;
+int moongreen = 100;
+int moonblue = 100;
 
 //Various vaiables used for the game.
 float G = pow(6.674, -11);
@@ -74,20 +81,22 @@ float zoomlevel = 5;
 int timewrap = 1;
 int frames = 0;
 float highscore = 0;
-
+boolean dead = false;
 
 //Creates Objects
 void game_setup() {
   back_bt2 = new Button_rect(back_img, width/15, height/15, 128, 128, (width/15)+1, (height/15)-14, 122, 43, 255, 10);
-
-  earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass);
-  moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass);
-  rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
-
   jorden_img = loadShape(JORDEN_IMG);
   moon_img = loadShape(MOON_IMG);
   end_img = loadShape(END_IMG);
   overlay_img = loadShape(OVERLAY_IMG);
+  earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass, jorden_img, earthred, earthgreen, earthblue);
+  moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass, moon_img, moonred, moongreen, moonblue);
+  rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
+  timewrap = 1;
+  frames = 0;
+  highscore = 0;
+  dead = false;
 }
 
 //Draws the game physics etc.
@@ -101,17 +110,20 @@ void game() {
 
 //Draws the graphics
 void graphics() {
-  gamebackground();
-  earth.earthdraw();
-  moon.moondraw();
-  back2();
+  background(0);
+  earth.draw();
+  moon.draw();
   rocket.draw();
   overlays();
   end();
+  death();
+  back2();
 }
 
 //Creates the back button
 void back2() {
+  shapeMode(CENTER);
+  translate(0,0);
   back_bt2.update_rect();
   back_bt2.farve();
   back_bt2.render();
@@ -125,20 +137,22 @@ void back2() {
 //Creates the end screen
 void end() {
   if (rocket.getNearestplanet() == "moon" && rocket.getAltitude() <=5) {
-    rotate(-rocket.getGoalheading());
     shapeMode(CENTER);
     shape(end_img, 0, 0, width, height);
   }
 }
 
-//Creates the background and its color
-void gamebackground() {
-  if (rocket.getAltitude()>earth.getedgeofatmosphere()|| rocket.getNearestplanet()!="earth") {
-    background(0, 0, 0);
-  } else {
-    background(0, 0, 255*((earth.getedgeofatmosphere()-rocket.getAltitude())/earth.getedgeofatmosphere()));
+
+void death(){
+  if(rocket.collision()){
+    dead = true;
+  }
+  if(dead){
+    shapeMode(CENTER);
+    shape(end_img, 0, 0, width, height);
   }
 }
+
 
 //Creates the text information on screen
 void overlays() {
@@ -154,7 +168,7 @@ void overlays() {
 void highscore() {
   if (rocket.getAltitude()>highscore) {
     highscore = rocket.getAltitude();
-    money = money + int(highscore/1000);
+    money = money + int(highscore/10000000);
   }
 }
 
@@ -165,20 +179,18 @@ void timewrap() {
   if (frames == 10) {
     frames = 0;
   }
-  if (frames == 0) {
-    if (keyPressed) {
-      if (key==',') {
-        timewrap--;
-      } else if (key=='.') {
-        timewrap++;
-      }
+  if (frames == 0&&keyPressed == true) {
+    if (key==',') {
+      timewrap--;
+    } else if (key=='.') {
+      timewrap++;
     }
+    frameRate(30*timewrap);
   }
   if (timewrap <= 0) {
     timewrap = 1;
   }
   frames++;
-  frameRate(30*timewrap);
 }
 
 //Zooms in and out
@@ -221,6 +233,12 @@ void input() {
     case 39:
       rocket.setChangedirection( 1);
       break;
+    /*case 188:
+      timewrap--;
+      break;
+    case 190:
+      timewrap++;
+      break;*/
     }
   }
 }

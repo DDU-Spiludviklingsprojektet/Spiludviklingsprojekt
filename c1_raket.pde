@@ -29,7 +29,6 @@ class Raket {
     CD = tempCD;
     Area = tempArea;
     throttle = tempthrottle;
-    //shape(raket, Location.x, Location.y);
   }
 
   //Til Simon:
@@ -105,8 +104,6 @@ class Raket {
 
   //returns the fuelpercent of the rocket
   float getFuel() {
-    float x = throttle*(tanksize*fueldensity/power)/pow(10, 10);
-    fuelpercent = fuelpercent - x;
     return fuelpercent;
   }
 
@@ -134,10 +131,12 @@ class Raket {
 
   //calculates engine force, and adds to acceleration vector
   void engine() {
-    if (getFuel()>0) {
-      float x = (power*throttle)/getCurrentmass()*1000;
+    if (fuelpercent>0) {
+      float x = throttle*(tanksize*fueldensity/power)/pow(10, 9);
+      fuelpercent = fuelpercent - x;
+      float y = (power*throttle)/getCurrentmass()*1000;
       Engine = Heading.copy();
-      Engine.setMag(x);
+      Engine.setMag(y);
     }
   }
 
@@ -160,6 +159,15 @@ class Raket {
     temp = Velocity.copy();
     float x = CD*(earth.getAirdensity()*pow(temp.mag(), 2))/2*Area*0.000000001;
     Drag = temp.setMag(x*-1);
+  }
+  boolean collision() {
+    if (Location.dist(earth.getPosition()) <= earth.getRadiusMag()&&Velocity.mag()>=20) {
+      return true;
+    } else if (Location.dist(moon.getPosition()) <= moon.getRadiusMag()&&Velocity.mag()>=20) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   void planetcollision() {

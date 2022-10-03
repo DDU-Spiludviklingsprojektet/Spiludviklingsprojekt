@@ -14,11 +14,10 @@ void mysql_setup()
     db.query( "SELECT * FROM leaderboard ORDER BY score DESC LIMIT 10" );
     while ( db.next() )
     {
-      navne.add(db.getString("name"));
+      // navne.add(db.getString("name"));
     }
     //Der er brug for at vi tilføjer de andre ting også
-  }
-  else
+  } else
   {
     println("Could not connect to database, too bad!");
   }

@@ -85,7 +85,8 @@ void upgrade() {
   if (lift_offbt.isClicked()) {
     clear();
     upgrade_page = false;
-    game = true;
+    game_setup();
+      game = true;
   }
 
   //Makes text fore Money
