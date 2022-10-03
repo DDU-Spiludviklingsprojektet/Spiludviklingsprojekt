@@ -196,9 +196,9 @@ void timewrap() {
 //Zooms in and out
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
-  if (e > 0) {
+  if (e < 0) {
     zoomlevel = zoomlevel*1.1;
-  } else if (e < 0) {
+  } else if (e > 0) {
     zoomlevel = zoomlevel*0.9;
   }
 }
