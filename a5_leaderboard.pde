@@ -3,6 +3,7 @@
 final static String LBBACK_IMG = "data/svg/lb_background.svg";
 
 PShape leadback_img;
+Button_rect back_bt3;
 
 StringList navne;
 //setup to leaderboard
@@ -14,13 +15,13 @@ void lb() {
 
 
   //creates button
-  back_bt = new Button_rect(empty_img, 100, 100, 200, 60, width/2, height/1.08, 480, 65, 255, 0);
-  back_bt.update_rect();
-  back_bt.farve();
-  back_bt.render();
+  back_bt3 = new Button_rect(empty_img, 100, 100, 200, 60, width/2, height/1.08, 480, 65, 255, 0);
+  back_bt3.update_rect();
+  back_bt3.farve();
+  back_bt3.render();
 
 
-  if (back_bt.isClicked()) {
+  if (back_bt3.isClicked()) {
     clear();
     lb = false;
     menu = true;
