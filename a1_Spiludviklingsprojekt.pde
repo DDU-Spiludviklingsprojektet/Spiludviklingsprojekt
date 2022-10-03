@@ -41,10 +41,10 @@ PShape exit_img;
 SoundFile menu_sound;
 
 //The following boolean statements are used to control the current page of the program.
-boolean menu = true;
+boolean menu = false;
 boolean upgrade_page = false;
 boolean game = false;
-boolean lb = false;
+boolean lb = true;
 
 boolean mute = false;
 
@@ -81,13 +81,17 @@ void draw() {
   if (game==true) {
     game();
   }
+  if (lb==true) {
+    lb();
+}
 }
 
 //TODO, ask for name when starting the game.
-void navnpopup() {
-  name = new UiBooster().showTextInputDialog("Navn");
-  if (navntaget(name) == true) {
-    new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
-    navnpopup();
-  } 
-}
+//void navnpopup() {
+//  name = new UiBooster().showTextInputDialog("Navn");
+
+//  if (navntaget(name) == true) {
+//    new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
+//    navnpopup();
+//  } 
+//}

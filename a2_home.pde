@@ -48,10 +48,10 @@ void home() {
     mute();
   }
   if (lb_bt.isClicked()) {
-    lb();
+    lb = true;
   }
 
-  //Update, render and farve function for the three buttons. To react when clickt. To make the collored when hovering and render button
+  //Update, render and farve function for the three buttons. To react when clicked. To make the collored when hovering and render button
   start_bt.update_rect();
   start_bt.farve();
   start_bt.render();
