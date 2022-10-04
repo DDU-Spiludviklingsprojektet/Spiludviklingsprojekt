@@ -1,3 +1,4 @@
+
 //String variable is declared to store the parth to files used in the program.
 final static String UPGRADE_IMG = "data/svg/upgrade.svg";
 final static String KASSE_TJEK_IMG = "data/svg/kasse_tjek.svg";

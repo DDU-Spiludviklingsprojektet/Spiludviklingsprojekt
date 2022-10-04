@@ -1,68 +1,29 @@
 //Creates the data for the leaderboard
 //Due to time constraints, the implementation of this function is not complete.
+final static String LBBACK_IMG = "data/svg/lb_background.svg";
+
+PShape leadback_img;
+Button_rect back_bt3;
+
 StringList navne;
-import de.bezier.data.sql.*;
-MySQL db;
-
-void mysql_setup()
-{
-  db = new MySQL( this, "node02.hyperservers.dk", "s1_spiludviklingsprojekt", "u1_ySaPwFzhh2", "xxxx" );  // open database file
-  db.setDebug(false);
-
-  if ( db.connect() )
-  {
-    db.query( "SELECT * FROM leaderboard ORDER BY score DESC LIMIT 10" );
-    while ( db.next() )
-    {
-      // navne.add(db.getString("name"));
-    }
-    //Der er brug for at vi tilføjer de andre ting også
-  } else
-  {
-    println("Could not connect to database, too bad!");
-  }
-}
-//Tjekker om navnet er taget. Sender true hvis navnet er det og false hvis det ikke findes.
-public boolean navntaget(String tempname) {
-  boolean taget = true;
-  db.query("SELECT name FROM lb");
-  db.getString("name");
-  while (db.next())
-  {
-    String s = db.getString("name");
-    navne = new StringList();
-    navne.append(s);
-  }
-  return navne.hasValue(tempname);
-}
-
-//////
-
-class lb
-{
-  int id;
-  public int value;
-  public String name;
-
-  public String toString ()
-  {
-    return String.format("id: %d, name %s, value: %d", id, name, value);
-  }
-
-  public void setId ( int id ) {
-    this.id = id;
-  }
-
-  public int getId () {
-    return id;
-  }
-}
-
+//setup to leaderboard
 void lb() {
-  db.query( "SELECT * FROM %s", "lb" );
-  while (db.next())
-  {
-    lb name = new lb();
-    db.setFromRow( name );
+  background(200);
+  leadback_img = loadShape(LBBACK_IMG);
+  shapeMode (CORNERS);
+  shape(leadback_img, 0, 0, 1280, 720);
+
+
+  //creates button
+  back_bt3 = new Button_rect(empty_img, 100, 100, 200, 60, width/2, height/1.08, 480, 65, 255, 0);
+  back_bt3.update_rect();
+  back_bt3.farve();
+  back_bt3.render();
+
+
+  if (back_bt3.isClicked()) {
+    clear();
+    lb = false;
+    menu = true;
   }
 }
