@@ -47,11 +47,6 @@ class Planet {
     return mass;
   }
 
-  //returns radius
-  float getradius() {
-    return Radius.y;
-  }
-
   //returns atmosphere
   boolean getatmosphere() {
     return atmosphere;

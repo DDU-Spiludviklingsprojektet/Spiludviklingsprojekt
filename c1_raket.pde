@@ -119,6 +119,11 @@ class Raket {
       setHeading(goalheading+PI/2);
     }
   }
+  
+  float getMoondistance(){
+    PVector tempMoon = moon.getPosition();
+    return Location.dist(tempMoon);
+  }
 
   float getGoalheading() {
     return goalheading;
@@ -160,6 +165,7 @@ class Raket {
     float x = CD*(earth.getAirdensity()*pow(temp.mag(), 2))/2*Area*0.000000001;
     Drag = temp.setMag(x*-1);
   }
+  
   boolean collision() {
     if (Location.dist(earth.getPosition()) <= earth.getRadiusMag()&&Velocity.mag()>=20) {
       return true;

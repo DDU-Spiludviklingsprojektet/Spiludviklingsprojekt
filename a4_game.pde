@@ -82,6 +82,7 @@ int timewrap = 1;
 int frames = 0;
 float highscore = 0;
 boolean dead = false;
+int score=0;
 
 //Creates Objects
 void game_setup() {
@@ -97,6 +98,7 @@ void game_setup() {
   frames = 0;
   highscore = 0;
   dead = false;
+  score = 0;
 }
 
 //Draws the game physics etc.
@@ -123,7 +125,7 @@ void graphics() {
 //Creates the back button
 void back2() {
   shapeMode(CENTER);
-  translate(0,0);
+  translate(0, 0);
   back_bt2.update_rect();
   back_bt2.farve();
   back_bt2.render();
@@ -131,6 +133,7 @@ void back2() {
     clear();
     game = false;
     upgrade_page = true;
+    money+=score;
   }
 }
 
@@ -143,11 +146,11 @@ void end() {
 }
 
 
-void death(){
-  if(rocket.collision()){
+void death() {
+  if (rocket.collision()) {
     dead = true;
   }
-  if(dead){
+  if (dead) {
     shapeMode(CENTER);
     shape(end_img, 0, 0, width, height);
   }
@@ -160,18 +163,23 @@ void overlays() {
   textFont(bit8);
   textSize(20*width/1280);
   fill(255);
-  text("Fuel: " + int(rocket.getFuel()) +  "\nThrottle: " + int(rocket.getThrottle()) + "\nAltitude: " + int(rocket.getAltitude()) + "\nTimewrap: " + timewrap, -width/2+width/20, -height/2+height/8);
+  text("Fuel: " + int(rocket.getFuel()) +  "\nThrottle: " + int(rocket.getThrottle()) + "\nAltitude: " + int(rocket.getAltitude()) + "\nTimewrap: " + timewrap + "\nScore: " + score, -width/2+width/20, -height/2+height/8);
 }
 
 //Calculates the highscore based on the highest altitude reached
 //TODO, it kinda works, but not as intended, and is kind of broken. But it is not a priority to fix it. Therefore it is still here, broken.
+
 void highscore() {
-  if (rocket.getAltitude()>highscore) {
-    highscore = rocket.getAltitude();
-    money = money + int(highscore/10000000);
+  if (calculateScore()>score) {
+    score = calculateScore();
   }
 }
 
+int calculateScore() {
+  float defaultdistance = (moon.getPosition().mag()-moon.getRadiusMag()+earth.getRadiusMag());
+  float currentdistance = (rocket.getMoondistance()-moon.getRadiusMag());
+  return int(((defaultdistance-currentdistance)/defaultdistance)*500);
+}
 //Crates timewrap to make the game more playable and reduce gametime.
 //TODO, make the game based on time, instead of frames, so slower computers can timewrap.
 //Also move the keypresses to the input function, and find a better way to do the delay.
@@ -233,12 +241,12 @@ void input() {
     case 39:
       rocket.setChangedirection( 1);
       break;
-    /*case 188:
-      timewrap--;
-      break;
-    case 190:
-      timewrap++;
-      break;*/
+      /*case 188:
+       timewrap--;
+       break;
+       case 190:
+       timewrap++;
+       break;*/
     }
   }
 }
