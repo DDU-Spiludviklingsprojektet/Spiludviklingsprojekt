@@ -16,6 +16,8 @@ Button_rect back_bt2;
 Planet earth;
 Planet moon;
 Raket rocket;
+ParticleSystem ps;
+
 
 //A lot of different values for easy tweaking.
 
@@ -94,6 +96,7 @@ void game_setup() {
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass, jorden_img, earthred, earthgreen, earthblue);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass, moon_img, moonred, moongreen, moonblue);
   rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
+  ps = new ParticleSystem(new PVector(0,0));
   timewrap = 1;
   frames = 0;
   highscore = 0;

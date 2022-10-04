@@ -93,6 +93,10 @@ class Raket {
     return Location;
   }
 
+  PVector getHeading() {
+    return Heading;
+  }
+
   //returns string of name of planet with strongest gravitational pull
   String getNearestplanet() {
     if (G * earth.getMass()/pow(Location.dist(earth.getPosition()), 2) >= G * moon.getMass()/pow(Location.dist(moon.getPosition()), 2)) {
@@ -119,8 +123,8 @@ class Raket {
       setHeading(goalheading+PI/2);
     }
   }
-  
-  float getMoondistance(){
+
+  float getMoondistance() {
     PVector tempMoon = moon.getPosition();
     return Location.dist(tempMoon);
   }
@@ -165,7 +169,7 @@ class Raket {
     float x = CD*(earth.getAirdensity()*pow(temp.mag(), 2))/2*Area*0.000000001;
     Drag = temp.setMag(x*-1);
   }
-  
+
   boolean collision() {
     if (Location.dist(earth.getPosition()) <= earth.getRadiusMag()&&Velocity.mag()>=20) {
       return true;
@@ -209,8 +213,11 @@ class Raket {
     shapeMode(CENTER);
     if (zoomlevel >0.5) {
       translate(width/2, height/2);
+      ps.addParticle();
+      ps.run();
       rotate(goalheading);
       shape(raket_img, 0, 0, zoomlevel*width/25, zoomlevel*width/25);
+      
     } else {
       translate(width/2, height/2);
       rotate(goalheading);
