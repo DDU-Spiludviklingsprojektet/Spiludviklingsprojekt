@@ -3,11 +3,14 @@ final static String JORDEN_IMG = "data/svg/jorden.svg";
 final static String MOON_IMG = "data/svg/moon.svg";
 final static String END_IMG = "data/svg/end.svg";
 final static String OVERLAY_IMG = "data/svg/velocity.svg";
+final static String AGAIN_IMG = "data/svg/again.svg";
+
 //Creating PShape objects
 PShape jorden_img;
 PShape moon_img;
 PShape end_img;
 PShape overlay_img;
+PShape again_img;
 //Creating button object
 Button_rect back_bt2;
 
@@ -93,6 +96,7 @@ void game_setup() {
   moon_img = loadShape(MOON_IMG);
   end_img = loadShape(END_IMG);
   overlay_img = loadShape(OVERLAY_IMG);
+  again_img = loadShape(AGAIN_IMG);
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass, jorden_img, earthred, earthgreen, earthblue);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass, moon_img, moonred, moongreen, moonblue);
   rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
@@ -154,8 +158,8 @@ void death() {
     dead = true;
   }
   if (dead) {
-    shapeMode(CENTER);
-    shape(end_img, 0, 0, width, height);
+    shapeMode(CORNERS);
+    shape(again_img, 0, 0, width, height);
   }
 }
 
