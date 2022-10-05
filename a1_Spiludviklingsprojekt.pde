@@ -83,7 +83,7 @@ void draw() {
   }
   if (lb==true) {
     lb();
-}
+  }
 }
 
 //TODO, ask for name when starting the game.
@@ -93,5 +93,5 @@ void draw() {
 //  if (navntaget(name) == true) {
 //    new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
 //    navnpopup();
-//  } 
+//  }
 //}

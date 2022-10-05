@@ -10,9 +10,9 @@ class Button_rect {
   Boolean Clicked = false;
   color farve;
   float corners;
+
   //Constructer to create a button
-  Button_rect(PShape img, float img_x, float img_y, float img_w, float img_h, float button_x, float button_y, float button_w, float button_h, int f, float c)
-  {
+  Button_rect(PShape img, float img_x, float img_y, float img_w, float img_h, float button_x, float button_y, float button_w, float button_h, int f, float c) {
     button_img = img;
     img_Pos.x = img_x;
     img_Pos.y = img_y;
@@ -36,16 +36,14 @@ class Button_rect {
 
   void update_rect()
   {
-    if (mouseX>=button_Pos.x-(button_Width/2) && mouseX <= button_Pos.x+(button_Width/2) && mouseY >= button_Pos.y-(button_Height/2) && mouseY <= button_Pos.y+(button_Height/2))
-    {
+    if (mouseX>=button_Pos.x-(button_Width/2) && mouseX <= button_Pos.x+(button_Width/2) && mouseY >= button_Pos.y-(button_Height/2) && mouseY <= button_Pos.y+(button_Height/2)) {
       //Pressed = true;
       farve = #66000000;
       if (mousePressed == true && mouseButton == LEFT && Pressed == false)
       {
         Clicked = true;
       }
-    } else
-    {
+    } else {
       farve = color(255, 255, 255, 0);
       Clicked = false;
       Pressed = false;
@@ -60,6 +58,7 @@ class Button_rect {
     shape(button_img, img_Pos.x, img_Pos.y, img_Width, img_Height);
     rect(button_Pos.x, button_Pos.y, button_Width, button_Height, corners);
   }
+
   boolean isClicked() {
     return Clicked;
   }
@@ -73,9 +72,9 @@ class Button_ell {
   Boolean Pressed = false;
   Boolean Clicked = false;
   color farve;
+
   //Constructer to create a button
-  Button_ell(float x, float y, float h, float w)
-  {
+  Button_ell(float x, float y, float h, float w) {
     Pos.x = x;
     Pos.y = y;
     Width = w;
@@ -93,20 +92,15 @@ class Button_ell {
     }
   }
 
-
-  void update_ell()
-  {
+  void update_ell() {
     float disX = Pos.x - mouseX;
     float disY = Pos.y - mouseY;
-    if (mousePressed == true && mouseButton == LEFT && Pressed == false)
-    {
+    if (mousePressed == true && mouseButton == LEFT && Pressed == false) {
       Pressed = true;
-      if (sqrt(sq(disX) + sq(disY)) < Width/2)
-      {
+      if (sqrt(sq(disX) + sq(disY)) < Width/2) {
         Clicked = true;
       }
-    } else
-    {
+    } else {
       Clicked = false;
     }
     if (mousePressed !=true) {
@@ -119,6 +113,7 @@ class Button_ell {
     fill(farve);
     ellipse(Pos.x, Pos.y, Width, Height);
   }
+  
   boolean isClicked() {
     return Clicked;
   }

@@ -44,9 +44,11 @@ void home() {
     menu = false;
     upgrade_page = true;
   }
+  
   if (mute_bt.isClicked()) {
     mute();
   }
+  
   if (lb_bt.isClicked()) {
     lb = true;
   }

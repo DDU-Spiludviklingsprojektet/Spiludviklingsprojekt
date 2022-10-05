@@ -83,11 +83,12 @@ void upgrade() {
     upgrade_page = false;
     menu = true;
   }
+
   if (lift_offbt.isClicked()) {
     clear();
     upgrade_page = false;
     game_setup();
-      game = true;
+    game = true;
   }
 
   //Makes text fore Money
@@ -97,9 +98,8 @@ void upgrade() {
   fill(0);
   text(sc1, 680, 30);
 
-
   //Makes text above eache array of buttons
-  for (int upg = 0; upg < upgrades.length; upg++)
+  for (int upg = 0; upg < upgrades.length; upg++) {
     for (int i = 0; i < buttons.length; i++) {
       buttons[upg][i].display();
       textFont(bit8);
@@ -107,6 +107,7 @@ void upgrade() {
       fill(255);
       text(upgrade_name[upg], 930, 130 + (upg * 120));
     }
+  }
 }
 
 //When the mouse is pressed, calculates which button is clicked
