@@ -113,7 +113,7 @@ class Raket {
 
   //sets new throttle percentage
   void setThrottle(int x) {
-    if (keyPressed == true &&(keyCode == 16 || keyCode == 17)) {
+    if (keyPressed == true &&(keyCode == 16 || keyCode == 17||keyCode == 38 || keyCode == 40)) {
       throttle = x;
     }
   }

@@ -96,7 +96,7 @@ void game_setup() {
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass, jorden_img, earthred, earthgreen, earthblue);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass, moon_img, moonred, moongreen, moonblue);
   rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
-  ps = new ParticleSystem(new PVector(0,0));
+  ps = new ParticleSystem(new PVector(0, 0));
   timewrap = 1;
   frames = 0;
   highscore = 0;
@@ -244,6 +244,22 @@ void input() {
     case 39:
       rocket.setChangedirection( 1);
       break;
+    case 38:
+      if (rocket.getThrottle() >= 96) {
+        rocket.setThrottle(100);
+        break;
+      } else {
+        rocket.setThrottle(rocket.getThrottle() + 5);
+        break;
+      }
+    case 40:
+      if (rocket.getThrottle() <= 4) {
+        rocket.setThrottle(0);
+        break;
+      } else {
+        rocket.setThrottle(rocket.getThrottle() - 5);
+        break;
+      }
       /*case 188:
        timewrap--;
        break;
