@@ -127,9 +127,8 @@ void graphics() {
 
 //Creates the back button
 void back2() {
-  //Fucking spaghetti fix
   shapeMode(CORNERS);
-  translate(-620, -355);
+  translate(-width*0.5, -height*0.5);
   back_bt2.update_rect();
   back_bt2.farve();
   back_bt2.render();
