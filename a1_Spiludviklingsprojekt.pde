@@ -45,7 +45,6 @@ boolean menu = false;
 boolean upgrade_page = false;
 boolean game = true;
 boolean lb = false;
-
 boolean mute = false;
 
 //The function settings i used to create a window with a specific size, to start.
