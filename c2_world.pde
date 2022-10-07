@@ -92,14 +92,13 @@ class Planet {
         circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, (getRadiusMag()+edgeofatmosphere-(edgeofatmosphere*i/255))*2*zoomlevel);
       }
     }
-  
-  if (zoomlevel <= 0.2 || rocket.getAltitude() >=2000) {
-    shape(image, width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel*1.01, getRadiusMag()*2*zoomlevel*1.01);
-  } else {
-    fill(red, green, blue);
-    ellipseMode(CENTER);
-    circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
-  }
-}
 
+    if (zoomlevel <= 0.2 || rocket.getAltitude() >=2000) {
+      shape(image, width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel*1.01, getRadiusMag()*2*zoomlevel*1.01);
+    } else {
+      fill(red, green, blue);
+      ellipseMode(CENTER);
+      circle(width/2+getDistance().x*zoomlevel, height/2-getDistance().y*zoomlevel, getRadiusMag()*2*zoomlevel);
+    }
+  }
 }

@@ -21,7 +21,6 @@ Planet moon;
 Raket rocket;
 ParticleSystem ps;
 
-
 //A lot of different values for easy tweaking.
 
 //set values for rocket
@@ -59,7 +58,6 @@ float earthmass = pow(5.97, 23);
 int earthred = 0;
 int earthgreen = 255;
 int earthblue = 0;
-
 
 //set values for moon
 //Where is the planet (XY pos)
@@ -100,7 +98,7 @@ void game_setup() {
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass, jorden_img, earthred, earthgreen, earthblue);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass, moon_img, moonred, moongreen, moonblue);
   rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
-  ps = new ParticleSystem(new PVector(0,0));
+  ps = new ParticleSystem(new PVector(0, 0));
   timewrap = 1;
   frames = 0;
   highscore = 0;
@@ -152,7 +150,6 @@ void end() {
   }
 }
 
-
 void death() {
   if (rocket.collision()) {
     dead = true;
@@ -162,7 +159,6 @@ void death() {
     shape(again_img, 0, 0, width, height);
   }
 }
-
 
 //Creates the text information on screen
 void overlays() {
@@ -175,7 +171,6 @@ void overlays() {
 
 //Calculates the highscore based on the highest altitude reached
 //TODO, it kinda works, but not as intended, and is kind of broken. But it is not a priority to fix it. Therefore it is still here, broken.
-
 void highscore() {
   if (calculateScore()>score) {
     score = calculateScore();
@@ -187,6 +182,7 @@ int calculateScore() {
   float currentdistance = (rocket.getMoondistance()-moon.getRadiusMag());
   return int(((defaultdistance-currentdistance)/defaultdistance)*500);
 }
+
 //Crates timewrap to make the game more playable and reduce gametime.
 //TODO, make the game based on time, instead of frames, so slower computers can timewrap.
 //Also move the keypresses to the input function, and find a better way to do the delay.
@@ -248,6 +244,22 @@ void input() {
     case 39:
       rocket.setChangedirection( 1);
       break;
+    case 38:
+      if (rocket.getThrottle() >= 96) {
+        rocket.setThrottle(100);
+        break;
+      } else {
+        rocket.setThrottle(rocket.getThrottle() + 5);
+        break;
+      }
+    case 40:
+      if (rocket.getThrottle() <= 4) {
+        rocket.setThrottle(0);
+        break;
+      } else {
+        rocket.setThrottle(rocket.getThrottle() - 5);
+        break;
+      }
       /*case 188:
        timewrap--;
        break;

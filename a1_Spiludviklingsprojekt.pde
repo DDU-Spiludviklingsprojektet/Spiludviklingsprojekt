@@ -45,7 +45,6 @@ boolean menu = false;
 boolean upgrade_page = false;
 boolean game = true;
 boolean lb = false;
-
 boolean mute = false;
 
 //The function settings i used to create a window with a specific size, to start.
@@ -83,7 +82,7 @@ void draw() {
   }
   if (lb==true) {
     lb();
-}
+  }
 }
 
 //TODO, ask for name when starting the game.
@@ -93,5 +92,5 @@ void draw() {
 //  if (navntaget(name) == true) {
 //    new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
 //    navnpopup();
-//  } 
+//  }
 //}

@@ -35,34 +35,42 @@ class Raket {
   public float getISP() {
     return ISP;
   }
+  
   public float getPower() {
     return power;
   }
+  
   public float getDryMass() {
     return drymass;
   }
+  
   public float getFuelDensity() {
     return fueldensity;
   }
+  
   public float getCD() {
     return CD;
   }
+  
   public void setISP(float tempISP) {
     ISP = tempISP;
   }
+  
   public void setPower(float temppower) {
     power = temppower;
   }
+  
   public void setDryMass(float tempdrymass) {
     drymass = tempdrymass;
   }
+  
   public void setFuelDensity(float tempfueldensity) {
     fueldensity = tempfueldensity;
   }
+  
   public void setCD(float tempCD) {
     CD = tempCD;
   }
-
 
   //returns mass of rocket
   float getCurrentmass() {
@@ -113,10 +121,11 @@ class Raket {
 
   //sets new throttle percentage
   void setThrottle(int x) {
-    if (keyPressed == true &&(keyCode == 16 || keyCode == 17)) {
+    if (keyPressed == true &&(keyCode == 16 || keyCode == 17||keyCode == 38 || keyCode == 40)) {
       throttle = x;
     }
   }
+  
   void setChangedirection(float x) {
     if (keyPressed == true &&(keyCode == 37 || keyCode == 39)) {
       goalheading = radians(x)+goalheading;
@@ -132,6 +141,7 @@ class Raket {
   float getGoalheading() {
     return goalheading;
   }
+  
   //input float sets heading vector direction
   void setHeading(float x) {
     Heading = PVector.fromAngle(x);
@@ -209,6 +219,7 @@ class Raket {
     planetcollision();
     Location.add(Velocity);
   }
+
   void draw() {
     shapeMode(CENTER);
     if (zoomlevel >0.5) {
@@ -217,7 +228,6 @@ class Raket {
       ps.run();
       rotate(goalheading);
       shape(raket_img, 0, 0, zoomlevel*width/25, zoomlevel*width/25);
-      
     } else {
       translate(width/2, height/2);
       rotate(goalheading);
