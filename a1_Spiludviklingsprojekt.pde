@@ -1,3 +1,5 @@
+
+
 //Firstly Libraries are imported, following libraries are imported:
 //JAVAFX
 //Sound
@@ -6,11 +8,6 @@
 
 //Import of UI elements library.
 import uibooster.*;
-import uibooster.components.*;
-import uibooster.model.*;
-import uibooster.model.formelements.*;
-import uibooster.model.options.*;
-import uibooster.utils.*;
 
 //Import of JavaFX library.
 import processing.javafx.*;
@@ -41,11 +38,14 @@ PShape exit_img;
 SoundFile menu_sound;
 
 //The following boolean statements are used to control the current page of the program.
-boolean menu = false;
+boolean menu = true;
 boolean upgrade_page = false;
-boolean game = true;
+boolean game = false;
 boolean lb = false;
 boolean mute = false;
+
+
+boolean isloggedin = false;
 
 //The function settings i used to create a window with a specific size, to start.
 void settings() {
@@ -53,12 +53,11 @@ void settings() {
 }
 
 //The function setup is used to
-void setup() {
+void setup() {    
   raket_img = loadShape(RAKET_IMG);
   cursor_img = loadImage(CURSOR_IMG);
   arrow_img = loadShape(ARROW_IMG);
   exit_img = loadShape(EXIT_IMG);
-  home_setup();
   upgrade_setup();
   game_setup();
   surface.setTitle(TITLE);
@@ -67,6 +66,7 @@ void setup() {
   cursor(cursor_img, -32, -32);
   menu_sound = new SoundFile(this, MENU_SOUND);
   menu_sound.loop();
+  home_setup();
 }
 
 //Draws the game, depending on the current page
