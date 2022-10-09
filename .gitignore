@@ -1,5 +1,4 @@
 .DS_Store
-.autosave
 applet
 application.linux-arm64
 application.linux-armv6hf
@@ -10,3 +9,4 @@ application.windows64
 application.macosx
 out
 windows-amd64
+*.autosave
