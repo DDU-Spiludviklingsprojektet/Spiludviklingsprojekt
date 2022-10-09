@@ -38,13 +38,14 @@ class Button_rect {
   {
     if (mouseX>=button_Pos.x-(button_Width/2) && mouseX <= button_Pos.x+(button_Width/2) && mouseY >= button_Pos.y-(button_Height/2) && mouseY <= button_Pos.y+(button_Height/2)) {
       //Pressed = true;
-      farve = #66000000;
+      farve = #FF6550;
       if (mousePressed == true && mouseButton == LEFT && Pressed == false)
       {
         Clicked = true;
       }
     } else {
-      farve = color(255, 255, 255, 0);
+      farve = color(#FF6550);
+      //farve = color(255, 255, 255, 0);
       Clicked = false;
       Pressed = false;
     }

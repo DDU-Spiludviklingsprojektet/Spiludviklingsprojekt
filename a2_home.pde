@@ -11,6 +11,8 @@ PImage logo_img;
 PShape buttons_img;
 PShape empty_img;
 
+
+
 //Variables for buttons
 Button_rect start_bt;
 Button_ell lb_bt;
@@ -30,6 +32,7 @@ void home_setup() {
 }
 
 void home() {
+  //login popup
   //Places images and shapes
   shapeMode(CORNERS);
   shape(background_img, 0, 0, width, height);
@@ -44,11 +47,11 @@ void home() {
     menu = false;
     upgrade_page = true;
   }
-  
+
   if (mute_bt.isClicked()) {
     mute();
   }
-  
+
   if (lb_bt.isClicked()) {
     lb = true;
   }
