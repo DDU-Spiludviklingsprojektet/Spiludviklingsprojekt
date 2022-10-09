@@ -9,8 +9,10 @@ class Particle {
     velocity = rocket.getHeading().copy();
     velocity.rotate(random(-PI, PI));
     position = rocket.getHeading().copy().setMag(18*zoomlevel);
-    position.x = -position.x;
     lifespan = 255.0;
+    velocity.x = -velocity.x;
+    acceleration.x = -acceleration.x;
+    position.x = -position.x;
   }
 
   void run() {
@@ -20,11 +22,8 @@ class Particle {
 
   // Method to update position
   void update() {
-    acceleration.rotate(random(-PI*0.05, PI*0.05));
     velocity.add(acceleration);
     position.add(velocity);
-    position.rotate(PVector.angleBetween(rocket.getHeading(), position));
-    position.x = -position.x;
     lifespan -= 1.0;
   }
 

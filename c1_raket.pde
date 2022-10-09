@@ -129,7 +129,7 @@ class Raket {
   void setChangedirection(float x) {
     if (keyPressed == true &&(keyCode == 37 || keyCode == 39)) {
       goalheading = radians(x)+goalheading;
-      setHeading(goalheading+PI/2);
+      setHeading(-goalheading+PI/2);
     }
   }
 
@@ -145,7 +145,6 @@ class Raket {
   //input float sets heading vector direction
   void setHeading(float x) {
     Heading = PVector.fromAngle(x);
-    Heading.x = - Heading.x;
   }
 
   //calculates engine force, and adds to acceleration vector
@@ -224,7 +223,9 @@ class Raket {
     shapeMode(CENTER);
     if (zoomlevel >0.5) {
       translate(width/2, height/2);
+      if(fuelpercent>0){
       ps.addParticle();
+      }
       ps.run();
       rotate(goalheading);
       shape(raket_img, 0, 0, zoomlevel*width/25, zoomlevel*width/25);
