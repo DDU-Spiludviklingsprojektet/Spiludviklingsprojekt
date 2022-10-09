@@ -1,5 +1,3 @@
-
-
 //Firstly Libraries are imported, following libraries are imported:
 //JAVAFX
 //Sound
