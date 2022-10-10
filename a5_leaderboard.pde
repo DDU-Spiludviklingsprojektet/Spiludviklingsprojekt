@@ -7,10 +7,12 @@ StringList navne;
 
 import de.bezier.data.sql.*;
 MySQL db;
-
-
+StringList scoreboard;
 
 void lb_setup() {
+  
+  scoreboard = new StringList();
+  
   db = new MySQL( this, "hc.hyperservers.dk", "s1_DDUSimon", "u1_IUC2R9tgCu", "C+g65NG1Sg7pdYWQTdOK6ys=" );  // open database file
   db.setDebug(false);
 
@@ -22,7 +24,9 @@ void lb_setup() {
     while (db.next()) {
       Leaderboard t = new Leaderboard();
       db.setFromRow( t );
-      println( t );
+      scoreboard.append(str(t.id) + "," + t.username + "," + str(t.score));
+      println( t.id );
+      println(scoreboard);
     }
     //Leaderboard t1 = new Leaderboard();
     //t1.fieldOne = "one, two, three";
@@ -57,13 +61,12 @@ void lb() {
 
 
 
-class Leaderboard
-{
+class Leaderboard {
   int id;
   public String username;
   public int score;
   public String toString () {
-    return String.format("id: %d, username: %s score: %s", id, username, score);
+  return String.format("id: %d, username: %s score: %s", id, username, score); 
   }
   public void setId ( int id ) {
     this.id = id;
