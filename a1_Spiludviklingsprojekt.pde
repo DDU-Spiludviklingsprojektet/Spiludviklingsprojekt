@@ -58,6 +58,7 @@ void setup() {
   exit_img = loadShape(EXIT_IMG);
   upgrade_setup();
   game_setup();
+  lb_setup();
   surface.setTitle(TITLE);
   //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON_IMG));
