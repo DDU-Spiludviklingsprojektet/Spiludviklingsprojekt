@@ -3,13 +3,14 @@ class Particle {
   PVector velocity;
   PVector acceleration;
   float lifespan;
+  float maxlifespan = 100;
 
   Particle() {
     acceleration = rocket.getHeading().copy();
     velocity = rocket.getHeading().copy();
     velocity.rotate(random(-PI, PI));
     position = rocket.getHeading().copy().setMag(18*zoomlevel);
-    lifespan = 255.0;
+    lifespan = maxlifespan;
     velocity.x = -velocity.x;
     acceleration.x = -acceleration.x;
     position.x = -position.x;
@@ -29,8 +30,8 @@ class Particle {
 
   // Method to display
   void display() {
-    stroke(221, 87, 28, lifespan*rocket.getThrottle()/200);
-    fill(221, 87, 28, lifespan*rocket.getThrottle()/200);
+    stroke(221, 87, 28, (lifespan/maxlifespan)*rocket.getThrottle());
+    fill(221, 87, 28, (lifespan/maxlifespan)*rocket.getThrottle());
     ellipse(position.x, position.y, 5*zoomlevel, 5*zoomlevel);
   }
 
@@ -54,7 +55,9 @@ class ParticleSystem {
   }
 
   void addParticle() {
-    particles.add(new Particle());
+    for(int i = 0; i < 10; i++) {
+      particles.add(new Particle());
+    }
   }
 
   void run() {
