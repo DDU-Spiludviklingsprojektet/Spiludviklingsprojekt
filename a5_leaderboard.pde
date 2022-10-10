@@ -19,14 +19,14 @@ void lb_setup() {
   if ( db.connect() )
   {
 
-    db.query( "SELECT * FROM %s", "leaderboard" );
+    db.query( "SELECT * FROM %s ORDER BY score DESC", "leaderboard" );
 
     while (db.next()) {
       Leaderboard t = new Leaderboard();
       db.setFromRow( t );
       scoreboard.append(str(t.id) + "," + t.username + "," + str(t.score));
-      println( t.id );
-      println(scoreboard);
+      //println( t.id );
+      //println(scoreboard);
     }
     //Leaderboard t1 = new Leaderboard();
     //t1.fieldOne = "one, two, three";
@@ -55,9 +55,19 @@ void lb() {
     lb = false;
     menu = true;
   }
+
+  scoreboardtext();
 }
 
-
+void scoreboardtext(){
+  for (int i = 0; i < scoreboard.size(); i++) {
+    String[] split = split(scoreboard.get(i), ',');
+    String id = split[0];
+    String username = split[1];
+    String score = split[2];
+    println(i+1 + " " + username + " " + score);
+  }
+}
 
 
 
