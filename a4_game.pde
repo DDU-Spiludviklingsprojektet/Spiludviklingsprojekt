@@ -199,21 +199,16 @@ int calculateScore() {
 //TODO, make the game based on time, instead of frames, so slower computers can timewrap.
 //Also move the keypresses to the input function, and find a better way to do the delay.
 void timewrap() {
-  if (frames == 10) {
-    frames = 0;
-  }
-  if (frames == 0&&keyPressed == true) {
+  if (keyPressed == true) {
     if (key==',') {
       timewrap--;
     } else if (key=='.') {
       timewrap++;
     }
-    frameRate(30*timewrap);
   }
   if (timewrap <= 0) {
     timewrap = 1;
   }
-  frames++;
 }
 
 //Zooms in and out
@@ -272,12 +267,6 @@ void input() {
         rocket.setThrottle(rocket.getThrottle() - 5);
         break;
       }
-      /*case 188:
-       timewrap--;
-       break;
-       case 190:
-       timewrap++;
-       break;*/
     }
   }
 }

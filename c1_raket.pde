@@ -128,7 +128,7 @@ class Raket {
   
   void setChangedirection(float x) {
     if (keyPressed == true &&(keyCode == 37 || keyCode == 39)) {
-      goalheading = radians(x)+goalheading;
+      goalheading = radians(x*timewrap)+goalheading;
       setHeading(-goalheading+PI/2);
     }
   }
@@ -151,7 +151,7 @@ class Raket {
   void engine() {
     if (fuelpercent>0) {
       float x = throttle*(tanksize*fueldensity/power)/pow(10, 9);
-      fuelpercent = fuelpercent - x;
+      fuelpercent = fuelpercent - x*timewrap;
       float y = (power*throttle)/getCurrentmass()*1000;
       Engine = Heading.copy();
       Engine.setMag(y);
@@ -215,8 +215,10 @@ class Raket {
     Acceleration.add(Drag);
     Acceleration.add(Gravity);
     Velocity.add(Acceleration);
+    PVector timewrapVelocity = Velocity.copy();
+    timewrapVelocity.mult(timewrap);
     planetcollision();
-    Location.add(Velocity);
+    Location.add(timewrapVelocity);
   }
 
   void draw() {
