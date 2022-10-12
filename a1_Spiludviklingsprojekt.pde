@@ -51,7 +51,8 @@ void settings() {
 }
 
 //The function setup is used to
-void setup() {    
+void setup() {  
+  navnpopup();
   raket_img = loadShape(RAKET_IMG);
   cursor_img = loadImage(CURSOR_IMG);
   arrow_img = loadShape(ARROW_IMG);
@@ -85,11 +86,11 @@ void draw() {
 }
 
 //TODO, ask for name when starting the game.
-//void navnpopup() {
-//  name = new UiBooster().showTextInputDialog("Navn");
+void navnpopup() {
+  name = new UiBooster().showTextInputDialog("Navn");
 
-//  if (navntaget(name) == true) {
-//    new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
-//    navnpopup();
-//  }
-//}
+  //if (navntaget(name) == true) {
+  //  new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
+  //  navnpopup();
+  //}
+}
