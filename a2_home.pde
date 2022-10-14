@@ -11,8 +11,6 @@ PImage logo_img;
 PShape buttons_img;
 PShape empty_img;
 
-
-
 //Variables for buttons
 Button_rect start_bt;
 Button_ell lb_bt;

@@ -1,4 +1,3 @@
-
 //String variable is declared to store the parth to files used in the program.
 final static String UPGRADE_IMG = "data/svg/upgrade.svg";
 final static String KASSE_TJEK_IMG = "data/svg/kasse_tjek.svg";
@@ -104,6 +103,7 @@ void upgrade() {
       buttons[upg][i].display();
       textFont(bit8);
       textSize(20);
+      textAlign(LEFT);
       fill(255);
       text(upgrade_name[upg], 930, 130 + (upg * 120));
     }

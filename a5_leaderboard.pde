@@ -8,9 +8,16 @@ import de.bezier.data.sql.*;
 MySQL db;
 StringList scoreboard;
 String leaderboardtext = "";
+String usernametext = "User:";
+String middlething = "|";
+String scoretext = "Score:";
+int countlb = 0;
 
 
 void lb_setup() {
+  usernametext = "User:";
+  middlething = "|";
+  scoretext = "Score:";
   username = new StringList();
   writescore = new IntList();
   db = new MySQL( this, "hc.hyperservers.dk", "s1_DDUSimon", "u1_IUC2R9tgCu", "C+g65NG1Sg7pdYWQTdOK6ys=" );  // open database file
@@ -24,14 +31,22 @@ void lb_setup() {
       writescore.append(t.score);
     }
   }
+
   for (int i = 0; i<username.size()&&i<10; i++) {
-    leaderboardtext = leaderboardtext+"\nBruger: " + username.get(i) + " | Score: " + str(writescore.get(i));
+    usernametext = usernametext+"\n" + username.get(i);
+    middlething = middlething + "\n" + "|";
+    scoretext = scoretext + "\n" + str(writescore.get(i));
   }
 }
 
 
 //draw to leaderboard
 void lb() {
+  if (countlb<1) {
+    lb_setup();
+    countlb++;
+    println("here");
+  }
   background(200);
   leadback_img = loadShape(LBBACK_IMG);
   shapeMode (CORNERS);
@@ -50,16 +65,18 @@ void lb_button() {
     clear();
     lb = false;
     menu = true;
+    countlb = 0;
   }
 }
 
 void scoreboardtext() {
   textFont(bit8);
-  textSize(20*width/1280);
+  textSize(30*width/1280);
   fill(255);
   textAlign(CENTER);
-
-  text(leaderboardtext, width/2, height/6);
+  text(middlething, width/2, height/4.5);
+  text(usernametext, width/3, height/4.5);
+  text(scoretext, width/1.5, height/4.5);
 }
 
 class Leaderboard {

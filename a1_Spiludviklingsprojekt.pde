@@ -41,8 +41,6 @@ boolean upgrade_page = false;
 boolean game = false;
 boolean lb = false;
 boolean mute = false;
-
-
 boolean isloggedin = false;
 
 //The function settings i used to create a window with a specific size, to start.
@@ -51,7 +49,7 @@ void settings() {
 }
 
 //The function setup is used to
-void setup() {  
+void setup() {
   navnpopup();
   raket_img = loadShape(RAKET_IMG);
   cursor_img = loadImage(CURSOR_IMG);
@@ -59,7 +57,6 @@ void setup() {
   exit_img = loadShape(EXIT_IMG);
   upgrade_setup();
   game_setup();
-  lb_setup();
   surface.setTitle(TITLE);
   //Set custom desktop icon
   getSurface().setIcon(loadImage(ICON_IMG));
@@ -90,7 +87,7 @@ void navnpopup() {
   name = new UiBooster().showTextInputDialog("Navn");
 
   //if (navntaget(name) == true) {
-  //  new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
-  //  navnpopup();
+    //  new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
+    //  navnpopup();
   //}
 }
