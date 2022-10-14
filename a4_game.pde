@@ -141,6 +141,9 @@ void back2() {
     game = false;
     upgrade_page = true;
     money+=score;
+    //db.execute ("INSERT INTO leaderboard (username, score) VALUES ('Rolf', 'score';");
+    db.execute("UPDATE leaderboard set score = "+score+" where UPPER(username) = UPPER('Rolf') AND (SELECT score FROM leaderboard where UPPER(username) = UPPER('Rolf')) < "+score+";");
+
   }
 }
 
@@ -168,6 +171,8 @@ void death() {
       game = false;
       upgrade_page = true;
       money+=score;
+      //db.execute ("INSERT INTO leaderboard (username, score) VALUES ('Rolf', 'score';");
+      db.execute("UPDATE leaderboard set score = "+score+" where UPPER(username) = UPPER('Rolf') AND (SELECT score FROM leaderboard where UPPER(username) = UPPER('Rolf')) < "+score+";");
     }
   }
 }
