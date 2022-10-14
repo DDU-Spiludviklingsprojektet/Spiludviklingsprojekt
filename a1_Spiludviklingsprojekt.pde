@@ -50,6 +50,7 @@ void settings() {
 
 //The function setup is used to
 void setup() {
+  lb_setup();
   navnpopup();
   raket_img = loadShape(RAKET_IMG);
   cursor_img = loadImage(CURSOR_IMG);
@@ -85,9 +86,14 @@ void draw() {
 //TODO, ask for name when starting the game.
 void navnpopup() {
   name = new UiBooster().showTextInputDialog("Navn");
-
-  //if (navntaget(name) == true) {
-    //  new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
-    //  navnpopup();
-  //}
+  if (navntaget(name) == true) {
+      //new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
+      new UiBooster().showConfirmDialog("Dette navn er allerede brugt", "Vil du forsette med navnet",
+                () -> println("Action declined"),
+                () -> navnpopup());
+  }
+  else {
+    db.execute("INSERT INTO leaderboard (username,score) VALUES ('"+name+"',0);");
+  
+  }
 }

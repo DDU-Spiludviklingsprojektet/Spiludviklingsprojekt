@@ -79,6 +79,20 @@ void scoreboardtext() {
   text(scoretext, width/1.5, height/4.5);
 }
 
+boolean navntaget(String x) {
+  println(x);
+  int mysqllengt = username.size();
+  println (mysqllengt);
+  
+  for (int i = 1; i < mysqllengt; i++) {
+    if (x.equals(username.get(i))) {
+      return true;
+    }
+    println(username.get(i));
+  }
+  return false;
+}
+
 class Leaderboard {
   int id;
   public String username;
