@@ -180,6 +180,7 @@ void death() {
 //Creates the text information on screen
 void overlays() {
   rotate(-rocket.getGoalheading());
+  textAlign(LEFT);
   textFont(bit8);
   textSize(20*width/1280);
   fill(255);
