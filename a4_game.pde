@@ -88,15 +88,18 @@ float highscore = 0;
 boolean dead = false;
 int score=0;
 
-//Creates Objects
 void game_setup() {
+  //Creates back button object. The code for the object is in c4 Button v2 page
   back_bt2 = new Button_rect(back_img, width/15, height/15, 128, 128, (width/15)+1, (height/15)-14, 122, 43, 255, 10);
+  //Creates the try again button that shows when you are dead
   tryagain_bt = new Button_rect(empty_img, 100, 100, 200, 60, width/2.092, height/1.351, 640, 185, 1, 20);
+  //Loads the different images
   jorden_img = loadShape(JORDEN_IMG);
   moon_img = loadShape(MOON_IMG);
   end_img = loadShape(END_IMG);
   overlay_img = loadShape(OVERLAY_IMG);
   again_img = loadShape(AGAIN_IMG);
+  //Creates the different planet objects when 
   earth = new Planet(earthpositionx, earthpositiony, earthatmosphere, earthradius, earthedgeofatmosphere, earthairdensity, earthmass, jorden_img, earthred, earthgreen, earthblue);
   moon = new Planet(moonpositionx, moonpositiony, moonatmosphere, moonradius, moonedgeofatmosphere, moonairdensity, moonmass, moon_img, moonred, moongreen, moonblue);
   rocket = new Raket(drymass, fueldensity, tanksize, ISP, power, CD, Area, Throttle);
