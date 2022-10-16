@@ -87,13 +87,11 @@ void draw() {
 void navnpopup() {
   name = new UiBooster().showTextInputDialog("Navn");
   if (navntaget(name) == true) {
-      //new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
-      new UiBooster().showConfirmDialog("Dette navn er allerede brugt", "Vil du forsette med navnet",
-                () -> println("Action declined"),
-                () -> navnpopup());
-  }
-  else {
+    //new UiBooster().showErrorDialog("Dette navn er allerede brugt", "ERROR");
+    new UiBooster().showConfirmDialog("Dette navn er allerede brugt", "Vil du forsette med navnet",
+      () -> println("Action declined"),
+      () -> navnpopup());
+  } else {
     db.execute("INSERT INTO leaderboard (username,score) VALUES ('"+name+"',0);");
-  
   }
 }
